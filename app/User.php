@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'user';
+    protected $appends = ['userName'];
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +38,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getUserNameAttribute($value)
+    {
+        if($this->first_name!=''){
+            return $this->first_name.' '.$this->last_name;
+        }
+        return null;
+    }
 }

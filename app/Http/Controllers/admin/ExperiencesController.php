@@ -1,0 +1,202 @@
+<?php
+
+namespace App\Http\Controllers\admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Validator;
+
+//All Models
+use App\models\Experiences;
+
+class ExperiencesController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return Experiences::where(['status'=>'1'])
+        ->with([
+            'user' => function($model){
+                $model->select(['id','first_name','last_name','email']);
+            },
+            'category' => function($model){
+                $model->select(['id','name','title']);
+            }
+        ])
+        ->orWhere(['status'=>'1'])
+        ->orderBy('id','DESC')
+        ->get();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $validator = Validator::make($request->all(),[
+            'category_id' => 'required|numeric',
+            'user_id' => 'required|numeric',
+            'title' => 'required',
+            'sub_title' => 'required',
+            'image' => 'required|mimes:jpeg,jpg,png',
+            'price' => 'required|numeric',
+            'duration' => 'required|numeric',
+            'duration_type' => 'required',
+            'group_size' => 'required|numeric',
+            'activity_level' => 'required',
+        ]);
+        if($validator->fails()){
+            $errors = $validator->errors();
+            return response()->json([
+                'status'=>false,
+                'message'=>'Please correct form values',
+                'result'=>[
+                    'data' => [],
+                    'errors' => $errors
+                ]
+            ]);
+        }else{
+
+//            echo '<pre>';print_r( $data );die;
+            $imageName = time().'.'.request()->image->getClientOriginalExtension();
+            request()->image->move(public_path('uploads/experiences'), $imageName);
+            $data['experiences_image_url'] = 'uploads/experiences/'.$imageName;
+
+            $slug = strtolower(preg_replace('/\s+/', '-', $data['title']));
+            $data['slug'] = $slug;
+
+            $res = Experiences::create($data);
+            if($res){
+                return response()->json([
+                    'status' => true,
+                    'message'=>'New experience added successfully'
+                ]);
+            }
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return Experiences::find($id);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $model = Experiences::find($id);
+        if(!$model){
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid Experience ID'
+            ]);
+        }
+
+        $data = $request->all();
+        $validator = Validator::make($request->all(),[
+            'category_id' => 'required|numeric',
+            'user_id' => 'required|numeric',
+            'title' => 'required',
+            'sub_title' => 'required',
+            'image' => 'mimes:jpeg,jpg,png',
+            'price' => 'required|numeric',
+            'duration' => 'required|numeric',
+            'duration_type' => 'required',
+            'group_size' => 'required|numeric',
+            'activity_level' => 'required',
+        ]);
+        if($validator->fails()){
+            $errors = $validator->errors();
+            return response()->json([
+                'status'=>false,
+                'message'=>'Please correct form values',
+                'result'=>[
+                    'errors' => $errors
+                ]
+            ]);
+        }else{
+            if($request->hasFile('image')){
+                $imageName = time().'.'.request()->image->getClientOriginalExtension();
+                request()->image->move(public_path('uploads/experiences'), $imageName);
+                $data['experiences_image_url'] = 'uploads/experiences/'.$imageName;
+            }
+
+//            var_dump($data);die;
+
+            $slug = strtolower(preg_replace('/\s+/', '-', $data['title']));
+            $data['slug'] = $slug;
+
+            $res = $model->update($data);
+            if($res){
+                return response()->json([
+                    'status' => true,
+                    'message'=>'Experience updated successfully'
+                ]);
+            }
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $model = Experiences::find($id);
+        if(!$model){
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid Experience ID'
+            ]);
+        }
+        $update = $model->update(['status' => 2]);
+        if($update){
+            return response()->json([
+                'status' => true,
+                'message'=>'Experience archieved successfully'
+            ]);
+        }
+    }
+}

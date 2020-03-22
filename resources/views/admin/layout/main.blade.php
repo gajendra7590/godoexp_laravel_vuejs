@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="{{ URL::asset('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="{{ URL::asset('admin/custom.css') }}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper" id="app">
@@ -42,6 +43,7 @@
 <!-- ./wrapper -->
 
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('admin/custom.js') }}"></script>
 <!-- jQuery 3 -->
 <script src="{{ URL::asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->

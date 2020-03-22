@@ -6,8 +6,9 @@
 <script>
     export default {
         name : "pagenotfoundC",
-        mounted() {
-                console.log('pagenotfound component mounted.')
+        data: function () {
+            return {
+            }
         }
     }
 </script>

@@ -12,8 +12,8 @@
 */
 
 //Admin Router For View JS
-Route::get('/admin', 'HomeController@adminHome')->where('any', '.*');
 Route::get('/admin/{any}', 'HomeController@adminHome')->where('any', '.*');
+Route::redirect('/login', '/admin/dashboard');
 
 
 

@@ -1,7 +1,7 @@
 <template>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.18
+        <b>Version</b> 1.0.0
         </div>
         <strong>Copyright &copy; {{ date | moment("YYYY") }}  <router-link :to="{ name : 'dashboard'}"> GoDo Experience</router-link>.</strong> All rights
         reserved.
@@ -14,9 +14,6 @@ export default {
         return {
            date : new Date()
         }
-    },
-    mounted() {
-            console.log('footer component mounted.')
     }
 }
 </script>

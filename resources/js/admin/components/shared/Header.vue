@@ -20,24 +20,25 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">
+                 {{ ( typeof(userProfile.username)!='undefined')?userProfile.username:'' }}
+               </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  {{ ( typeof(userProfile.username)!='undefined')?userProfile.username:'' }}
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <router-link :to="{ name : 'adminProfile' }" class="btn btn-default btn-flat">Profile</router-link>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <router-link :to="{ name : 'adminLogout' }" class="btn btn-default btn-flat">Sign out</router-link>
                 </div>
               </li>
             </ul>
@@ -48,10 +49,14 @@
   </header>
 </template>
 <script>
+import {  mapState, Store } from "vuex";
 export default {
     name : "headerc",
-    mounted() {
-            console.log('header component mounted.')
+    props: ['userProfile'],
+    data: function (props) {
+        return {
+           //userData : []
+        }
     }
 }
 </script>

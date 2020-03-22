@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(['namespace' => 'admin'], function () {
+
+    //Categories
+    Route::resource('admin/categories', 'CategoriesController');
+    Route::post('admin/categories/{id}', 'CategoriesController@update');
+
+    //
+    Route::resource('admin/experiences', 'ExperiencesController');
+    Route::post('admin/experiences/{id}', 'ExperiencesController@update');
+
+});
+

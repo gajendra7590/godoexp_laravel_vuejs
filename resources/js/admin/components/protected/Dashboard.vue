@@ -85,8 +85,9 @@
 <script>
     export default {
         name : "dashbaordC",
-        mounted() {
-                console.log('dashboard component mounted.')
+        data: function () {
+            return {
+            }
         }
     }
 </script>

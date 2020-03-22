@@ -1,9 +1,9 @@
 <template>
     <div id="appComponent">
-        <Headerc></Headerc>
-        <Sidebar></Sidebar>
+        <Headerc :userProfile="user" />
+        <Sidebar :userProfile="user"/>
         <router-view></router-view>
-        <Footerc></Footerc>
+        <Footerc :userProfile="user"/>
         <!-- <Asidec></Asidec> -->
     </div>
 </template>
@@ -12,7 +12,7 @@
     import Header from '../components/shared/Header';
     import Sidebar from '../components/shared/Sidebar';
     import Footer from '../components/shared/Footer';
-    // import Aside from '../components/shared/Aside';
+    import {  mapState } from "vuex";
 
     export default {
         name:"appComponent",
@@ -20,10 +20,14 @@
            Headerc : Header,
            Sidebar : Sidebar,
            Footerc : Footer,
-        //    Asidec : Aside,
         },
-        mounted() {
-            console.log('Component mounted.')
-        }
+        data : function(){
+            return {
+
+            }
+        },
+        computed: mapState({
+            user: state => state.userData,
+        }),
     }
 </script>

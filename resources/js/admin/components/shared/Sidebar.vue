@@ -8,8 +8,8 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p>{{ ( typeof(userProfile.username)!='undefined')?userProfile.username:'' }}</p>
+          <router-link :to="{ name : 'adminProfile' }"><i class="fa fa-circle text-success"></i> Online</router-link>
         </div>
       </div>
       <!-- search form -->
@@ -26,34 +26,49 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li>
+        <li :class="(activeLink == 'dashboard')?'active':''">
           <router-link :to="{ name : 'dashboard' }">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </router-link>
         </li>
-        <li>
+        <li :class="(activeLink == 'experiences_list' || activeLink == 'experiences_add' || activeLink == 'experiences_edit' )?'active':''">
           <router-link :to="{ name : 'experiences_list' }">
             <i class="fa fa-calendar"></i> <span>Experiences</span>
           </router-link>
         </li>
-        <li>
+        <li :class="(activeLink == 'categories_list' || activeLink == 'categories_add' || activeLink == 'categories_edit' )?'active':''">
           <router-link :to="{ name : 'categories_list' }">
             <i class="fa fa-book"></i> <span>Categories</span>
           </router-link>
         </li>
-        <li>
+        <li :class="(activeLink == 'clients_list' || activeLink == 'clients_add' || activeLink == 'clients_edit' )?'active':''">
            <router-link :to="{ name : 'clients_list' }">
             <i class="fa fa-users"></i> <span>Clients</span>
           </router-link>
         </li>
-        <li>
+        <li :class="(activeLink == 'vendors_list' || activeLink == 'vendors_add' || activeLink == 'vendors_edit' )?'active':''">
            <router-link :to="{ name : 'vendors_list' }">
             <i class="fa fa-users"></i> <span>Vendors</span>
           </router-link>
         </li>
-        <li>
+         <li :class="(activeLink == 'company_detail')?'active':''">
            <router-link :to="{ name : 'company_detail' }">
             <i class="fa fa-industry"></i> <span>Company Detail</span>
+          </router-link>
+        </li>
+         <li :class="(activeLink == 'adminProfile' )?'active':''">
+           <router-link :to="{ name : 'adminProfile' }">
+            <i class="fa fa-user-circle-o"></i> <span>Profile</span>
+          </router-link>
+        </li>
+        <li :class="(activeLink == 'changePassword' )?'active':''">
+           <router-link :to="{ name : 'changePassword' }">
+            <i class="fa fa-key"></i> <span>Change Password</span>
+          </router-link>
+        </li>
+        <li :class="(activeLink == 'adminLogout' )?'active':''">
+           <router-link :to="{ name : 'adminLogout' }">
+            <i class="fa fa-sign-out"></i> <span>Logout</span>
           </router-link>
         </li>
       </ul>
@@ -64,9 +79,20 @@
 <script>
 export default {
     name : "sidebarc",
-    mounted() {
-            console.log('sidebar component mounted.')
-    }
+    props : ['userProfile'],
+    data: function () {
+        return {
+           activeLink : ''
+        }
+    },
+    created(){
+        this.activeLink = this.$route.name;
+    },
+    watch:{
+        '$route' (to, from){
+            this.activeLink = to.name;
+        },
+    },
 }
 </script>
 <style scoped>
