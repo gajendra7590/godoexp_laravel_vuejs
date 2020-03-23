@@ -9,8 +9,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-    protected $table = 'user';
-    protected $appends = ['userName'];
+    protected $table = 'users';
+    protected $appends = ['userName','image'];
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'email_verified_at', 'password', 'profile_photo','phone','gender','dob',
+        'city', 'state', 'country', 'zip', 'role_id','password_reset_token','verification_token','last_login','status'
     ];
 
     /**
@@ -27,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'password_reset_token', 'verification_token', 'email_verified_at'
     ];
 
     /**
@@ -37,7 +38,23 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login' => 'datetime',
     ];
+
+    /**
+     * Role Mapping
+     */
+    public function role() {
+        return $this->hasOne('App\models\Roles','id', 'role_id');
+    }
+
+    public function getImageAttribute($value)
+    {
+        if($this->profile_photo!=''){
+            return url('/').'/'.$this->profile_photo;
+        }
+        return null;
+    }
 
     public function getUserNameAttribute($value)
     {

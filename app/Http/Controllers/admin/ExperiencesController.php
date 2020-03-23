@@ -16,10 +16,15 @@ class ExperiencesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Experiences::where(['status'=>'1'])
-        ->with([
+        $pageNum = ($request->get('page'))?$request->get('page'):1;
+        $total = $this->getCount();
+        $limit = 10;
+        $total_pages = ceil($total/$limit);
+        $offset = ( ($pageNum - 1) * $limit);
+
+        $experiences  = Experiences::with([
             'user' => function($model){
                 $model->select(['id','first_name','last_name','email']);
             },
@@ -27,9 +32,23 @@ class ExperiencesController extends Controller
                 $model->select(['id','name','title']);
             }
         ])
-        ->orWhere(['status'=>'1'])
+        ->where('status', '1')
+        ->orWhere('status' ,'0')
         ->orderBy('id','DESC')
+        ->offset($offset)
+        ->limit($limit)
         ->get();
+
+        return ['experiences'=>$experiences,'total'=> $total,'total_pages' => $total_pages];
+    }
+
+
+    protected function getCount(){
+        return Experiences::select(['id'])
+            ->where('status','1')
+           ->orWhere('status','0')
+            ->get()
+            ->count();
     }
 
     /**

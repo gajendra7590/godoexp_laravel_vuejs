@@ -10,7 +10,7 @@ use Validator;
 //All Models
 use App\User;
 
-class VendorsController extends Controller
+class ClientsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class VendorsController extends Controller
             'role_id','last_login','status','created_at','updated_at'])
             ->with(['role' => function($model){ $model->select('id','role_name'); }])
             ->where('status','!=','2')    
-            ->where('role_id','2')       
+            ->where('role_id','3')       
             ->orderBy('id','DESC')
             ->offset($offset)
             ->limit($limit)
@@ -40,7 +40,7 @@ class VendorsController extends Controller
     protected function getCount(){
         return User::select(['id'])
             ->where('status','!=','2')    
-            ->where('role_id','2')     
+            ->where('role_id','3')     
             ->get()
             ->count();
     }
@@ -90,12 +90,12 @@ class VendorsController extends Controller
             } 
              
             $data['password'] = Hash::make($data['password']);
-            $data['role_id'] = 2; 
+            $data['role_id'] = 3; 
             $res = User::create($data);
             if($res){
                 return response()->json([
                     'status' => true,
-                    'message'=>'New vendor created successfully'
+                    'message'=>'New client created successfully'
                 ]);
             }
         }
@@ -111,13 +111,13 @@ class VendorsController extends Controller
     {
         $user = User::select(['*'])
                 ->where(['id' => $id])
-                ->where(['role_id' => '2'])
+                ->where(['role_id' => '3'])
                 ->where('status','!=','2') 
                 ->first();
         if(!$user){
             return response()->json([
                 'status' => false,
-                'message'=>'VENDOR ID NOT FOUND'
+                'message'=>'USER ID NOT FOUND'
             ]);
         }
         return $user;
@@ -144,12 +144,12 @@ class VendorsController extends Controller
     public function update(Request $request, $id)
     {
         $model = User::where('id',$id)
-        ->where(['role_id' => '2'])
+        ->where(['role_id' => '3'])
         ->where('status','!=','2')->get()->first();
         if(!$model){
             return response()->json([
                 'status' => false,
-                'message' => 'Invalid Vendor ID'
+                'message' => 'Invalid Client ID'
             ]);
         }
 
@@ -188,7 +188,7 @@ class VendorsController extends Controller
             if($res){
                 return response()->json([
                     'status' => true,
-                    'message'=>'vendor detail updated successfully'
+                    'message'=>'client detail updated successfully'
                 ]);
             }
         }
@@ -203,12 +203,12 @@ class VendorsController extends Controller
     public function destroy($id)
     {
         $model = User::where('id',$id)
-                ->where(['role_id' => '2'])
-                ->where('status','!=','2')->get()->first(); 
+        ->where(['role_id' => '3'])
+        ->where('status','!=','2')->get()->first(); 
         if(!$model){
             return response()->json([
                 'status' => false,
-                'message' => 'Invalid Vendor ID'
+                'message' => 'Invalid Client ID'
             ]);
         }
 
@@ -216,7 +216,7 @@ class VendorsController extends Controller
         if($res){
             return response()->json([
                 'status' => true,
-                'message'=>'Vendor archieved successfully'
+                'message'=>'Client archieved successfully'
             ]);
         }
     }

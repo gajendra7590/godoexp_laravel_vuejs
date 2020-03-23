@@ -61,17 +61,18 @@
                     </tr>
                 </tbody>
               </table>
-            </div>
-
-            <paginate
-                :pageCount="page"
-                :page-range="3"
-                :margin-pages="2"
-                :clickHandler="pageClickHandler"
-                :prevText="'Prev'"
-                :nextText="'Next'"
-                :containerClass="'pagination'">
-            </paginate>
+              <div class="pagination_container pull-right">
+                <paginate
+                    :pageCount="page"
+                    :page-range="3"
+                    :margin-pages="2"
+                    :clickHandler="pageClickHandler"
+                    :prevText="'Prev'"
+                    :nextText="'Next'"
+                    :containerClass="'pagination'">
+                </paginate>
+              </div>
+            </div> 
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -108,8 +109,8 @@
             this.getCategories(1);
         },
         computed : mapState({
-              categoriesLst : state => state.categories.list,
-              page : state => state.categories.list_total,
+              categoriesLst : state => state.data.list,
+              page : state => state.data.list_total,
         })
     }
 </script>

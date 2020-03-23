@@ -1,11 +1,11 @@
 export default {
-    getExperiences(state, data) {
+    getClients(state, data) {
         state.data.list = data;
     },
-    editExperience(state, data) {
+    editClient(state, data) {
         state.data.editData = data;
     },
-    experiencesCount(state, total) {
+    clientsCount(state, total) {
         state.data.list_total = total;
     }
 }

@@ -17,10 +17,10 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-        $pageNum = $request->get('page');
+        $pageNum = ($request->get('page'))?$request->get('page'):1; 
         $total = $this->getCount();
         $limit = 8;
-        $total_pages = $total/$limit;
+        $total_pages = ceil( $total/$limit );
         $offset = ( ($pageNum - 1) * $limit);
         // echo $offset;die;
         $categories = Categories::select(['id','name','title','category_image_url','slug','status','created_at','updated_at'])

@@ -24,9 +24,17 @@ Route::group(['namespace' => 'admin'], function () {
     Route::resource('admin/categories', 'CategoriesController');
     Route::post('admin/categories/{id}', 'CategoriesController@update');
 
-    //
+    //Experiences
     Route::resource('admin/experiences', 'ExperiencesController');
     Route::post('admin/experiences/{id}', 'ExperiencesController@update');
+
+    //Clients
+    Route::resource('admin/clients', 'ClientsController');
+    Route::post('admin/clients/{id}', 'ClientsController@update');
+
+     //Vendors
+     Route::resource('admin/vendors', 'VendorsController');
+     Route::post('admin/vendors/{id}', 'VendorsController@update');
 
 });
 

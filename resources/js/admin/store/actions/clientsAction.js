@@ -3,24 +3,25 @@ import axios from 'axios';
 Vue.use(axios);
 
 export default {
-    getExperiences({ commit, state }, payload) {
+    getClients({ commit, state }, payload) {
+        // console.log(payload)
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-        axios.get(state.baseURL + 'experiences?page=' + payload.page)
+        axios.get(state.baseURL + 'clients?page=' + payload.page)
             .then(function(response) {
-                commit('getExperiences', response.data.experiences);
-                commit('experiencesCount', response.data.total_pages);
+                commit('getClients', response.data.clients);
+                commit('clientsCount', response.data.total_pages);
             })
             .catch(function(error) {
                 console.log(error.response);
             });
     },
-    editExperience({ commit, state }, id) {
+    editClient({ commit, state }, id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-        axios.get(state.baseURL + 'experiences/' + id)
+        axios.get(state.baseURL + 'clients/' + id)
             .then(function(response) {
-                commit('editExperience', response.data);
+                commit('editClient', response.data);
             })
             .catch(function(error) {
                 console.log(error.response);

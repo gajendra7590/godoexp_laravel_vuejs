@@ -46,7 +46,9 @@
                         </td>
                         <td :title="experience.title">{{ (experience.title).substring(0,40)+'...' }}</td>
                         <td>{{ experience.category.name }}</td>
-                        <td>{{ (experience.featured == 1)?'Yes':'No' }}</td>
+                        <td>
+                          <span v-html=" manageFeatured(experience.featured)"></span> 
+                        </td>
                         <td>{{ experience.user.userName }}</td>
                         <td>
                             <span v-html="manageStatus(experience.status)"></span>
@@ -63,6 +65,17 @@
                     </tr>
                 </tbody>
               </table>
+               <div class="pagination_container pull-right">
+                <paginate
+                    :pageCount="page"
+                    :page-range="3"
+                    :margin-pages="2"
+                    :clickHandler="pageClickHandler"
+                    :prevText="'Prev'"
+                    :nextText="'Next'"
+                    :containerClass="'pagination'">
+                </paginate>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -88,19 +101,27 @@
             }
         },
         methods : {
-            getCategories :function(){
-                this.$store.dispatch('getExperiences',{});
+            getExperiences :function( page ){
+                this.$store.dispatch('getExperiences',{ page : page });
+            },
+            pageClickHandler : function(pageNum){
+                this.getExperiences(pageNum);
             },
             manageStatus:function(val){
                 if(val == '1'){ return "<span class='label label-success'>Active</span>"; }
                 else{ return "<span class='label label-danger label-pill'>In Active</span>"; }
+            },
+            manageFeatured:function(val){
+                if(val == '1'){ return "<span class='label label-success'>Yes</span>"; }
+                else{ return "<span class='label label-danger label-pill'>No</span>"; }
             }
         },
         created(){
-            this.getCategories();
+            this.getExperiences( 1 );
         },
         computed : mapState({
-            experiencesList : state => state.experiences.list,
+            experiencesList : state => state.data.list,
+            page : state => state.data.list_total,
         })
     }
 </script>
