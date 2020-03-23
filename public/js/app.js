@@ -78871,7 +78871,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n         Manage Category\n        "),
+      _vm._v("\r\n         Manage Category\r\n        "),
       _c("small", [_vm._v("update")])
     ])
   },
@@ -79184,7 +79184,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fa fa-plus-circle" }),
-                      _vm._v(" Add New\n                  ")
+                      _vm._v(" Add New\r\n                  ")
                     ]
                   )
                 ],
@@ -79310,7 +79310,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n        Categories\n        "),
+      _vm._v("\r\n        Categories\r\n        "),
       _c("small", [_vm._v("list")])
     ])
   },
@@ -79402,7 +79402,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n         Manage Clients\n        "),
+      _vm._v("\r\n         Manage Clients\r\n        "),
       _c("small", [_vm._v("update")])
     ])
   },
@@ -79713,7 +79713,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fa fa-plus-circle" }),
-                      _vm._v(" Add New\n                  ")
+                      _vm._v(" Add New\r\n                  ")
                     ]
                   )
                 ],
@@ -79734,7 +79734,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n        Clients\n        "),
+      _vm._v("\r\n        Clients\r\n        "),
       _c("small", [_vm._v("list")])
     ])
   },
@@ -79770,7 +79770,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("td", [
                 _vm._v(
-                  "Internet\n                            Explorer 4.0\n                        "
+                  "Internet\r\n                            Explorer 4.0\r\n                        "
                 )
               ]),
               _vm._v(" "),
@@ -80141,7 +80141,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n         Manage Experiences\n        "),
+      _vm._v("\r\n         Manage Experiences\r\n        "),
       _c("small", [_vm._v("update")])
     ])
   },
@@ -80454,7 +80454,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fa fa-plus-circle" }),
-                      _vm._v(" Add New\n                  ")
+                      _vm._v(" Add New\r\n                  ")
                     ]
                   )
                 ],
@@ -80596,7 +80596,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n        Experiences\n        "),
+      _vm._v("\r\n        Experiences\r\n        "),
       _c("small", [_vm._v("list")])
     ])
   },
@@ -80663,7 +80663,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
     _c("section", { staticClass: "content-header" }, [
-      _c("h1", [_vm._v("\n         Change Password\n      ")]),
+      _c("h1", [_vm._v("\r\n         Change Password\r\n      ")]),
       _vm._v(" "),
       _c("ol", { staticClass: "breadcrumb" }, [
         _c(
@@ -80816,7 +80816,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n         User Profile\n        "),
+      _vm._v("\r\n         User Profile\r\n        "),
       _c("small", [_vm._v("update")])
     ])
   },
@@ -81121,7 +81121,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n         Manage Vendors\n        "),
+      _vm._v("\r\n         Manage Vendors\r\n        "),
       _c("small", [_vm._v("update")])
     ])
   },
@@ -81432,7 +81432,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fa fa-plus-circle" }),
-                      _vm._v(" Add New\n                  ")
+                      _vm._v(" Add New\r\n                  ")
                     ]
                   )
                 ],
@@ -81453,7 +81453,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", [
-      _vm._v("\n        Vendors\n        "),
+      _vm._v("\r\n        Vendors\r\n        "),
       _c("small", [_vm._v("list")])
     ])
   },
@@ -81489,7 +81489,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("td", [
                 _vm._v(
-                  "Internet\n                            Explorer 4.0\n                        "
+                  "Internet\r\n                            Explorer 4.0\r\n                        "
                 )
               ]),
               _vm._v(" "),
@@ -105141,7 +105141,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(axios__WEBPACK_IMPORTED_MODULE_1_
   getCategory: function getCategory(_ref, payload) {
     var commit = _ref.commit,
         state = _ref.state;
-    // console.log(payload)
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = "Bearer ".concat(localStorage.getItem('token'));
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.post['Content-Type'] = 'multipart/form-data';
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(state.baseURL + 'categories?page=' + payload.page).then(function (response) {
@@ -105295,7 +105294,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(axios__WEBPACK_IMPORTED_MODULE_1___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getClients: function getClients(_ref, payload) {
+  getVendors: function getVendors(_ref, payload) {
     var commit = _ref.commit,
         state = _ref.state;
     // console.log(payload)
@@ -105609,8 +105608,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/godoexp_laravel_vuejs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/godoexp_laravel_vuejs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\godoexp_laravel_vuejs\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\godoexp_laravel_vuejs\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
