@@ -1,5 +1,13 @@
 <template>
      <div class="content-wrapper">
+         <loading :active.sync="isLoading"
+            :can-cancel = "false"
+            :is-full-page = "true"
+            :opacity = "0.9"
+            :width = '30'
+            :height = '30'
+            :zIndex =  '999999'
+        />
         <!-- Content Header (Page header) -->
         <section class="content-header">
         <h1>
@@ -20,14 +28,16 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                <h3>150</h3>
+                <h3>{{ dashbaord.clients_count }}</h3>
 
-                <p>New Orders</p>
+                <p>Total Clients</p>
                 </div>
                 <div class="icon">
-                <i class="ion ion-bag"></i>
+                   <i class="fa fa-users" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <router-link :to="{ name : 'clients_list'}" class="small-box-footer">More info
+                    <i class="fa fa-arrow-circle-right"></i>
+                </router-link>
             </div>
             </div>
             <!-- ./col -->
@@ -35,14 +45,16 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{ dashbaord.vendors_count }}</h3>
 
-                <p>Bounce Rate</p>
+                <p>Total Vendors</p>
                 </div>
                 <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                  <i class="fa fa-user-secret" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <router-link :to="{ name : 'vendors_list'}" class="small-box-footer">More info
+                    <i class="fa fa-arrow-circle-right"></i>
+                </router-link>
             </div>
             </div>
             <!-- ./col -->
@@ -50,14 +62,16 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                <h3>44</h3>
+                <h3>{{ dashbaord.experiences_count }}</h3>
 
-                <p>User Registrations</p>
+                <p>Total Experiences</p>
                 </div>
                 <div class="icon">
-                <i class="ion ion-person-add"></i>
+                  <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <router-link :to="{ name : 'experiences_list'}" class="small-box-footer">More info
+                    <i class="fa fa-arrow-circle-right"></i>
+                </router-link>
             </div>
             </div>
             <!-- ./col -->
@@ -65,14 +79,16 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                <h3>65</h3>
+                <h3>{{ dashbaord.categories_count }}</h3>
 
-                <p>Unique Visitors</p>
+                <p>Total Categories</p>
                 </div>
                 <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                  <i class="fa fa-list-alt" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <router-link :to="{ name : 'categories_list'}" class="small-box-footer">More info
+                    <i class="fa fa-arrow-circle-right"></i>
+                </router-link>
             </div>
             </div>
             <!-- ./col -->
@@ -87,7 +103,26 @@
         name : "dashbaordC",
         data: function () {
             return {
+                isLoading : true,
+                dashbaord : {
+                    experiences_count : 0,
+                    clients_count : 0,
+                    vendors_count : 0,
+                    categories_count : 0,
+                },
             }
+        },
+        created(){
+            let $this = this;
+            this.$store.dispatch('getWidgets',[])
+            .then(function(result){
+               $this.isLoading = false;
+               $this.dashbaord = result;
+            }).catch(error => {
+                this.$toastr.e(error.message, 'Getting Error');
+                $this.isLoading = false;
+            });
+
         }
     }
 </script>

@@ -17,6 +17,7 @@ Route::get('/admin/forgot-password', 'HomeController@auth');
 
 
 Route::get('/admin/{any}', 'HomeController@adminHome')->where('any', '.*');
+Route::any('/admin', 'HomeController@auth');
 Route::redirect('/login', '/admin/dashboard');
 
 

@@ -52,6 +52,7 @@ class AuthController extends Controller
             return response()->json([
                 'status'=>true,
                 'message'=>'You have logged in successfully',
+                'user' => auth()->user()->userName,
                 'token'=>[
                     'access_token' => $tokenResult->accessToken,
                     'token_type' => 'Bearer',
@@ -117,7 +118,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message'=>'You have logged out successfully'
+                'message'=>'You have benn logged out successfully'
             ]);
         }else{
             return response()->json([

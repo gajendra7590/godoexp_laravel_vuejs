@@ -2,7 +2,9 @@
     <div id="appComponent">
         <Headerc :userProfile="user" />
         <Sidebar :userProfile="user"/>
-        <router-view></router-view>
+            <transition name="fade">
+               <router-view></router-view>
+            </transition>
         <Footerc :userProfile="user"/>
         <!-- <Asidec></Asidec> -->
     </div>

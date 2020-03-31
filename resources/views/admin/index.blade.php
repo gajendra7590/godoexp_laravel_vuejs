@@ -5,8 +5,6 @@
 
 @extends('admin.layout.main')
 
-@section('title', $page)
-
 @section('content')
  <App />
 @endsection

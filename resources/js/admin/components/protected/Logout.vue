@@ -10,7 +10,7 @@
         />
         <!-- Main content -->
         <section class="content">
-            <h3>We are logging out please wait...</h3>
+            <h3>You are preceeding to logged out...</h3>
         </section>
     </div>
 </template>
@@ -19,11 +19,26 @@ export default {
     name : 'adminLogout',
     data : function(){
         return {
-            isLoading : true
+            isLoading : false
         }
     },
     methods:{
         logout(){
+            let $this = this;
+            this.$dialog.confirm("Are you sure to logged Out ?", {
+                loader: true
+            })
+            .then(dialog => {
+                $this.confirmLoggedOut();
+            }).catch(function(error) {
+                $this.cancelLoggedOut();
+            });
+        },
+        cancelLoggedOut(){
+            this.$toastr.s("Loggout action cancelled.");
+            this.$router.push({ name : 'dashboard'});
+        },
+        confirmLoggedOut(){
             let $this = this;
             $this.$store.dispatch('authLogout',{})
             .then(function(response){

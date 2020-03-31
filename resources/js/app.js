@@ -38,7 +38,13 @@ Vue.use(VueLazyload,{
 // Loader
 Vue.use(Loading);
 Vue.component('loading', Loading);
-Vue.use(VuejsDialog);
+Vue.use(VuejsDialog,{
+    html: true,
+    loader: true,
+    okText: 'Proceed',
+    cancelText: 'Cancel',
+    animation: 'bounce'
+});
 
 
 Vue.component('paginate', Paginate);

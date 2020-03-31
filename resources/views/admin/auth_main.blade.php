@@ -5,8 +5,6 @@
 
 @extends('admin.layout.auth')
 
-@section('title', $page)
-
 @section('content')
  <App2 />
 @endsection

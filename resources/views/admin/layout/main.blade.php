@@ -8,7 +8,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="author" content="">
   <link rel="icon" href="{{ URL::asset('images/fav_icn.png') }}" type="image/x-icon">
-  <title>GoDo Experiences - @yield('title')</title>
+  <title>GoDo Experiences</title>
 
   <!--   <link href="{{ URL::asset('adminjscss/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
  -->

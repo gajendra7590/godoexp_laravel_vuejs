@@ -69,7 +69,7 @@ export default {
             $this.$store.dispatch('authLogin',formData)
             .then(function(response){
                 if(response.status == true){
-                    $this.$toastr.s("You have been logged in successfully","Success");
+                    $this.$toastr.s("Welcome Back, "+response.user,"Success");
                     localStorage.setItem("token", response.token.access_token);
                     setTimeout(function(){
                         window.location.href = '/admin/dashboard';

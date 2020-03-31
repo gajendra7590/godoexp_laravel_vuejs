@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens,Notifiable;
     protected $table = 'users';
-    protected $appends = ['userName','image'];
+    protected $appends = ['userName','image','dob_profile'];
 
     /**
      * The attributes that are mass assignable.
@@ -58,10 +58,18 @@ class User extends Authenticatable
         return null;
     }
 
+    public function getDobProfileAttribute($value)
+    {
+        if($this->dob!=''){
+            return date('d/m/Y',strtotime($this->dob));
+        }
+        return null;
+    }
+
     public function getUserNameAttribute($value)
     {
         if($this->first_name!=''){
-            return $this->first_name.' '.$this->last_name;
+            return ucwords( strtolower( $this->first_name.' '.$this->last_name) );
         }
         return null;
     }

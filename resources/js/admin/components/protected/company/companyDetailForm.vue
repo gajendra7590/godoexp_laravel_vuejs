@@ -163,7 +163,7 @@
 
               <div class="box-footer">
                     <div class="form-group col-md-12">
-                         <input type="hidden" name="company_id" v-model="formData.id" class="form-control">
+                        <input type="hidden" name="company_id" v-model="formData.id" class="form-control">
                         <button type="button" @click.prevent="goBack" class="btn btn-danger">Back</button>
                         <button type="submit" class="btn btn-primary">Save Detail</button>
                     </div>

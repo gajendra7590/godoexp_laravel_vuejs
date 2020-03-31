@@ -61,9 +61,7 @@ const store = new Vuex.Store({
             editData: [],
             categories : []
         },
-        userData: {
-            username: "Gajendra Singh"
-        }
+        userData: []
     },
     mutations,
     actions

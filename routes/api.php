@@ -27,8 +27,15 @@ Route::group(['namespace' => 'admin'], function () {
      //Only Auth User Allowed Route
        Route::group(['middleware' => 'auth:api'], function() {
 
+            //User Auth & Profile
             Route::post('admin/auth/logout', 'AuthController@logout');
             Route::get('admin/auth/profile', 'AuthController@profile');
+            Route::get('admin/user/editProfile', 'ProfileController@editProfile');
+            Route::post('admin/user/saveProfile', 'ProfileController@saveProfile');
+            Route::post('admin/user/changePassword', 'ProfileController@changePassword');
+
+            //Dashbaord
+            Route::get('admin/dashboard/widgets', 'DashboardController@getWidgets');
 
             //Categories
             Route::resource('admin/categories', 'CategoriesController');
