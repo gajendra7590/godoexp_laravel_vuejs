@@ -2,3 +2,22 @@
     float: left;
     margin-bottom: 10px;
 }
+
+table.adminTableList tbody td, table.adminTableList thead th {
+    text-align: center;
+}
+
+.male_female {
+    font-size: 25px;
+}
+
+.text-danger {
+    color: #ec1f1b !important;
+    font-size: 16px !important;
+}
+
+.error-page>.error-content {
+    margin-left: 190px;
+    display: block;
+    padding-top: 19px;
+}

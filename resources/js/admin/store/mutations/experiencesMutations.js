@@ -7,5 +7,9 @@ export default {
     },
     experiencesCount(state, total) {
         state.data.list_total = total;
+    },
+    experienceCategories(state, data) {
+        // console.log(data)
+        state.data.categories = data;
     }
 }

@@ -1,5 +1,13 @@
 <template>
 <div class="content-wrapper">
+    <loading :active.sync="isLoading"
+        :can-cancel = "false"
+        :is-full-page = "true"
+        :opacity = "0.9"
+        :width = '30'
+        :height = '30'
+        :zIndex =  '999999'
+    />
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -53,9 +61,9 @@
                             <router-link :to="{ path: '/admin/categories/edit/'+category.id }" class="btn btn-sm btn-warning">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </router-link>
-                            <a href="#" class="btn btn-sm btn-danger">
+                            <button href="#" @click.prevent="deleteAction( category.id )" class="btn btn-sm btn-danger">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
+                            </button>
                             <!-- <span class='label label-success'>Active</span> -->
                         </td>
                     </tr>
@@ -72,7 +80,7 @@
                     :containerClass="'pagination'">
                 </paginate>
               </div>
-            </div> 
+            </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -90,7 +98,7 @@
         name : "categoriesList",
         data:function(){
             return {
-
+                isLoading : true
             }
         },
         methods : {
@@ -103,7 +111,30 @@
             manageStatus:function(val){
                 if(val == '1'){ return "<span class='label label-success'>Active</span>"; }
                 else{ return "<span class='label label-danger label-pill'>In Active</span>"; }
+            },
+            deleteAction: function(id){
+                this.$dialog
+                .confirm("If you delete this record, it'll be gone forever.", {
+                    loader: true
+                })
+                .then(dialog => {
+                   let $this = this;
+                   this.$store.dispatch('deleteCategory',{id: id})
+                   .then(function(response){
+                        dialog.close();
+                       if(response.status == true){
+                           $this.$toastr.s("Category deleted successfully","Success");
+                           $this.getCategories(1);
+                       }else if(response.status == false){
+                           $this.$toastr.e("Error in delete category","Error");
+                       }
+                    });
+
+                });
             }
+        },
+        mounted(){
+             this.isLoading = false;
         },
         created(){
             this.getCategories(1);

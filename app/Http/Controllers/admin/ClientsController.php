@@ -19,7 +19,7 @@ class ClientsController extends Controller
      */
     public function index(Request $request)
     {
-        $pageNum = ($request->get('page'))?$request->get('page'):1; 
+        $pageNum = ($request->get('page'))?$request->get('page'):1;
         $total = $this->getCount();
         $limit = 8;
         $total_pages = ceil( $total/$limit );
@@ -28,8 +28,8 @@ class ClientsController extends Controller
         $clients = User::select(['id','first_name','last_name','email','profile_photo','phone','gender',
             'role_id','last_login','status','created_at','updated_at'])
             ->with(['role' => function($model){ $model->select('id','role_name'); }])
-            ->where('status','!=','2')    
-            ->where('role_id','3')       
+            ->where('status','!=','2')
+            ->where('role_id','3')
             ->orderBy('id','DESC')
             ->offset($offset)
             ->limit($limit)
@@ -39,8 +39,8 @@ class ClientsController extends Controller
 
     protected function getCount(){
         return User::select(['id'])
-            ->where('status','!=','2')    
-            ->where('role_id','3')     
+            ->where('status','!=','2')
+            ->where('role_id','3')
             ->get()
             ->count();
     }
@@ -73,24 +73,22 @@ class ClientsController extends Controller
         ]);
         if($validator->fails()){
             $errors = $validator->errors();
+            $errors = errorArrayCreate($errors);
             return response()->json([
                 'status'=>false,
                 'message'=>'Please correct form values',
-                'result'=>[
-                    'data' => [],
-                    'errors' => $errors
-                ]
+                'errors' => $errors
             ]);
         }else{
 
             if($request->hasFile('image')){
                 $imageName = time().'.'.request()->image->getClientOriginalExtension();
                 request()->image->move(public_path('uploads/users'), $imageName);
-                $data['profile_photo'] = 'uploads/users/'.$imageName;   
-            } 
-             
+                $data['profile_photo'] = 'uploads/users/'.$imageName;
+            }
+
             $data['password'] = Hash::make($data['password']);
-            $data['role_id'] = 3; 
+            $data['role_id'] = 3;
             $res = User::create($data);
             if($res){
                 return response()->json([
@@ -112,7 +110,7 @@ class ClientsController extends Controller
         $user = User::select(['*'])
                 ->where(['id' => $id])
                 ->where(['role_id' => '3'])
-                ->where('status','!=','2') 
+                ->where('status','!=','2')
                 ->first();
         if(!$user){
             return response()->json([
@@ -158,32 +156,31 @@ class ClientsController extends Controller
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'min:8',
             'image' => 'mimes:jpeg,jpg,png'
         ]);
         if($validator->fails()){
             $errors = $validator->errors();
+            $errors = errorArrayCreate($errors);
             return response()->json([
                 'status'=>false,
                 'message'=>'Please correct form values',
-                'result'=>[
-                    'data' => [],
-                    'errors' => $errors
-                ]
+                'errors' => $errors
             ]);
         }else{
 
             if($request->hasFile('image')){
                 $imageName = time().'.'.request()->image->getClientOriginalExtension();
                 request()->image->move(public_path('uploads/users'), $imageName);
-                $data['profile_photo'] = 'uploads/users/'.$imageName;   
-            } 
+                $data['profile_photo'] = 'uploads/users/'.$imageName;
+            }
 
             //If Password set
             if($data['password']!=''){
                 $data['password'] = Hash::make($data['password']);
-            } 
-             
+            }else{
+                unset($data['password']);
+            }
+
             $res = $model->update($data);
             if($res){
                 return response()->json([
@@ -204,7 +201,7 @@ class ClientsController extends Controller
     {
         $model = User::where('id',$id)
         ->where(['role_id' => '3'])
-        ->where('status','!=','2')->get()->first(); 
+        ->where('status','!=','2')->get()->first();
         if(!$model){
             return response()->json([
                 'status' => false,

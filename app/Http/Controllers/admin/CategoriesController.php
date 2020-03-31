@@ -17,13 +17,13 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-        $pageNum = ($request->get('page'))?$request->get('page'):1; 
+        $pageNum = ($request->get('page'))?$request->get('page'):1;
         $total = $this->getCount();
         $limit = 8;
         $total_pages = ceil( $total/$limit );
         $offset = ( ($pageNum - 1) * $limit);
         // echo $offset;die;
-        $categories = Categories::select(['id','name','title','category_image_url','slug','status','created_at','updated_at'])
+        $categories = Categories::select(['id','name','title','description','category_image_url','slug','status','created_at','updated_at'])
             ->where(['status'=>'1'])
             ->orWhere(['status'=>'0'])
             ->orderBy('id','DESC')
@@ -67,13 +67,11 @@ class CategoriesController extends Controller
         ]);
         if($validator->fails()){
             $errors = $validator->errors();
+            $errors = errorArrayCreate($errors);
             return response()->json([
                 'status'=>false,
                 'message'=>'Please correct form values',
-                'result'=>[
-                    'data' => [],
-                    'errors' => $errors
-                ]
+                'errors' => $errors
             ]);
         }else{
             $imageName = time().'.'.request()->image->getClientOriginalExtension();
@@ -82,6 +80,11 @@ class CategoriesController extends Controller
 
             $slug = strtolower(preg_replace('/\s+/', '-', $data['name']));
             $data['slug'] = $slug;
+
+            if( isset($data['featured']) && $data['featured'] == 'on'){
+                $data['featured'] = 1;
+            }else{ $data['featured'] = 0; }
+
 
             $res = Categories::create($data);
             if($res){
@@ -101,7 +104,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        $category = Categories::select(['id','name','category_image_url','title','slug','status','created_at','updated_at'
+        $category = Categories::select(['id','name','description','featured','category_image_url','title','slug','status','created_at','updated_at'
         ])->where(['id' => $id, 'status' => '1'])->orWhere(['status' => '0'])->first();
         if(!$category){
             return response()->json([
@@ -148,15 +151,19 @@ class CategoriesController extends Controller
          ]);
          if($validator->fails()){
              $errors = $validator->errors();
+             $errors = errorArrayCreate($errors);
              return response()->json([
                  'status'=>false,
                  'message'=>'Please correct form values',
-                 'result'=>[
-                     'errors' => $errors
-                 ]
+                 'errors' => $errors
              ]);
          }else{
-             if($request->hasFile('category_image')){
+
+             if( isset($data['featured']) && $data['featured'] == 'on'){
+                $data['featured'] = 1;
+             }else{ $data['featured'] = 0; }
+
+             if($request->hasFile('image')){
                  $imageName = time().'.'.request()->image->getClientOriginalExtension();
                  request()->image->move(public_path('uploads/categories'), $imageName);
                  $data['category_image_url'] = 'uploads/categories/'.$imageName;

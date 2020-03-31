@@ -26,6 +26,18 @@
 
             }
         },
+        created() {
+            this.$store.dispatch('getProfile',{});
+        },
+        watch: {
+            $route(to, from) {
+                this.$store.state.data =  {
+                    list : [],
+                    list_total : 0,
+                    editData : []
+                }
+            }
+        },
         computed: mapState({
             user: state => state.userData,
         }),

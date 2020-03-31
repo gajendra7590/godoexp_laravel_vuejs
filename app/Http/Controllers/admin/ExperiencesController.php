@@ -8,6 +8,7 @@ use Validator;
 
 //All Models
 use App\models\Experiences;
+use App\Models\Categories;
 
 class ExperiencesController extends Controller
 {
@@ -42,6 +43,14 @@ class ExperiencesController extends Controller
         return ['experiences'=>$experiences,'total'=> $total,'total_pages' => $total_pages];
     }
 
+    public function categories(Request $request){
+        return Categories::select(['id','name'])
+            ->where('status','1')
+            ->orWhere('status','0')
+            ->get()
+            ->all();
+    }
+
 
     protected function getCount(){
         return Experiences::select(['id'])
@@ -70,9 +79,9 @@ class ExperiencesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+       // echo '<pre>';print_r( $data );die;
         $validator = Validator::make($request->all(),[
             'category_id' => 'required|numeric',
-            'user_id' => 'required|numeric',
             'title' => 'required',
             'sub_title' => 'required',
             'image' => 'required|mimes:jpeg,jpg,png',
@@ -84,23 +93,25 @@ class ExperiencesController extends Controller
         ]);
         if($validator->fails()){
             $errors = $validator->errors();
+            $errors = errorArrayCreate($errors);
             return response()->json([
                 'status'=>false,
                 'message'=>'Please correct form values',
-                'result'=>[
-                    'data' => [],
-                    'errors' => $errors
-                ]
+                'errors' => $errors
             ]);
         }else{
 
-//            echo '<pre>';print_r( $data );die;
             $imageName = time().'.'.request()->image->getClientOriginalExtension();
             request()->image->move(public_path('uploads/experiences'), $imageName);
             $data['experiences_image_url'] = 'uploads/experiences/'.$imageName;
+            $data['user_id'] = 8;
 
             $slug = strtolower(preg_replace('/\s+/', '-', $data['title']));
             $data['slug'] = $slug;
+
+            if( isset($data['featured']) && $data['featured'] == 'on'){
+                $data['featured'] = 1;
+            }else{ $data['featured'] = 0; }
 
             $res = Experiences::create($data);
             if($res){
@@ -154,7 +165,6 @@ class ExperiencesController extends Controller
         $data = $request->all();
         $validator = Validator::make($request->all(),[
             'category_id' => 'required|numeric',
-            'user_id' => 'required|numeric',
             'title' => 'required',
             'sub_title' => 'required',
             'image' => 'mimes:jpeg,jpg,png',
@@ -166,12 +176,11 @@ class ExperiencesController extends Controller
         ]);
         if($validator->fails()){
             $errors = $validator->errors();
+            $errors = errorArrayCreate($errors);
             return response()->json([
                 'status'=>false,
                 'message'=>'Please correct form values',
-                'result'=>[
-                    'errors' => $errors
-                ]
+                'errors' => $errors
             ]);
         }else{
             if($request->hasFile('image')){
@@ -181,6 +190,9 @@ class ExperiencesController extends Controller
             }
 
 //            var_dump($data);die;
+            if( isset($data['featured']) && $data['featured'] == 'on'){
+                $data['featured'] = 1;
+            }else{ $data['featured'] = 0; }
 
             $slug = strtolower(preg_replace('/\s+/', '-', $data['title']));
             $data['slug'] = $slug;

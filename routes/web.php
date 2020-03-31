@@ -12,6 +12,10 @@
 */
 
 //Admin Router For View JS
+Route::get('/admin/login', 'HomeController@auth');
+Route::get('/admin/forgot-password', 'HomeController@auth');
+
+
 Route::get('/admin/{any}', 'HomeController@adminHome')->where('any', '.*');
 Route::redirect('/login', '/admin/dashboard');
 

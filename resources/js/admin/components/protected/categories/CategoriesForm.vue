@@ -1,11 +1,19 @@
 <template>
 <div id="categoryForm">
 <div class="content-wrapper">
+    <loading :active.sync="isLoading"
+        :can-cancel = "false"
+        :is-full-page = "true"
+        :opacity = "0.9"
+        :width = '30'
+        :height = '30'
+        :zIndex =  '999999'
+    />
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
          Manage Category
-        <small>update</small>
+        <small>{{ action }}</small>
       </h1>
       <ol class="breadcrumb">
         <li><router-link :to="{ name : 'dashboard'}"><i class="fa fa-dashboard"></i> Home</router-link></li>
@@ -23,98 +31,87 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
-              <div class="box-body">
-                 <div class="col col-md-12">
-                     <div class="row">
-                        <div class="profileImageSection">
-                            <div class="form-group col-md-4">
-                                <div class="logoSection">
-                                    <img class="profile-user-img img-responsive img-circle" src="dist/img/user2-160x160.jpg"
-                                alt="User profile picture" id="inputImagePreview">
-                                </div>
-                                <div>
-                                    <input type="file" name="company_logo" id="inputFileChooser" class="form-control">
+            <ValidationObserver v-slot="{ handleSubmit }">
+                <form role="form" method="post" id="vuejsForm" enctype="multipart/form-data" @submit.prevent="handleSubmit(onSubmit)">
+                <div class="box-body">
+                    <div class="col col-md-12">
+                        <div class="row">
+                            <div class="profileImageSection">
+                                <div class="form-group col-md-4">
+                                    <div class="logoSection">
+                                        <img class="profile-user-img img-responsive img-circle"
+                                        onError="this.onerror=null;this.src='/images/default.png';"
+                                        :src="formData.image" alt="Category Image" id="inputImagePreview">
+                                    </div>
+                                    <div>
+                                        <input type="file" name="image" id="inputFileChooser" class="form-control">
+                                        <span class="text-danger">{{ formErrors.image }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Company Owner</label>
-                            <input type="text" name="company_owner" class="form-control" placeholder="Company owner...">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Category Name</label>
+                                <validation-provider rules="required" v-slot="{ errors }">
+                                   <input type="text" v-model="formData.name" name="name" class="form-control" placeholder="Category name..">
+                                   <span class="text-danger">{{ errors[0] }}</span>
+                                   <span class="text-danger">{{ formErrors.name }}</span>
+                                </validation-provider>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Category Title</label>
+                                <validation-provider rules="required" v-slot="{ errors }">
+                                   <input type="text" v-model="formData.title" name="title" class="form-control" placeholder="Category title..">
+                                   <span class="text-danger">{{ errors[0] }}</span>
+                                   <span class="text-danger">{{ formErrors.title }}</span>
+                                </validation-provider>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>Company Name</label>
-                            <input type="text" name="company_name" class="form-control" placeholder="Company name...">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Description</label>
+                                <validation-provider rules="required" v-slot="{ errors }">
+                                   <textarea type="text" v-model="formData.description" name="description" rows="5" class="form-control" placeholder="Description..."></textarea>
+                                   <span class="text-danger">{{ errors[0] }}</span>
+                                   <span class="text-danger">{{ formErrors.description }}</span>
+                                </validation-provider>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Company Email</label>
-                            <input type="text" name="company_email" class="form-control" placeholder="Company email...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Company Phone</label>
-                            <input type="text" name="company_phone" class="form-control" placeholder="Company phone...">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label>Company Description</label>
-                            <textarea type="text" name="company_desc" rows="5" class="form-control" placeholder="Company description..."></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>City</label>
-                            <input type="text" name="company_city" class="form-control" placeholder="Company city...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>State</label>
-                            <input type="text" name="company_state" class="form-control" placeholder="Company state...">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Country</label>
-                            <input type="text" name="company_country" class="form-control" placeholder="Company country...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Zip Code</label>
-                            <input type="text" name="company_zip" class="form-control" placeholder="Company zip...">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Facebook</label>
-                            <input type="text" name="company_facebook" class="form-control" placeholder="Facebook link...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Instagram</label>
-                            <input type="text" name="company_instagram" class="form-control" placeholder="Instagram link...">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Status</label>
+                                 <validation-provider rules="required" v-slot="{ errors }">
+                                    <select class="form-control" v-model="formData.status" name="status">
+                                        <option value="1">Active</option>
+                                        <option value="0">In Active</option>
+                                    </select>
+                                    <span class="text-danger">{{ errors[0] }}</span>
+                                    <span class="text-danger">{{ formErrors.status }}</span>
+                                </validation-provider>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label></label>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="featured" v-model="formData.featured" true-value="1" false-value="0"> Is featured
+                                    </label>
+                                </div>
+                            </div>
+                            <input type="hidden" value="" v-model="formData.id" >
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Twitter</label>
-                            <input type="text" name="company_twiiter" class="form-control" placeholder="Twitter link...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Pinterest</label>
-                            <input type="text" name="company_pinterest" class="form-control" placeholder="Pinterest link...">
-                        </div>
-                    </div>
-                 </div>
-              </div>
-              <!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
 
-              <div class="box-footer">
+                <div class="box-footer">
                     <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-primary">Save Detail</button>
+                        <button type="submit" class="btn btn-primary">{{ action | capitalize  }}</button>
+                        <button type="button" @click.prevent="goBack" class="btn btn-danger">Back</button>
                     </div>
-              </div>
-            </form>
+                </div>
+                </form>
+            </ValidationObserver>
           </div>
           <!-- /.box -->
         </div>
@@ -127,12 +124,107 @@
 </div>
 </template>
 <script>
+    import { ValidationProvider, ValidationObserver,Validator ,extend } from 'vee-validate';
+    import { required,email } from 'vee-validate/dist/rules';
+    extend('required', {
+        ...required,
+        message: 'This field is required'
+    });
+    extend('email', {
+        ...email,
+        message: 'This field is required valid email address.'
+    });
+
+    import { mapState } from 'vuex';
     export default {
         name : "categoryForm",
         components: {
+           ValidationProvider,
+           ValidationObserver
         },
         data: function () {
             return {
+                isLoading : true,
+                action : 'save',
+                id : 0,
+                formData : [],
+                formErrors : [],
+            }
+        },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            }
+        },
+        methods : {
+            goBack: function(){
+                this.$router.push('/admin/categories');
+            },
+           onSubmit : function(){
+               let formData  = new FormData($('#vuejsForm')[0]);
+               let $this = this;
+               if($this.action == 'save'){
+                   $this.isLoading = true;
+                   $this.$store.dispatch('saveCategory',formData)
+                   .then(function(response){
+                       $this.isLoading = false;
+                       if(response.status == true){
+                            $this.$toastr.s("New category created successfully","Success");
+                            $this.$router.push('/admin/categories');
+
+                       }else if(response.status == false){
+                           $this.formErrors = response.errors;
+                           $this.$toastr.e(response.message,"Error");
+                       }
+                    });
+
+               }else{
+                   $this.isLoading = true;
+                   $this.$store.dispatch('updateCategory',{data:formData,id: $this.id})
+                   .then(function(response){
+                       $this.isLoading = false;
+                       if(response.status == true){
+                            $this.$toastr.s("Category updated successfully","Success");
+                            $this.$router.push('/admin/categories');
+                       }else if(response.status == false){
+                           $this.$toastr.e(response.message,"Error");
+                            $this.formErrors = response.errors;
+                       }
+                    });
+               }
+
+           },
+           formParam : function(){
+              return {
+                  id : 0,
+                  name : '',
+                  title : '',
+                  featured : '',
+                  description : '',
+                  status : 1,
+                  image : '',
+              }
+           }
+        },
+        created(){
+            if(this.$route.params.id != undefined){
+                this.id = this.$route.params.id;
+                this.action = 'update';
+                let $this = this;
+                this.$store.dispatch('editCategory',this.$route.params.id)
+                .then(function(result){
+                     $this.formData = result;
+                     $this.isLoading = false;
+                }).catch(error => {
+                    this.$toastr.e(error.message, 'Getting Error');
+                    $this.isLoading = false;
+                });
+            }else{
+                this.action = 'save';
+                this.formData = this.formParam();
+                this.isLoading = false;
             }
         }
     }

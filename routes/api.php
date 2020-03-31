@@ -20,21 +20,37 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'admin'], function () {
 
-    //Categories
-    Route::resource('admin/categories', 'CategoriesController');
-    Route::post('admin/categories/{id}', 'CategoriesController@update');
+     //Auth
+     Route::post('admin/auth/login', 'AuthController@login');
+     Route::post('admin/auth/register', 'AuthController@register');
 
-    //Experiences
-    Route::resource('admin/experiences', 'ExperiencesController');
-    Route::post('admin/experiences/{id}', 'ExperiencesController@update');
+     //Only Auth User Allowed Route
+       Route::group(['middleware' => 'auth:api'], function() {
 
-    //Clients
-    Route::resource('admin/clients', 'ClientsController');
-    Route::post('admin/clients/{id}', 'ClientsController@update');
+            Route::post('admin/auth/logout', 'AuthController@logout');
+            Route::get('admin/auth/profile', 'AuthController@profile');
 
-     //Vendors
-     Route::resource('admin/vendors', 'VendorsController');
-     Route::post('admin/vendors/{id}', 'VendorsController@update');
+            //Categories
+            Route::resource('admin/categories', 'CategoriesController');
+            Route::post('admin/categories/{id}', 'CategoriesController@update');
 
+            //Experiences
+            Route::get('admin/experiences/categories', 'ExperiencesController@categories');
+            Route::resource('admin/experiences', 'ExperiencesController');
+            Route::post('admin/experiences/{id}', 'ExperiencesController@update');
+
+            //Clients
+            Route::resource('admin/clients', 'ClientsController');
+            Route::post('admin/clients/{id}', 'ClientsController@update');
+
+            //Vendors
+            Route::resource('admin/vendors', 'VendorsController');
+            Route::post('admin/vendors/{id}', 'VendorsController@update');
+
+            //Company
+            Route::get('admin/company/editCompany', 'CompanyController@editCompany');
+            Route::post('admin/company/saveCompany', 'CompanyController@saveCompany');
+
+        });
 });
 

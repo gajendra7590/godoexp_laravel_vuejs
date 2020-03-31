@@ -1,16 +1,16 @@
 <template>
       <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+     <router-link :to="{ name : 'dashboard' }" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>DE</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>GoDo</b> Experience</span>
-    </a>
+    </router-link>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="javascript:void(0);" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
 
@@ -19,17 +19,21 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img class="user-image"
+                    onError="this.onerror=null;this.src='/dist/img/user2-160x160.jpg';"
+                    :src="userProfile.image" alt="Profile Image">
               <span class="hidden-xs">
-                 {{ ( typeof(userProfile.username)!='undefined')?userProfile.username:'' }}
+                 {{ ( typeof(userProfile.userName)!='undefined')?userProfile.userName:'' }}
                </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img class="img-circle"
+                    onError="this.onerror=null;this.src='/dist/img/user2-160x160.jpg';"
+                    :src="userProfile.image" alt="Profile Image">
                 <p>
-                  {{ ( typeof(userProfile.username)!='undefined')?userProfile.username:'' }}
+                  {{ ( typeof(userProfile.userName)!='undefined')?userProfile.userName:'' }}
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -47,6 +51,7 @@
       </div>
     </nav>
   </header>
+
 </template>
 <script>
 import {  mapState, Store } from "vuex";

@@ -47,7 +47,7 @@
                         <td :title="experience.title">{{ (experience.title).substring(0,40)+'...' }}</td>
                         <td>{{ experience.category.name }}</td>
                         <td>
-                          <span v-html=" manageFeatured(experience.featured)"></span> 
+                          <span v-html=" manageFeatured(experience.featured)"></span>
                         </td>
                         <td>{{ experience.user.userName }}</td>
                         <td>
@@ -58,9 +58,9 @@
                             <router-link :to="{ path: '/admin/experiences/edit/'+experience.id }" class="btn btn-sm btn-warning">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </router-link>
-                            <a href="#" class="btn btn-sm btn-danger">
+                             <button href="#" @click.prevent="deleteAction( experience.id )" class="btn btn-sm btn-danger">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -114,6 +114,26 @@
             manageFeatured:function(val){
                 if(val == '1'){ return "<span class='label label-success'>Yes</span>"; }
                 else{ return "<span class='label label-danger label-pill'>No</span>"; }
+            },
+            deleteAction: function(id){
+                this.$dialog
+                .confirm("If you delete this record, it'll be gone forever.", {
+                    loader: true
+                })
+                .then(dialog => {
+                   let $this = this;
+                   this.$store.dispatch('deleteExperience',{id: id})
+                   .then(function(response){
+                        dialog.close();
+                       if(response.status == true){
+                           $this.$toastr.s("Category deleted successfully","Success");
+                           $this.getExperiences(1);
+                       }else if(response.status == false){
+                           $this.$toastr.e("Error in delete category","Error");
+                       }
+                    });
+
+                });
             }
         },
         created(){

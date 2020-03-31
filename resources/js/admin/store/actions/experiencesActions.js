@@ -15,15 +15,68 @@ export default {
                 console.log(error.response);
             });
     },
-    editExperience({ commit, state }, id) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-        axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-        axios.get(state.baseURL + 'experiences/' + id)
+    experienceCategories({ commit, state }, payload) {
+        return new Promise(function(resolve, reject) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.get(state.baseURL + 'experiences/categories')
             .then(function(response) {
-                commit('editExperience', response.data);
+                return resolve(response.data);
             })
             .catch(function(error) {
-                console.log(error.response);
+                return reject(error.response);
             });
+        });
+    },
+    editExperience({ commit, state }, id) {
+        return new Promise(function(resolve, reject) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.get(state.baseURL + 'experiences/' + id)
+            .then(function(response) {
+                return resolve(response.data)
+            })
+            .catch(function(error) {
+                return reject(error.response);
+            });
+        });
+    },
+    saveExperience({ commit, state }, payload) {
+        return new Promise(function(resolve, reject) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post(state.baseURL + 'experiences', payload)
+                .then(function(response) {
+                    return resolve(response.data)
+                })
+                .catch(function(error) {
+                    return reject(error.response);
+                });
+        });
+    },
+    updateExperience({ commit, state }, payload) {
+        return new Promise(function(resolve, reject) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post(state.baseURL + 'experiences/'+payload.id,payload.data)
+                .then(function(response) {
+                    return resolve(response.data)
+                })
+                .catch(function(error) {
+                    return reject(error.response);
+                });
+        });
+    },
+    deleteExperience({ commit, state }, payload) {
+        return new Promise(function(resolve, reject) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            axios.delete(state.baseURL + 'experiences/'+payload.id)
+                .then(function(response) {
+                    return resolve(response.data)
+                })
+                .catch(function(error) {
+                    return reject(error.response);
+                });
+        });
     }
 }
