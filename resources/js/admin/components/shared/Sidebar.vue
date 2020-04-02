@@ -50,12 +50,17 @@
         </li>
         <li :class="(activeLink == 'vendors_list' || activeLink == 'vendors_add' || activeLink == 'vendors_edit' )?'active':''">
            <router-link :to="{ name : 'vendors_list' }">
-            <i class="fa fa-users"></i> <span>Vendors</span>
+            <i class="fa fa-user-secret"></i> <span>Vendors</span>
           </router-link>
         </li>
          <li :class="(activeLink == 'company_detail')?'active':''">
            <router-link :to="{ name : 'company_detail' }">
-            <i class="fa fa-industry"></i> <span>Company Detail</span>
+            <i class="fa fa-building-o"></i> <span>Company Detail</span>
+          </router-link>
+        </li>
+        <li :class="(activeLink == 'testimonials_list' || activeLink == 'testimonial_add' || activeLink == 'testimonial_edit')?'active':''">
+           <router-link :to="{ name : 'testimonials_list' }">
+            <i class="fa fa-quote-left"></i> <span>Testimonials</span>
           </router-link>
         </li>
          <li :class="(activeLink == 'adminProfile' )?'active':''">

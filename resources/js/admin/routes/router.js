@@ -19,6 +19,9 @@ import VendorsForm from '../components/protected/vendors/VendorsForm.vue';
 
 import companyDetailForm from '../components/protected/company/companyDetailForm.vue';
 
+import Testimonials from '../components/protected/testimonial/TestimonialsList.vue';
+import TestimonialsForm from '../components/protected/testimonial/TestimonialsForm.vue';
+
 import ChangePassword from '../components/protected/profile/ChangePassword.vue';
 import Profile from '../components/protected/profile/Profile.vue';
 
@@ -141,6 +144,24 @@ const router = new VueRouter({
             path: '/admin/vendors/edit/:id',
             component: VendorsForm,
             meta: { requiresAuth: true , title:'Edit Vendor'  }
+        },
+        {
+            name : 'testimonials_list',
+            path: '/admin/testimonials',
+            component: Testimonials,
+            meta: { requiresAuth: true , title:'Testimonial List'  }
+        },
+        {
+            name : 'testimonial_add',
+            path: '/admin/testimonial/add',
+            component: TestimonialsForm,
+            meta: { requiresAuth: true , title:'Add New Testimonial'  }
+        },
+        {
+            name : 'testimonial_edit',
+            path: '/admin/testimonial/edit/:id',
+            component: TestimonialsForm,
+            meta: { requiresAuth: true , title:'Edit Testimonial'  }
         },
         {
             name : 'company_detail',

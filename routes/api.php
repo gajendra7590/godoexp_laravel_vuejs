@@ -58,6 +58,10 @@ Route::group(['namespace' => 'admin'], function () {
             Route::get('admin/company/editCompany', 'CompanyController@editCompany');
             Route::post('admin/company/saveCompany', 'CompanyController@saveCompany');
 
+            //Testimonial
+            Route::resource('admin/testimonials', 'TestimonialController');
+            Route::post('admin/testimonials/{id}', 'TestimonialController@update');
+
         });
 });
 
