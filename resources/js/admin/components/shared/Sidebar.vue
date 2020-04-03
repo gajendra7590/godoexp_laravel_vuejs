@@ -74,9 +74,9 @@
           </router-link>
         </li>
         <li :class="(activeLink == 'adminLogout' )?'active':''">
-           <router-link :to="{ name : 'adminLogout' }">
+           <a href="javascript:void(0);" @click.prevent="logoutAction">
             <i class="fa fa-sign-out"></i> <span>Logout</span>
-          </router-link>
+          </a>
         </li>
       </ul>
     </section>
@@ -90,6 +90,17 @@ export default {
     data: function () {
         return {
            activeLink : ''
+        }
+    },
+    methods:{
+        logoutAction(){
+            let $this = this;
+            this.$dialog.confirm("Are you sure to logged Out ?", {
+                loader: true
+            })
+            .then(dialog => {
+               $this.$router.push({ name : 'adminLogout'});
+            });
         }
     },
     created(){

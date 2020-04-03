@@ -15,6 +15,9 @@ import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 import router from './admin/routes/router';
 import store from './admin/store/index';
 import App from './admin/components/App.vue' ;
+import UUID from 'vue-uuid';
+Vue.use(UUID);
+
 require('./bootstrap');
 
 const BASEURL =  (window.location.origin)+'/';

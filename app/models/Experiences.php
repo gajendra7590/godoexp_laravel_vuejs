@@ -35,5 +35,15 @@ class Experiences extends Model
         return $this->hasOne('App\User','id', 'user_id');
     }
 
+    //media
+    public function media() {
+        return $this->hasMany('App\models\ExperienceMedia','experiences_id', 'id');
+    }
+
+    //adons
+    public function adons() {
+        return $this->hasMany('App\models\ExperienceAdon','experiences_id', 'id');
+    }
+
 
 }

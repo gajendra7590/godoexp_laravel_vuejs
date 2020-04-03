@@ -42,7 +42,7 @@
                   <router-link :to="{ name : 'adminProfile' }" class="btn btn-default btn-flat">Profile</router-link>
                 </div>
                 <div class="pull-right">
-                  <router-link :to="{ name : 'adminLogout' }" class="btn btn-default btn-flat">Sign out</router-link>
+                  <a href="javascript:void(0);" @click.prevent="logoutAction" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -62,7 +62,18 @@ export default {
         return {
            //userData : []
         }
-    }
+    },
+    methods:{
+        logoutAction(){
+            let $this = this;
+            this.$dialog.confirm("Are you sure to logged Out ?", {
+                loader: true
+            })
+            .then(dialog => {
+               $this.$router.push({ name : 'adminLogout'});
+            });
+        }
+    },
 }
 </script>
 <style scoped>

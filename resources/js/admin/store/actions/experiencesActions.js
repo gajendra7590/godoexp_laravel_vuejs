@@ -78,5 +78,17 @@ export default {
                     return reject(error.response);
                 });
         });
+    },
+    deleteExperienceMedia({ commit, state }, payload) {
+        return new Promise(function(resolve, reject) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            axios.post(state.baseURL + 'experience/mediaDelete/'+payload.id,payload)
+                .then(function(response) {
+                    return resolve(response.data)
+                })
+                .catch(function(error) {
+                    return reject(error.response);
+                });
+        });
     }
 }

@@ -43,6 +43,8 @@ Route::group(['namespace' => 'admin'], function () {
 
             //Experiences
             Route::get('admin/experiences/categories', 'ExperiencesController@categories');
+            Route::post('admin/experience/media/{id}', 'ExperiencesController@mediaUpload');
+            Route::post('admin/experience/mediaDelete/{id}', 'ExperiencesController@mediaDelete');
             Route::resource('admin/experiences', 'ExperiencesController');
             Route::post('admin/experiences/{id}', 'ExperiencesController@update');
 

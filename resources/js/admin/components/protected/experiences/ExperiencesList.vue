@@ -126,10 +126,10 @@
                    .then(function(response){
                         dialog.close();
                        if(response.status == true){
-                           $this.$toastr.s("Category deleted successfully","Success");
+                           $this.$toastr.s("Experience deleted successfully","Success");
                            $this.getExperiences(1);
                        }else if(response.status == false){
-                           $this.$toastr.e("Error in delete category","Error");
+                           $this.$toastr.e("Error in delete Experience","Error");
                        }
                     });
 

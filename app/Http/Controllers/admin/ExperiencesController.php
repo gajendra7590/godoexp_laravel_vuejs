@@ -9,6 +9,8 @@ use Validator;
 //All Models
 use App\models\Experiences;
 use App\Models\Categories;
+use App\Models\ExperienceMedia;
+use App\Models\ExperienceAdon;
 
 class ExperiencesController extends Controller
 {
@@ -131,7 +133,7 @@ class ExperiencesController extends Controller
      */
     public function show($id)
     {
-        return Experiences::find($id);
+        return Experiences::with(['media','adons'])->where(['id'=>$id])->get()->first();
     }
 
     /**
@@ -189,13 +191,16 @@ class ExperiencesController extends Controller
                 $data['experiences_image_url'] = 'uploads/experiences/'.$imageName;
             }
 
-//            var_dump($data);die;
             if( isset($data['featured']) && $data['featured'] == 'on'){
                 $data['featured'] = 1;
             }else{ $data['featured'] = 0; }
 
             $slug = strtolower(preg_replace('/\s+/', '-', $data['title']));
             $data['slug'] = $slug;
+
+           // echo '<pre>';print_r($data);die;
+
+            $this->manageAdons($data['adons'],$id);  //manage Adons
 
             $res = $model->update($data);
             if($res){
@@ -205,6 +210,53 @@ class ExperiencesController extends Controller
                 ]);
             }
         }
+    }
+
+    // Update Adons
+    private function manageAdons($data,$exp_id){
+        $model = Experiences::find($exp_id);
+        if(!$model){
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid Experience ID'
+            ]);
+        }
+
+        if(!empty($data)){
+            foreach($data as $obj){
+                //Delete Case
+                if( isset( $obj['ad_isDeleted']) && ($obj['ad_isDeleted'] == true) ){
+                    $model = ExperienceAdon::find($obj['ad_id']);
+                    if($model){
+                        $model->delete();
+                    }
+                }
+
+                //New Added Insert Case
+                if( isset( $obj['ad_id']) && ($obj['ad_id'] == 'null') ){
+                    $model = new ExperienceAdon();
+                    $model->experiences_id = $exp_id;
+                    $model->name  = $obj['ad_name'];
+                    $model->description  = $obj['ad_description'];
+                    $model->price  = $obj['ad_price'];
+                    $model->save();
+                }
+
+                //Existing Update Case
+                if( isset( $obj['ad_id']) && ($obj['ad_id'] > 0) ){
+                    $model = ExperienceAdon::find($obj['ad_id']);
+                    if($model){
+                        $update = array();
+                        $update['name']  = $obj['ad_name'];
+                        $update['description']  = $obj['ad_description'];
+                        $update['price']  = $obj['ad_price'];
+                        $model->update($update);
+                    }
+                }
+            }
+
+        }
+
     }
 
     /**
@@ -227,6 +279,66 @@ class ExperiencesController extends Controller
             return response()->json([
                 'status' => true,
                 'message'=>'Experience archieved successfully'
+            ]);
+        }
+    }
+
+    public function mediaUpload(Request $request , $id){
+        $model = Experiences::find($id);
+        if(!$model){
+            return false;
+        }
+
+        $filenm = request()->file->getClientOriginalName();
+        if($request->hasFile('file')){
+             $imageName = request()->file->getClientOriginalName();
+             $mime = request()->file->getMimeType();
+             $size = request()->file->getSize();
+             request()->file->move(public_path('uploads/media'), $imageName);
+
+             $media = new ExperienceMedia();
+             $media->experiences_id = $id;
+             $media->image_name = $imageName;
+             $media->image_mime = $mime;
+             $media->image_size = $size;
+             $media->image_url = 'uploads/media/'.$imageName;
+             $save = $media->save();
+             if($save){
+                return response()->json([
+                    'name' => $imageName,
+                    'original_name' => $imageName,
+                ]);
+             }
+        }
+    }
+
+    public function mediaDelete(Request $request , $id){
+        $model = Experiences::find($id);
+        if(!$model){
+            return false;
+        }
+
+        $data = $request->all();
+        $filename = $data['filename'];
+        $media = ExperienceMedia::where([
+        'experiences_id' => $id,
+        'image_name' => $filename])
+        ->get()
+        ->first();
+        if($media){
+            $filepath =  public_path().'/'.$media->image_url;
+            if (file_exists( $filepath)) {
+                unlink($filepath);
+
+                $media->delete();
+                return response()->json([
+                    'status' => true
+                ]);
+            }
+
+        }else{
+            return response()->json([
+                'status' => false
             ]);
         }
     }
