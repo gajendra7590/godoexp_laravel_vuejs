@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label>Experience Title</label>
                             <validation-provider rules="required" v-slot="{ errors }">
                                 <input type="text" v-model="formData.title" name="title"
@@ -62,7 +62,7 @@
                                 <span class="text-danger">{{ formErrors.title }}</span>
                             </validation-provider>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label>Experience Category</label>
                              <validation-provider rules="required" v-slot="{ errors }">
                                 <select class="form-control" v-model="formData.category_id" name="category_id">
@@ -73,9 +73,7 @@
                                 <span class="text-danger">{{ formErrors.category_id }}</span>
                             </validation-provider>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label>Experience Price</label>
                              <validation-provider rules="required" v-slot="{ errors }">
                                 <input type="text" v-model="formData.price" name="price" class="form-control"
@@ -84,7 +82,7 @@
                                 <span class="text-danger">{{ formErrors.price }}</span>
                             </validation-provider>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label>Experience Status</label>
                             <validation-provider rules="required" v-slot="{ errors }">
                                 <select class="form-control" v-model="formData.status" name="status">
@@ -99,9 +97,9 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label>Experience Sub Title</label>
+                            <label>Sub Title [ Short Description ]</label>
                             <validation-provider rules="required" v-slot="{ errors }">
-                                <textarea v-model="formData.sub_title" rows="3" name="sub_title"
+                                <textarea v-model="formData.sub_title" rows="2" name="sub_title"
                                 class="form-control" placeholder="Enter sub title.."></textarea>
                                 <span class="text-danger">{{ errors[0] }}</span>
                                 <span class="text-danger">{{ formErrors.sub_title }}</span>
@@ -204,9 +202,12 @@
                      </div>
                      <div class="row">
                         <div class="form-group col-md-12">
-                           <label>Manage Experience Adons</label>
-                           <a href="javascript:void(0);" @click.prevent="addNewAdons" class="btn btn-sm btn-success pull-right">
-                               <i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                            <div class="adons_lbl">
+                                <label>Manage Experience Adons</label>
+                                <a href="javascript:void(0);" @click.prevent="addNewAdons" class="btn btn-sm btn-success pull-right">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+                                </a>
+                            </div>
                         </div>
                         <div id="adonsContainer">
                             <div v-for="(item,key) in formData.adons"
@@ -503,14 +504,18 @@
 </script>
 <style>
     #editor1 {
-       height: 350px;
+       height: 250px;
     }
     .ql-editor {
-        max-height: 350px;
+        max-height: 250px;
     }
 
     .remove_icon {
         margin-top: 27px;
     }
 
+    .adons_lbl {
+        border-bottom: 1px solid #3e5b94;
+        padding-bottom: 13px;
+    }
 </style>

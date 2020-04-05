@@ -43,6 +43,8 @@ Route::group(['namespace' => 'admin'], function () {
 
             //Experiences
             Route::get('admin/experiences/categories', 'ExperiencesController@categories');
+            Route::get('admin/experiences/schedule_dates/{id}', 'ExperiencesController@schedule_dates');
+            Route::post('admin/experiences/schedule_dates/{id}', 'ExperiencesController@save_schedule_dates');
             Route::post('admin/experience/media/{id}', 'ExperiencesController@mediaUpload');
             Route::post('admin/experience/mediaDelete/{id}', 'ExperiencesController@mediaDelete');
             Route::resource('admin/experiences', 'ExperiencesController');

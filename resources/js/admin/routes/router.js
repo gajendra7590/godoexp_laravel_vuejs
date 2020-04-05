@@ -10,6 +10,7 @@ import CategoriesForm from '../components/protected/categories/CategoriesForm.vu
 
 import Experiences from '../components/protected/experiences/ExperiencesList.vue';
 import ExperiencesForm from '../components/protected/experiences/ExperienceForm.vue';
+import ExperienceEventCalendar from '../components/protected/experiences/ExperienceEventCalendar.vue';
 
 import Clients from '../components/protected/clients/ClientsList.vue';
 import ClientsForm from '../components/protected/clients/ClientsForm.vue';
@@ -91,6 +92,13 @@ const router = new VueRouter({
             component : ExperiencesForm,
             meta: { requiresAuth: true ,title :'Edit Experience'}
         },
+        {
+            name : 'experiences_schedule',
+            path : '/admin/experiences/schedule/:id',
+            component : ExperienceEventCalendar,
+            meta: { requiresAuth: true ,title :'Manage Experience Schedules'}
+        },
+
         {
             name : 'categories_list',
             path: '/admin/categories',

@@ -55,11 +55,17 @@
                         </td>
                         <td>{{ experience.created_at | moment('YYYY-MM-DD') }}</td>
                         <td>
-                            <router-link :to="{ path: '/admin/experiences/edit/'+experience.id }" class="btn btn-sm btn-warning">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <router-link :to="{ path: '/admin/experiences/edit/'+experience.id }"
+                                  class="btn btn-sm btn-warning" title="Edit Event">
+                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </router-link>
-                             <button href="#" @click.prevent="deleteAction( experience.id )" class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <router-link :to="{ path: '/admin/experiences/schedule/'+experience.id }"
+                                   class="btn btn-sm btn-warning" title="Manage Event Schedules">
+                                   <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </router-link>
+                             <button href="#" @click.prevent="deleteAction( experience.id )"
+                                   class="btn btn-sm btn-danger" title="Delete Experiences">
+                                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                             </button>
                         </td>
                     </tr>

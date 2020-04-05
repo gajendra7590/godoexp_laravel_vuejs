@@ -11,6 +11,9 @@ use App\models\Experiences;
 use App\Models\Categories;
 use App\Models\ExperienceMedia;
 use App\Models\ExperienceAdon;
+use App\Models\ExperienceAvailability;
+use App\Models\ExperienceOrders;
+use Illuminate\Support\Facades\DB;
 
 class ExperiencesController extends Controller
 {
@@ -116,6 +119,10 @@ class ExperiencesController extends Controller
             }else{ $data['featured'] = 0; }
 
             $res = Experiences::create($data);
+            if( isset($data['adons'])){
+                $this->manageAdons($data['adons'],$res->id);  //manage Adons
+            }
+
             if($res){
                 return response()->json([
                     'status' => true,
@@ -199,8 +206,9 @@ class ExperiencesController extends Controller
             $data['slug'] = $slug;
 
            // echo '<pre>';print_r($data);die;
-
-            $this->manageAdons($data['adons'],$id);  //manage Adons
+            if( isset($data['adons'])){
+                $this->manageAdons($data['adons'],$id);  //manage Adons
+            }
 
             $res = $model->update($data);
             if($res){
@@ -283,6 +291,9 @@ class ExperiencesController extends Controller
         }
     }
 
+    /**
+     * Function for upload media image
+     */
     public function mediaUpload(Request $request , $id){
         $model = Experiences::find($id);
         if(!$model){
@@ -312,6 +323,9 @@ class ExperiencesController extends Controller
         }
     }
 
+    /**
+     * Function for delete media image
+     */
     public function mediaDelete(Request $request , $id){
         $model = Experiences::find($id);
         if(!$model){
@@ -342,4 +356,91 @@ class ExperiencesController extends Controller
             ]);
         }
     }
+
+    /**
+     * Function for get all schedule dates for specific yeas( month )
+     */
+    public function schedule_dates(Request $request, $id){
+        $model = Experiences::find($id);
+        if(!$model){
+            return false;
+        }
+        $data = $request->all();
+        $y = ( isset($data['y']) && ($data['y']!='undefined')) ? $data['y'] : date('Y');
+        $m = ( isset($data['m']) && ($data['m']!='undefined')) ? $data['m'] : date('m');
+        $data = DB::table('experience_availability')
+        ->select(DB::raw("group_concat(date) as dates"))
+        ->groupBy('month')->where(['experiences_id' => $id,'year'=>$y,'month' => $m])
+        ->get()->first();
+        $dates = [];
+        if($data){
+            $dates = explode(',',$data->dates);
+        }
+        return $dates;
+    }
+
+    /**
+     * Function for add/remove event date
+     */
+    public function save_schedule_dates(Request $request, $id){
+        $model = Experiences::find($id);
+        if(!$model){
+            return false;
+        }
+        $data = $request->all();
+        $validator = Validator::make($request->all(),[
+            'id' => 'required|numeric',
+            'y' => 'required|numeric',
+            'm' => 'required|numeric',
+            'd' => 'required|numeric',
+        ]);
+        if($validator->fails()){
+            $errors = $validator->errors();
+            $errors = errorArrayCreate($errors);
+            return response()->json([
+                'status'=>false,
+                'message'=>'Please send proper parameter',
+                'errors' => $errors
+            ]);
+        }else{
+            $isExist = ExperienceAvailability::where([
+                'experiences_id' => $data['id'],
+                'year' => $data['y'],
+                'month' => $data['m'],
+                'date' => $data['d']
+            ])->get()->first();
+            if($isExist){
+                $date = date('Y-m-d',strtotime($data['y'].'-'.$data['m'].'-'.$data['d']));
+                $count = ExperienceOrders::where([
+                    'experience_id' => $data['id'],
+                    'experience_start_date' => $date
+                ])->get()->count();
+                if($count > 0){
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'Event date can`t revoked due to already booked'
+                    ]);
+                }else{
+                    $isExist->delete();
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Event date revoked successfully'
+                    ]);
+                }
+            }else{
+                $model = new ExperienceAvailability();
+                $model->experiences_id = $data['id'];
+                $model->year = $data['y'];
+                $model->month = $data['m'];
+                $model->date = $data['d'];
+                if($model->save()){
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Added new event date'
+                    ]);
+                }
+            }
+        }
+    }
+
 }
