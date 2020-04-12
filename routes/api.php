@@ -17,54 +17,63 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//All Routes For FrontEnd
+Route::group(['namespace' => 'client','prefix' => 'client'], function () {
+    Route::get('experiences/home', 'ExperiencesController@index_home');
+    Route::get('categories', 'CategoriesController@categories');
+    Route::get('experiences', 'ExperiencesController@experiences');
+    Route::get('experiences/categories/{category}', 'ExperiencesController@getExperiencesByCateogy');
+    Route::get('experience/detail/{slug}', 'ExperienceDetailController@getDetail');
+});
 
-Route::group(['namespace' => 'admin'], function () {
+//All Routes For Admin
+Route::group(['namespace' => 'admin','prefix' => 'admin'], function () {
 
      //Auth
-     Route::post('admin/auth/login', 'AuthController@login');
-     Route::post('admin/auth/register', 'AuthController@register');
+     Route::post('auth/login', 'AuthController@login');
+     Route::post('auth/register', 'AuthController@register');
 
      //Only Auth User Allowed Route
        Route::group(['middleware' => 'auth:api'], function() {
 
             //User Auth & Profile
-            Route::post('admin/auth/logout', 'AuthController@logout');
-            Route::get('admin/auth/profile', 'AuthController@profile');
-            Route::get('admin/user/editProfile', 'ProfileController@editProfile');
-            Route::post('admin/user/saveProfile', 'ProfileController@saveProfile');
-            Route::post('admin/user/changePassword', 'ProfileController@changePassword');
+            Route::post('auth/logout', 'AuthController@logout');
+            Route::get('auth/profile', 'AuthController@profile');
+            Route::get('user/editProfile', 'ProfileController@editProfile');
+            Route::post('user/saveProfile', 'ProfileController@saveProfile');
+            Route::post('user/changePassword', 'ProfileController@changePassword');
 
             //Dashbaord
-            Route::get('admin/dashboard/widgets', 'DashboardController@getWidgets');
+            Route::get('dashboard/widgets', 'DashboardController@getWidgets');
 
             //Categories
-            Route::resource('admin/categories', 'CategoriesController');
-            Route::post('admin/categories/{id}', 'CategoriesController@update');
+            Route::resource('categories', 'CategoriesController');
+            Route::post('categories/{id}', 'CategoriesController@update');
 
             //Experiences
-            Route::get('admin/experiences/categories', 'ExperiencesController@categories');
-            Route::get('admin/experiences/schedule_dates/{id}', 'ExperiencesController@schedule_dates');
-            Route::post('admin/experiences/schedule_dates/{id}', 'ExperiencesController@save_schedule_dates');
-            Route::post('admin/experience/media/{id}', 'ExperiencesController@mediaUpload');
-            Route::post('admin/experience/mediaDelete/{id}', 'ExperiencesController@mediaDelete');
-            Route::resource('admin/experiences', 'ExperiencesController');
-            Route::post('admin/experiences/{id}', 'ExperiencesController@update');
+            Route::get('experiences/categories', 'ExperiencesController@categories');
+            Route::get('experiences/schedule_dates/{id}', 'ExperiencesController@schedule_dates');
+            Route::post('experiences/schedule_dates/{id}', 'ExperiencesController@save_schedule_dates');
+            Route::post('experience/media/{id}', 'ExperiencesController@mediaUpload');
+            Route::post('experience/mediaDelete/{id}', 'ExperiencesController@mediaDelete');
+            Route::resource('experiences', 'ExperiencesController');
+            Route::post('experiences/{id}', 'ExperiencesController@update');
 
             //Clients
-            Route::resource('admin/clients', 'ClientsController');
-            Route::post('admin/clients/{id}', 'ClientsController@update');
+            Route::resource('clients', 'ClientsController');
+            Route::post('clients/{id}', 'ClientsController@update');
 
             //Vendors
-            Route::resource('admin/vendors', 'VendorsController');
-            Route::post('admin/vendors/{id}', 'VendorsController@update');
+            Route::resource('vendors', 'VendorsController');
+            Route::post('vendors/{id}', 'VendorsController@update');
 
             //Company
-            Route::get('admin/company/editCompany', 'CompanyController@editCompany');
-            Route::post('admin/company/saveCompany', 'CompanyController@saveCompany');
+            Route::get('company/editCompany', 'CompanyController@editCompany');
+            Route::post('company/saveCompany', 'CompanyController@saveCompany');
 
             //Testimonial
-            Route::resource('admin/testimonials', 'TestimonialController');
-            Route::post('admin/testimonials/{id}', 'TestimonialController@update');
+            Route::resource('testimonials', 'TestimonialController');
+            Route::post('testimonials/{id}', 'TestimonialController@update');
 
         });
 });

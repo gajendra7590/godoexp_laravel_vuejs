@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/app_auth.js": "/js/app_auth.js"
+    "/js/app_auth.js": "/js/app_auth.js",
+    "/js/front_app.js": "/js/front_app.js"
 }

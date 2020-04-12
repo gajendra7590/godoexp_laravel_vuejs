@@ -14,4 +14,8 @@ class HomeController extends Controller
      public function auth(){
         return view('admin.auth_main');
      }
+
+     public function frontHome(){
+         return view('frontend.index'); 
+     }
 }
