@@ -38,8 +38,17 @@
                         <h3>Experience List</h3>
                     </div>
                     <div class="features__Exp--content">
-                        <div class="row cst__Row">
-                             
+
+                       <div class="row cst__Row" v-show="isShowingLoader">
+                            <div v-for="n in 8" class="col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"> 
+                                <content-placeholders :rounded="true">
+                                    <content-placeholders-img style="height:350px;" /> 
+                                    <content-placeholders-text :lines="3" /> 
+                                </content-placeholders> 
+                            </div> 
+                        </div>  
+                    
+                        <div class="row cst__Row"> 
                             <div v-for="(experience,key) in experiences" class="col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col">
                                 <div class="features__Exp--item">
                                     <router-link :to="{ name : 'experiences_detail',params: { exp_slug : experience.slug } }">
@@ -82,18 +91,21 @@ export default {
         return {
             experiences : [],
             load : false,
-            oneExp : []
+            oneExp : [],
+            isShowingLoader : true
         } 
     },
     methods: {
         getExperiencesList(){
           let $this = this;
+          $this.isShowingLoader = true;
           this.$store.dispatch('getAllExperiences',{})
             .then(function(response){
                 $this.experiences = response;   
                 if($this.load == false){
                     $this.load = true;
                     $this.oneExp = response[0];
+                    $this.isShowingLoader = false
                 }          
             }).
             catch(function(error){

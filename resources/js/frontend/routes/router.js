@@ -39,7 +39,7 @@ const router = new VueRouter({
         }, 
         {
             name : 'experiences_list_by_cat',
-            path: '/experiences/category/:category_name',
+            path: '/category/:category_name',
             component: Experiences,
             meta: { header_cls : '' }  
         },

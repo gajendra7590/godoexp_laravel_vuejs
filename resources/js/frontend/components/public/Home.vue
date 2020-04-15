@@ -11,7 +11,8 @@
                 <button>Search</button>
                 </div>
             </div>
-        </section> 
+        </section>  
+
         <main id="main__Content">
             <div class="hm__Block">
                 <!-- Activities Category Area Start -->
@@ -20,9 +21,17 @@
                         <div class="activities__Catgry--title">
                             <h2>One-of-a-kind activities hosted by locals</h2>
                         </div>
-                        <div class="row cst__Row"> 
+                        <div class="row cst__Row" v-show="isShowingCat">
+                            <div v-for="n in 3" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 cst__Col"> 
+                                <content-placeholders :rounded="true">
+                                    <content-placeholders-img style="height:300px;" /> 
+                                    <content-placeholders-text :lines="3" /> 
+                                </content-placeholders> 
+                            </div> 
+                        </div> 
+                        <div class="row cst__Row">  
                             <div v-for="(category,key) in homeData.top_categories" :key="key"
-                                class="col-xs-12 col-sm-4 col-md-4 col-lg-4 cst__Col">
+                                class="col-xs-12 col-sm-4 col-md-4 col-lg-4 cst__Col"> 
                                 <div class="activities__Catgry--content">
                                     <figure class="activities__Catgry--img">
                                         <router-link :to="{name : 'experiences_list_by_cat',params: { category_name: category.slug }}"> 
@@ -70,8 +79,17 @@
                         <div class="listing__Title">
                             <h3>Meet hosts around the world</h3>
                         </div>
-                        <div class="meet__Host--content cst__Row"> 
-                             
+
+                        <div class="meet__Host--content cst__Row" v-show="isShowingCat">
+                            <div v-for="n in 4" class="meet__Host--col cst__Col"> 
+                                <content-placeholders :rounded="true">
+                                    <content-placeholders-img style="height:350px;" /> 
+                                    <content-placeholders-text :lines="3" /> 
+                                </content-placeholders> 
+                            </div> 
+                        </div> 
+
+                        <div class="meet__Host--content cst__Row">  
                             <div v-for="(experience,key) in homeData.top_world_around_experiences" :key="key" 
                             class="meet__Host--col cst__Col">
                                 <div class="meet__Host--item">
@@ -113,8 +131,17 @@
                                     <h3>Our Features Experience</h3>
                                 </div>
                             </div>
-                            <div class="features__Exp--content">
 
+                            <div class="features__Exp--content" v-show="isShowingCat">
+                                <div v-for="n in 4" class="cst__Col col-xs-6 col-sm-6 col-md-4 col-lg-3"> 
+                                    <content-placeholders :rounded="true">
+                                        <content-placeholders-img style="height:300px;" /> 
+                                        <content-placeholders-text :lines="3" /> 
+                                    </content-placeholders> 
+                                </div> 
+                            </div> 
+
+                            <div class="features__Exp--content"> 
                                 <div v-for="(experience,key) in homeData.top_featured_experiences" class="cst__Col col-xs-6 col-sm-6 col-md-4 col-lg-3">
                                     <div class="features__Exp--item">
                                          <router-link :to="{ name : 'experiences_detail',params: { exp_slug : experience.slug } }">
@@ -133,8 +160,7 @@
                                             <span class="price__Item--prduct">
                                                 From  ${{ experience.price }}/ person . {{ experience.duration+' '+experience.duration_type }}
                                             </span>
-                                        </router-link>
-                                        
+                                        </router-link> 
                                     </div>
                                 </div> 
 
@@ -163,8 +189,18 @@
                         <div class="listing__Title">
                             <h3>Top-rated experiences</h3>
                         </div>
-                        <div class="rted__Exp--content cst__Row">  
 
+                        <div class="rted__Exp--content cst__Row" v-show="isShowingCat">
+                            <div v-for="n in 5" class="rted__Exp--col cst__Col"> 
+                                <content-placeholders :rounded="true">
+                                    <content-placeholders-img style="height:300px;" /> 
+                                    <content-placeholders-text :lines="3" /> 
+                                </content-placeholders> 
+                            </div> 
+                        </div> 
+
+
+                        <div class="rted__Exp--content cst__Row">   
                             <div v-for="(experience,key) in homeData.top_rated_experiences" class="rted__Exp--col cst__Col">
                                 <div class="rted__Exp--item">
                                     <router-link :to="{ name : 'experiences_detail',params: { exp_slug : experience.slug } }">
@@ -205,18 +241,26 @@ export default {
     name : 'homeComponent',
     data : function() {
         return {
+            isShowingCat : true,
             homeData : []
         } 
     },
-    created() {
-          let $this = this;
-          this.$store.dispatch('getExperiencesHome',{})
+    methods: {
+        getHomeData(){ 
+            let $this = this;
+            this.isShowingCat = true;
+            this.$store.dispatch('getExperiencesHome',{})
             .then(function(response){
-                $this.homeData = response;                  
+                $this.homeData = response; 
+                $this.isShowingCat = false;                 
             }).
             catch(function(error){
                 console.log(error) 
             });
+        }
+    },
+    created() {
+        this.getHomeData();
     },
 }
 </script>

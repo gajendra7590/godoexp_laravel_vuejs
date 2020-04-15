@@ -31,8 +31,16 @@
                     <div class="listing__Title">
                         <h3>All Categories</h3>
                     </div>
-                    <div class="rted__Exp--content cst__Row"> 
 
+                    <div class="rted__Exp--content cst__Row" v-show="isShowingCat">
+                        <div v-for="n in 10" class="rted__Exp--col cst__Col"> 
+                            <content-placeholders :rounded="true">
+                                <content-placeholders-img style="height:350px;" /> 
+                                <content-placeholders-text :lines="3" /> 
+                            </content-placeholders> 
+                        </div> 
+                    </div>  
+                    <div class="rted__Exp--content cst__Row">  
                         <div v-for="(category,key) in categories" class="rted__Exp--col cst__Col">
                             <div class="rted__Exp--item">
                                 <router-link :to="{ name : 'experiences_list_by_cat',params: { category_name : category.slug } }">
@@ -67,18 +75,21 @@ export default {
         return {
             categories : [],
             load : false,
-            oneCategory : []
+            oneCategory : [],
+            isShowingCat : true
         } 
     },
     methods: {
         getCategoriesList(){
           let $this = this;
+          $this.isShowingCat = true;
           this.$store.dispatch('getAllCategories',{})
             .then(function(response){
                 $this.categories = response;   
                 if($this.load == false){
                     $this.load = true;
                     $this.oneCategory = response[0];
+                    $this.isShowingCat = false;
                 }          
             }).
             catch(function(error){
