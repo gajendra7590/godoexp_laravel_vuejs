@@ -10,27 +10,23 @@ axios.interceptors.response.use(function(response) {
           if( (typeof(err.response.status)!== 'undefined') && (err.response.status == 401) && err.response.data.message == 'Unauthenticated.' ){
             localStorage.removeItem('token');
             alert('Your session has been expired please login..');
-            window.location.href = '/admin/login';
+            window.location.href = '/';
           }
       }
   });
 
-const BASEURL = (window.location.origin) + '/api/admin/';
+const BASEURL = (window.location.origin) + '/api/client/';
 
 //All Mutations
-import * as categoriesMutations from './mutations/categoriesMutations';
-import * as experiencesMutations from './mutations/experiencesMutations'; 
+import * as commosMutations from './mutations/commonMutations'; 
 const mutations = Object.assign({}, 
-    categoriesMutations.default,
-    experiencesMutations.default 
+    commosMutations.default 
 );
 
 //All Actions 
-import * as categoriesAction from './actions/categoriesAction';
-import * as experiencesActions from './actions/experiencesActions';  
+import * as commonActions from './actions/commonActions'; 
 const actions = Object.assign({}, 
-    categoriesAction.default,
-    experiencesActions.default, 
+    commonActions.default, 
 );
 
 

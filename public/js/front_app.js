@@ -2003,161 +2003,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'categoriesC',
   data: function data() {
-    return {};
+    return {
+      categories: [],
+      load: false,
+      oneCategory: []
+    };
+  },
+  methods: {
+    getCategoriesList: function getCategoriesList() {
+      var $this = this;
+      this.$store.dispatch('getAllCategories', {}).then(function (response) {
+        $this.categories = response;
+
+        if ($this.load == false) {
+          $this.load = true;
+          $this.oneCategory = response[0];
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    this.getCategoriesList();
   }
 });
 
@@ -2272,361 +2143,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'experiencesC',
   data: function data() {
-    return {};
+    return {
+      experiences: [],
+      load: false,
+      oneExp: []
+    };
+  },
+  methods: {
+    getExperiencesList: function getExperiencesList() {
+      var $this = this;
+      this.$store.dispatch('getAllExperiences', {}).then(function (response) {
+        $this.experiences = response;
+
+        if ($this.load == false) {
+          $this.load = true;
+          $this.oneExp = response[0];
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    this.getExperiencesList();
   }
 });
 
@@ -2843,6 +2385,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'homeComponent',
+  data: function data() {
+    return {
+      homeData: []
+    };
+  },
+  created: function created() {
+    var $this = this;
+    this.$store.dispatch('getExperiencesHome', {}).then(function (response) {
+      $this.homeData = response;
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -2857,6 +2427,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'aboutusC',
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -2923,6 +2511,82 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'contactusC',
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/Faq.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/Faq.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -3068,7 +2732,100 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'homeComponent',
+  name: 'faqC',
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'privacypolicyC',
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'termsandconditionsC',
   data: function data() {
     return {};
   }
@@ -3159,10 +2916,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'footerC',
   data: function data() {
-    return {};
+    return {
+      date: new Date().getFullYear()
+    };
   }
 });
 
@@ -3177,6 +2969,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -3220,7 +3014,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'headerC',
   data: function data() {
-    return {};
+    return {
+      header_bg: ''
+    };
+  },
+  created: function created() {
+    this.header_bg = _typeof(this.$route.meta.header_cls) != undefined ? this.$route.meta.header_cls : '';
+  },
+  watch: {
+    '$route': function $route(to, from) {
+      this.header_bg = _typeof(to.meta.header_cls) != undefined ? to.meta.header_cls : '';
+    }
   }
 });
 
@@ -38581,6 +38385,1824 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-lazyload/vue-lazyload.esm.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/vue-lazyload/vue-lazyload.esm.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*!
+ * Vue-Lazyload.js v1.3.3
+ * (c) 2019 Awe <hilongjw@gmail.com>
+ * Released under the MIT License.
+ */
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+/*!
+ * is-primitive <https://github.com/jonschlinkert/is-primitive>
+ *
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
+// see http://jsperf.com/testing-value-is-primitive/7
+
+var isPrimitive = function isPrimitive(value) {
+  return value == null || typeof value !== 'function' && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== 'object';
+};
+
+/*!
+ * assign-symbols <https://github.com/jonschlinkert/assign-symbols>
+ *
+ * Copyright (c) 2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
+var assignSymbols = function assignSymbols(receiver, objects) {
+  if (receiver === null || typeof receiver === 'undefined') {
+    throw new TypeError('expected first argument to be an object.');
+  }
+
+  if (typeof objects === 'undefined' || typeof Symbol === 'undefined') {
+    return receiver;
+  }
+
+  if (typeof Object.getOwnPropertySymbols !== 'function') {
+    return receiver;
+  }
+
+  var isEnumerable = Object.prototype.propertyIsEnumerable;
+  var target = Object(receiver);
+  var len = arguments.length,
+      i = 0;
+
+  while (++i < len) {
+    var provider = Object(arguments[i]);
+    var names = Object.getOwnPropertySymbols(provider);
+
+    for (var j = 0; j < names.length; j++) {
+      var key = names[j];
+
+      if (isEnumerable.call(provider, key)) {
+        target[key] = provider[key];
+      }
+    }
+  }
+  return target;
+};
+
+var toString = Object.prototype.toString;
+
+/**
+ * Get the native `typeof` a value.
+ *
+ * @param  {*} `val`
+ * @return {*} Native javascript type
+ */
+
+var kindOf = function kindOf(val) {
+  var type = typeof val === 'undefined' ? 'undefined' : _typeof(val);
+
+  // primitivies
+  if (type === 'undefined') {
+    return 'undefined';
+  }
+  if (val === null) {
+    return 'null';
+  }
+  if (val === true || val === false || val instanceof Boolean) {
+    return 'boolean';
+  }
+  if (type === 'string' || val instanceof String) {
+    return 'string';
+  }
+  if (type === 'number' || val instanceof Number) {
+    return 'number';
+  }
+
+  // functions
+  if (type === 'function' || val instanceof Function) {
+    if (typeof val.constructor.name !== 'undefined' && val.constructor.name.slice(0, 9) === 'Generator') {
+      return 'generatorfunction';
+    }
+    return 'function';
+  }
+
+  // array
+  if (typeof Array.isArray !== 'undefined' && Array.isArray(val)) {
+    return 'array';
+  }
+
+  // check for instances of RegExp and Date before calling `toString`
+  if (val instanceof RegExp) {
+    return 'regexp';
+  }
+  if (val instanceof Date) {
+    return 'date';
+  }
+
+  // other objects
+  type = toString.call(val);
+
+  if (type === '[object RegExp]') {
+    return 'regexp';
+  }
+  if (type === '[object Date]') {
+    return 'date';
+  }
+  if (type === '[object Arguments]') {
+    return 'arguments';
+  }
+  if (type === '[object Error]') {
+    return 'error';
+  }
+  if (type === '[object Promise]') {
+    return 'promise';
+  }
+
+  // buffer
+  if (isBuffer(val)) {
+    return 'buffer';
+  }
+
+  // es6: Map, WeakMap, Set, WeakSet
+  if (type === '[object Set]') {
+    return 'set';
+  }
+  if (type === '[object WeakSet]') {
+    return 'weakset';
+  }
+  if (type === '[object Map]') {
+    return 'map';
+  }
+  if (type === '[object WeakMap]') {
+    return 'weakmap';
+  }
+  if (type === '[object Symbol]') {
+    return 'symbol';
+  }
+
+  if (type === '[object Map Iterator]') {
+    return 'mapiterator';
+  }
+  if (type === '[object Set Iterator]') {
+    return 'setiterator';
+  }
+  if (type === '[object String Iterator]') {
+    return 'stringiterator';
+  }
+  if (type === '[object Array Iterator]') {
+    return 'arrayiterator';
+  }
+
+  // typed arrays
+  if (type === '[object Int8Array]') {
+    return 'int8array';
+  }
+  if (type === '[object Uint8Array]') {
+    return 'uint8array';
+  }
+  if (type === '[object Uint8ClampedArray]') {
+    return 'uint8clampedarray';
+  }
+  if (type === '[object Int16Array]') {
+    return 'int16array';
+  }
+  if (type === '[object Uint16Array]') {
+    return 'uint16array';
+  }
+  if (type === '[object Int32Array]') {
+    return 'int32array';
+  }
+  if (type === '[object Uint32Array]') {
+    return 'uint32array';
+  }
+  if (type === '[object Float32Array]') {
+    return 'float32array';
+  }
+  if (type === '[object Float64Array]') {
+    return 'float64array';
+  }
+
+  // must be a plain object
+  return 'object';
+};
+
+/**
+ * If you need to support Safari 5-7 (8-10 yr-old browser),
+ * take a look at https://github.com/feross/is-buffer
+ */
+
+function isBuffer(val) {
+  return val.constructor && typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);
+}
+
+function assign(target /*, objects*/) {
+  target = target || {};
+  var len = arguments.length,
+      i = 0;
+  if (len === 1) {
+    return target;
+  }
+  while (++i < len) {
+    var val = arguments[i];
+    if (isPrimitive(target)) {
+      target = val;
+    }
+    if (isObject$1(val)) {
+      extend(target, val);
+    }
+  }
+  return target;
+}
+
+/**
+ * Shallow extend
+ */
+
+function extend(target, obj) {
+  assignSymbols(target, obj);
+
+  for (var key in obj) {
+    if (key !== '__proto__' && hasOwn(obj, key)) {
+      var val = obj[key];
+      if (isObject$1(val)) {
+        if (kindOf(target[key]) === 'undefined' && kindOf(val) === 'function') {
+          target[key] = val;
+        }
+        target[key] = assign(target[key] || {}, val);
+      } else {
+        target[key] = val;
+      }
+    }
+  }
+  return target;
+}
+
+/**
+ * Returns true if the object is a plain object or a function.
+ */
+
+function isObject$1(obj) {
+  return kindOf(obj) === 'object' || kindOf(obj) === 'function';
+}
+
+/**
+ * Returns true if the given `key` is an own property of `obj`.
+ */
+
+function hasOwn(obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+/**
+ * Expose `assign`
+ */
+
+var assignDeep = assign;
+
+var inBrowser = typeof window !== 'undefined';
+var hasIntersectionObserver = checkIntersectionObserver();
+
+function checkIntersectionObserver() {
+  if (inBrowser && 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype) {
+    // Minimal polyfill for Edge 15's lack of `isIntersecting`
+    // See: https://github.com/w3c/IntersectionObserver/issues/211
+    if (!('isIntersecting' in window.IntersectionObserverEntry.prototype)) {
+      Object.defineProperty(window.IntersectionObserverEntry.prototype, 'isIntersecting', {
+        get: function get$$1() {
+          return this.intersectionRatio > 0;
+        }
+      });
+    }
+    return true;
+  }
+  return false;
+}
+
+var modeType = {
+  event: 'event',
+  observer: 'observer'
+
+  // CustomEvent polyfill
+};var CustomEvent = function () {
+  if (!inBrowser) return;
+  if (typeof window.CustomEvent === 'function') return window.CustomEvent;
+  function CustomEvent(event, params) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+    return evt;
+  }
+  CustomEvent.prototype = window.Event.prototype;
+  return CustomEvent;
+}();
+
+function remove(arr, item) {
+  if (!arr.length) return;
+  var index = arr.indexOf(item);
+  if (index > -1) return arr.splice(index, 1);
+}
+
+function some(arr, fn) {
+  var has = false;
+  for (var i = 0, len = arr.length; i < len; i++) {
+    if (fn(arr[i])) {
+      has = true;
+      break;
+    }
+  }
+  return has;
+}
+
+function getBestSelectionFromSrcset(el, scale) {
+  if (el.tagName !== 'IMG' || !el.getAttribute('data-srcset')) return;
+
+  var options = el.getAttribute('data-srcset');
+  var result = [];
+  var container = el.parentNode;
+  var containerWidth = container.offsetWidth * scale;
+
+  var spaceIndex = void 0;
+  var tmpSrc = void 0;
+  var tmpWidth = void 0;
+
+  options = options.trim().split(',');
+
+  options.map(function (item) {
+    item = item.trim();
+    spaceIndex = item.lastIndexOf(' ');
+    if (spaceIndex === -1) {
+      tmpSrc = item;
+      tmpWidth = 999998;
+    } else {
+      tmpSrc = item.substr(0, spaceIndex);
+      tmpWidth = parseInt(item.substr(spaceIndex + 1, item.length - spaceIndex - 2), 10);
+    }
+    result.push([tmpWidth, tmpSrc]);
+  });
+
+  result.sort(function (a, b) {
+    if (a[0] < b[0]) {
+      return 1;
+    }
+    if (a[0] > b[0]) {
+      return -1;
+    }
+    if (a[0] === b[0]) {
+      if (b[1].indexOf('.webp', b[1].length - 5) !== -1) {
+        return 1;
+      }
+      if (a[1].indexOf('.webp', a[1].length - 5) !== -1) {
+        return -1;
+      }
+    }
+    return 0;
+  });
+  var bestSelectedSrc = '';
+  var tmpOption = void 0;
+
+  for (var i = 0; i < result.length; i++) {
+    tmpOption = result[i];
+    bestSelectedSrc = tmpOption[1];
+    var next = result[i + 1];
+    if (next && next[0] < containerWidth) {
+      bestSelectedSrc = tmpOption[1];
+      break;
+    } else if (!next) {
+      bestSelectedSrc = tmpOption[1];
+      break;
+    }
+  }
+
+  return bestSelectedSrc;
+}
+
+function find(arr, fn) {
+  var item = void 0;
+  for (var i = 0, len = arr.length; i < len; i++) {
+    if (fn(arr[i])) {
+      item = arr[i];
+      break;
+    }
+  }
+  return item;
+}
+
+var getDPR = function getDPR() {
+  var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  return inBrowser ? window.devicePixelRatio || scale : scale;
+};
+
+function supportWebp() {
+  if (!inBrowser) return false;
+
+  var support = true;
+  var d = document;
+
+  try {
+    var el = d.createElement('object');
+    el.type = 'image/webp';
+    el.style.visibility = 'hidden';
+    el.innerHTML = '!';
+    d.body.appendChild(el);
+    support = !el.offsetWidth;
+    d.body.removeChild(el);
+  } catch (err) {
+    support = false;
+  }
+
+  return support;
+}
+
+function throttle(action, delay) {
+  var timeout = null;
+  var lastRun = 0;
+  return function () {
+    if (timeout) {
+      return;
+    }
+    var elapsed = Date.now() - lastRun;
+    var context = this;
+    var args = arguments;
+    var runCallback = function runCallback() {
+      lastRun = Date.now();
+      timeout = false;
+      action.apply(context, args);
+    };
+    if (elapsed >= delay) {
+      runCallback();
+    } else {
+      timeout = setTimeout(runCallback, delay);
+    }
+  };
+}
+
+function testSupportsPassive() {
+  if (!inBrowser) return;
+  var support = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function get$$1() {
+        support = true;
+      }
+    });
+    window.addEventListener('test', null, opts);
+  } catch (e) {}
+  return support;
+}
+
+var supportsPassive = testSupportsPassive();
+
+var _ = {
+  on: function on(el, type, func) {
+    var capture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+    if (supportsPassive) {
+      el.addEventListener(type, func, {
+        capture: capture,
+        passive: true
+      });
+    } else {
+      el.addEventListener(type, func, capture);
+    }
+  },
+  off: function off(el, type, func) {
+    var capture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+    el.removeEventListener(type, func, capture);
+  }
+};
+
+var loadImageAsync = function loadImageAsync(item, resolve, reject) {
+  var image = new Image();
+  if (!item || !item.src) {
+    var err = new Error('image src is required');
+    return reject(err);
+  }
+
+  image.src = item.src;
+
+  image.onload = function () {
+    resolve({
+      naturalHeight: image.naturalHeight,
+      naturalWidth: image.naturalWidth,
+      src: image.src
+    });
+  };
+
+  image.onerror = function (e) {
+    reject(e);
+  };
+};
+
+var style = function style(el, prop) {
+  return typeof getComputedStyle !== 'undefined' ? getComputedStyle(el, null).getPropertyValue(prop) : el.style[prop];
+};
+
+var overflow = function overflow(el) {
+  return style(el, 'overflow') + style(el, 'overflow-y') + style(el, 'overflow-x');
+};
+
+var scrollParent = function scrollParent(el) {
+  if (!inBrowser) return;
+  if (!(el instanceof HTMLElement)) {
+    return window;
+  }
+
+  var parent = el;
+
+  while (parent) {
+    if (parent === document.body || parent === document.documentElement) {
+      break;
+    }
+
+    if (!parent.parentNode) {
+      break;
+    }
+
+    if (/(scroll|auto)/.test(overflow(parent))) {
+      return parent;
+    }
+
+    parent = parent.parentNode;
+  }
+
+  return window;
+};
+
+function isObject(obj) {
+  return obj !== null && (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object';
+}
+
+function ObjectKeys(obj) {
+  if (!(obj instanceof Object)) return [];
+  if (Object.keys) {
+    return Object.keys(obj);
+  } else {
+    var keys = [];
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        keys.push(key);
+      }
+    }
+    return keys;
+  }
+}
+
+function ArrayFrom(arrLike) {
+  var len = arrLike.length;
+  var list = [];
+  for (var i = 0; i < len; i++) {
+    list.push(arrLike[i]);
+  }
+  return list;
+}
+
+function noop() {}
+
+var ImageCache = function () {
+  function ImageCache(_ref) {
+    var max = _ref.max;
+    classCallCheck(this, ImageCache);
+
+    this.options = {
+      max: max || 100
+    };
+    this._caches = [];
+  }
+
+  createClass(ImageCache, [{
+    key: 'has',
+    value: function has(key) {
+      return this._caches.indexOf(key) > -1;
+    }
+  }, {
+    key: 'add',
+    value: function add(key) {
+      if (this.has(key)) return;
+      this._caches.push(key);
+      if (this._caches.length > this.options.max) {
+        this.free();
+      }
+    }
+  }, {
+    key: 'free',
+    value: function free() {
+      this._caches.shift();
+    }
+  }]);
+  return ImageCache;
+}();
+
+// el: {
+//     state,
+//     src,
+//     error,
+//     loading
+// }
+
+var ReactiveListener = function () {
+  function ReactiveListener(_ref) {
+    var el = _ref.el,
+        src = _ref.src,
+        error = _ref.error,
+        loading = _ref.loading,
+        bindType = _ref.bindType,
+        $parent = _ref.$parent,
+        options = _ref.options,
+        elRenderer = _ref.elRenderer,
+        imageCache = _ref.imageCache;
+    classCallCheck(this, ReactiveListener);
+
+    this.el = el;
+    this.src = src;
+    this.error = error;
+    this.loading = loading;
+    this.bindType = bindType;
+    this.attempt = 0;
+
+    this.naturalHeight = 0;
+    this.naturalWidth = 0;
+
+    this.options = options;
+
+    this.rect = null;
+
+    this.$parent = $parent;
+    this.elRenderer = elRenderer;
+    this._imageCache = imageCache;
+    this.performanceData = {
+      init: Date.now(),
+      loadStart: 0,
+      loadEnd: 0
+    };
+
+    this.filter();
+    this.initState();
+    this.render('loading', false);
+  }
+
+  /*
+   * init listener state
+   * @return
+   */
+
+
+  createClass(ReactiveListener, [{
+    key: 'initState',
+    value: function initState() {
+      if ('dataset' in this.el) {
+        this.el.dataset.src = this.src;
+      } else {
+        this.el.setAttribute('data-src', this.src);
+      }
+
+      this.state = {
+        loading: false,
+        error: false,
+        loaded: false,
+        rendered: false
+      };
+    }
+
+    /*
+     * record performance
+     * @return
+     */
+
+  }, {
+    key: 'record',
+    value: function record(event) {
+      this.performanceData[event] = Date.now();
+    }
+
+    /*
+     * update image listener data
+     * @param  {String} image uri
+     * @param  {String} loading image uri
+     * @param  {String} error image uri
+     * @return
+     */
+
+  }, {
+    key: 'update',
+    value: function update(_ref2) {
+      var src = _ref2.src,
+          loading = _ref2.loading,
+          error = _ref2.error;
+
+      var oldSrc = this.src;
+      this.src = src;
+      this.loading = loading;
+      this.error = error;
+      this.filter();
+      if (oldSrc !== this.src) {
+        this.attempt = 0;
+        this.initState();
+      }
+    }
+
+    /*
+     * get el node rect
+     * @return
+     */
+
+  }, {
+    key: 'getRect',
+    value: function getRect() {
+      this.rect = this.el.getBoundingClientRect();
+    }
+
+    /*
+     *  check el is in view
+     * @return {Boolean} el is in view
+     */
+
+  }, {
+    key: 'checkInView',
+    value: function checkInView() {
+      this.getRect();
+      return this.rect.top < window.innerHeight * this.options.preLoad && this.rect.bottom > this.options.preLoadTop && this.rect.left < window.innerWidth * this.options.preLoad && this.rect.right > 0;
+    }
+
+    /*
+     * listener filter
+     */
+
+  }, {
+    key: 'filter',
+    value: function filter() {
+      var _this = this;
+
+      ObjectKeys(this.options.filter).map(function (key) {
+        _this.options.filter[key](_this, _this.options);
+      });
+    }
+
+    /*
+     * render loading first
+     * @params cb:Function
+     * @return
+     */
+
+  }, {
+    key: 'renderLoading',
+    value: function renderLoading(cb) {
+      var _this2 = this;
+
+      this.state.loading = true;
+      loadImageAsync({
+        src: this.loading
+      }, function (data) {
+        _this2.render('loading', false);
+        _this2.state.loading = false;
+        cb();
+      }, function () {
+        // handler `loading image` load failed
+        cb();
+        _this2.state.loading = false;
+        if (!_this2.options.silent) console.warn('VueLazyload log: load failed with loading image(' + _this2.loading + ')');
+      });
+    }
+
+    /*
+     * try load image and  render it
+     * @return
+     */
+
+  }, {
+    key: 'load',
+    value: function load() {
+      var _this3 = this;
+
+      var onFinish = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+
+      if (this.attempt > this.options.attempt - 1 && this.state.error) {
+        if (!this.options.silent) console.log('VueLazyload log: ' + this.src + ' tried too more than ' + this.options.attempt + ' times');
+        onFinish();
+        return;
+      }
+      if (this.state.rendered && this.state.loaded) return;
+      if (this._imageCache.has(this.src)) {
+        this.state.loaded = true;
+        this.render('loaded', true);
+        this.state.rendered = true;
+        return onFinish();
+      }
+
+      this.renderLoading(function () {
+        _this3.attempt++;
+
+        _this3.options.adapter['beforeLoad'] && _this3.options.adapter['beforeLoad'](_this3, _this3.options);
+        _this3.record('loadStart');
+
+        loadImageAsync({
+          src: _this3.src
+        }, function (data) {
+          _this3.naturalHeight = data.naturalHeight;
+          _this3.naturalWidth = data.naturalWidth;
+          _this3.state.loaded = true;
+          _this3.state.error = false;
+          _this3.record('loadEnd');
+          _this3.render('loaded', false);
+          _this3.state.rendered = true;
+          _this3._imageCache.add(_this3.src);
+          onFinish();
+        }, function (err) {
+          !_this3.options.silent && console.error(err);
+          _this3.state.error = true;
+          _this3.state.loaded = false;
+          _this3.render('error', false);
+        });
+      });
+    }
+
+    /*
+     * render image
+     * @param  {String} state to render // ['loading', 'src', 'error']
+     * @param  {String} is form cache
+     * @return
+     */
+
+  }, {
+    key: 'render',
+    value: function render(state, cache) {
+      this.elRenderer(this, state, cache);
+    }
+
+    /*
+     * output performance data
+     * @return {Object} performance data
+     */
+
+  }, {
+    key: 'performance',
+    value: function performance() {
+      var state = 'loading';
+      var time = 0;
+
+      if (this.state.loaded) {
+        state = 'loaded';
+        time = (this.performanceData.loadEnd - this.performanceData.loadStart) / 1000;
+      }
+
+      if (this.state.error) state = 'error';
+
+      return {
+        src: this.src,
+        state: state,
+        time: time
+      };
+    }
+
+    /*
+     * $destroy
+     * @return
+     */
+
+  }, {
+    key: '$destroy',
+    value: function $destroy() {
+      this.el = null;
+      this.src = null;
+      this.error = null;
+      this.loading = null;
+      this.bindType = null;
+      this.attempt = 0;
+    }
+  }]);
+  return ReactiveListener;
+}();
+
+var DEFAULT_URL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+var DEFAULT_EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove'];
+var DEFAULT_OBSERVER_OPTIONS = {
+  rootMargin: '0px',
+  threshold: 0
+};
+
+var Lazy = function (Vue) {
+  return function () {
+    function Lazy(_ref) {
+      var preLoad = _ref.preLoad,
+          error = _ref.error,
+          throttleWait = _ref.throttleWait,
+          preLoadTop = _ref.preLoadTop,
+          dispatchEvent = _ref.dispatchEvent,
+          loading = _ref.loading,
+          attempt = _ref.attempt,
+          _ref$silent = _ref.silent,
+          silent = _ref$silent === undefined ? true : _ref$silent,
+          scale = _ref.scale,
+          listenEvents = _ref.listenEvents,
+          hasbind = _ref.hasbind,
+          filter = _ref.filter,
+          adapter = _ref.adapter,
+          observer = _ref.observer,
+          observerOptions = _ref.observerOptions;
+      classCallCheck(this, Lazy);
+
+      this.version = '1.3.3';
+      this.mode = modeType.event;
+      this.ListenerQueue = [];
+      this.TargetIndex = 0;
+      this.TargetQueue = [];
+      this.options = {
+        silent: silent,
+        dispatchEvent: !!dispatchEvent,
+        throttleWait: throttleWait || 200,
+        preLoad: preLoad || 1.3,
+        preLoadTop: preLoadTop || 0,
+        error: error || DEFAULT_URL,
+        loading: loading || DEFAULT_URL,
+        attempt: attempt || 3,
+        scale: scale || getDPR(scale),
+        ListenEvents: listenEvents || DEFAULT_EVENTS,
+        hasbind: false,
+        supportWebp: supportWebp(),
+        filter: filter || {},
+        adapter: adapter || {},
+        observer: !!observer,
+        observerOptions: observerOptions || DEFAULT_OBSERVER_OPTIONS
+      };
+      this._initEvent();
+      this._imageCache = new ImageCache({ max: 200 });
+      this.lazyLoadHandler = throttle(this._lazyLoadHandler.bind(this), this.options.throttleWait);
+
+      this.setMode(this.options.observer ? modeType.observer : modeType.event);
+    }
+
+    /**
+     * update config
+     * @param  {Object} config params
+     * @return
+     */
+
+
+    createClass(Lazy, [{
+      key: 'config',
+      value: function config() {
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+        assignDeep(this.options, options);
+      }
+
+      /**
+       * output listener's load performance
+       * @return {Array}
+       */
+
+    }, {
+      key: 'performance',
+      value: function performance() {
+        var list = [];
+
+        this.ListenerQueue.map(function (item) {
+          list.push(item.performance());
+        });
+
+        return list;
+      }
+
+      /*
+       * add lazy component to queue
+       * @param  {Vue} vm lazy component instance
+       * @return
+       */
+
+    }, {
+      key: 'addLazyBox',
+      value: function addLazyBox(vm) {
+        this.ListenerQueue.push(vm);
+        if (inBrowser) {
+          this._addListenerTarget(window);
+          this._observer && this._observer.observe(vm.el);
+          if (vm.$el && vm.$el.parentNode) {
+            this._addListenerTarget(vm.$el.parentNode);
+          }
+        }
+      }
+
+      /*
+       * add image listener to queue
+       * @param  {DOM} el
+       * @param  {object} binding vue directive binding
+       * @param  {vnode} vnode vue directive vnode
+       * @return
+       */
+
+    }, {
+      key: 'add',
+      value: function add(el, binding, vnode) {
+        var _this = this;
+
+        if (some(this.ListenerQueue, function (item) {
+          return item.el === el;
+        })) {
+          this.update(el, binding);
+          return Vue.nextTick(this.lazyLoadHandler);
+        }
+
+        var _valueFormatter2 = this._valueFormatter(binding.value),
+            src = _valueFormatter2.src,
+            loading = _valueFormatter2.loading,
+            error = _valueFormatter2.error;
+
+        Vue.nextTick(function () {
+          src = getBestSelectionFromSrcset(el, _this.options.scale) || src;
+          _this._observer && _this._observer.observe(el);
+
+          var container = Object.keys(binding.modifiers)[0];
+          var $parent = void 0;
+
+          if (container) {
+            $parent = vnode.context.$refs[container];
+            // if there is container passed in, try ref first, then fallback to getElementById to support the original usage
+            $parent = $parent ? $parent.$el || $parent : document.getElementById(container);
+          }
+
+          if (!$parent) {
+            $parent = scrollParent(el);
+          }
+
+          var newListener = new ReactiveListener({
+            bindType: binding.arg,
+            $parent: $parent,
+            el: el,
+            loading: loading,
+            error: error,
+            src: src,
+            elRenderer: _this._elRenderer.bind(_this),
+            options: _this.options,
+            imageCache: _this._imageCache
+          });
+
+          _this.ListenerQueue.push(newListener);
+
+          if (inBrowser) {
+            _this._addListenerTarget(window);
+            _this._addListenerTarget($parent);
+          }
+
+          _this.lazyLoadHandler();
+          Vue.nextTick(function () {
+            return _this.lazyLoadHandler();
+          });
+        });
+      }
+
+      /**
+      * update image src
+      * @param  {DOM} el
+      * @param  {object} vue directive binding
+      * @return
+      */
+
+    }, {
+      key: 'update',
+      value: function update(el, binding, vnode) {
+        var _this2 = this;
+
+        var _valueFormatter3 = this._valueFormatter(binding.value),
+            src = _valueFormatter3.src,
+            loading = _valueFormatter3.loading,
+            error = _valueFormatter3.error;
+
+        src = getBestSelectionFromSrcset(el, this.options.scale) || src;
+
+        var exist = find(this.ListenerQueue, function (item) {
+          return item.el === el;
+        });
+        if (!exist) {
+          this.add(el, binding, vnode);
+        } else {
+          exist.update({
+            src: src,
+            loading: loading,
+            error: error
+          });
+        }
+        if (this._observer) {
+          this._observer.unobserve(el);
+          this._observer.observe(el);
+        }
+        this.lazyLoadHandler();
+        Vue.nextTick(function () {
+          return _this2.lazyLoadHandler();
+        });
+      }
+
+      /**
+      * remove listener form list
+      * @param  {DOM} el
+      * @return
+      */
+
+    }, {
+      key: 'remove',
+      value: function remove$$1(el) {
+        if (!el) return;
+        this._observer && this._observer.unobserve(el);
+        var existItem = find(this.ListenerQueue, function (item) {
+          return item.el === el;
+        });
+        if (existItem) {
+          this._removeListenerTarget(existItem.$parent);
+          this._removeListenerTarget(window);
+          remove(this.ListenerQueue, existItem);
+          existItem.$destroy();
+        }
+      }
+
+      /*
+       * remove lazy components form list
+       * @param  {Vue} vm Vue instance
+       * @return
+       */
+
+    }, {
+      key: 'removeComponent',
+      value: function removeComponent(vm) {
+        if (!vm) return;
+        remove(this.ListenerQueue, vm);
+        this._observer && this._observer.unobserve(vm.el);
+        if (vm.$parent && vm.$el.parentNode) {
+          this._removeListenerTarget(vm.$el.parentNode);
+        }
+        this._removeListenerTarget(window);
+      }
+    }, {
+      key: 'setMode',
+      value: function setMode(mode) {
+        var _this3 = this;
+
+        if (!hasIntersectionObserver && mode === modeType.observer) {
+          mode = modeType.event;
+        }
+
+        this.mode = mode; // event or observer
+
+        if (mode === modeType.event) {
+          if (this._observer) {
+            this.ListenerQueue.forEach(function (listener) {
+              _this3._observer.unobserve(listener.el);
+            });
+            this._observer = null;
+          }
+
+          this.TargetQueue.forEach(function (target) {
+            _this3._initListen(target.el, true);
+          });
+        } else {
+          this.TargetQueue.forEach(function (target) {
+            _this3._initListen(target.el, false);
+          });
+          this._initIntersectionObserver();
+        }
+      }
+
+      /*
+      *** Private functions ***
+      */
+
+      /*
+       * add listener target
+       * @param  {DOM} el listener target
+       * @return
+       */
+
+    }, {
+      key: '_addListenerTarget',
+      value: function _addListenerTarget(el) {
+        if (!el) return;
+        var target = find(this.TargetQueue, function (target) {
+          return target.el === el;
+        });
+        if (!target) {
+          target = {
+            el: el,
+            id: ++this.TargetIndex,
+            childrenCount: 1,
+            listened: true
+          };
+          this.mode === modeType.event && this._initListen(target.el, true);
+          this.TargetQueue.push(target);
+        } else {
+          target.childrenCount++;
+        }
+        return this.TargetIndex;
+      }
+
+      /*
+       * remove listener target or reduce target childrenCount
+       * @param  {DOM} el or window
+       * @return
+       */
+
+    }, {
+      key: '_removeListenerTarget',
+      value: function _removeListenerTarget(el) {
+        var _this4 = this;
+
+        this.TargetQueue.forEach(function (target, index) {
+          if (target.el === el) {
+            target.childrenCount--;
+            if (!target.childrenCount) {
+              _this4._initListen(target.el, false);
+              _this4.TargetQueue.splice(index, 1);
+              target = null;
+            }
+          }
+        });
+      }
+
+      /*
+       * add or remove eventlistener
+       * @param  {DOM} el DOM or Window
+       * @param  {boolean} start flag
+       * @return
+       */
+
+    }, {
+      key: '_initListen',
+      value: function _initListen(el, start) {
+        var _this5 = this;
+
+        this.options.ListenEvents.forEach(function (evt) {
+          return _[start ? 'on' : 'off'](el, evt, _this5.lazyLoadHandler);
+        });
+      }
+    }, {
+      key: '_initEvent',
+      value: function _initEvent() {
+        var _this6 = this;
+
+        this.Event = {
+          listeners: {
+            loading: [],
+            loaded: [],
+            error: []
+          }
+        };
+
+        this.$on = function (event, func) {
+          if (!_this6.Event.listeners[event]) _this6.Event.listeners[event] = [];
+          _this6.Event.listeners[event].push(func);
+        };
+
+        this.$once = function (event, func) {
+          var vm = _this6;
+          function on() {
+            vm.$off(event, on);
+            func.apply(vm, arguments);
+          }
+          _this6.$on(event, on);
+        };
+
+        this.$off = function (event, func) {
+          if (!func) {
+            if (!_this6.Event.listeners[event]) return;
+            _this6.Event.listeners[event].length = 0;
+            return;
+          }
+          remove(_this6.Event.listeners[event], func);
+        };
+
+        this.$emit = function (event, context, inCache) {
+          if (!_this6.Event.listeners[event]) return;
+          _this6.Event.listeners[event].forEach(function (func) {
+            return func(context, inCache);
+          });
+        };
+      }
+
+      /**
+       * find nodes which in viewport and trigger load
+       * @return
+       */
+
+    }, {
+      key: '_lazyLoadHandler',
+      value: function _lazyLoadHandler() {
+        var _this7 = this;
+
+        var freeList = [];
+        this.ListenerQueue.forEach(function (listener, index) {
+          if (!listener.el || !listener.el.parentNode) {
+            freeList.push(listener);
+          }
+          var catIn = listener.checkInView();
+          if (!catIn) return;
+          listener.load();
+        });
+        freeList.forEach(function (item) {
+          remove(_this7.ListenerQueue, item);
+          item.$destroy();
+        });
+      }
+      /**
+      * init IntersectionObserver
+      * set mode to observer
+      * @return
+      */
+
+    }, {
+      key: '_initIntersectionObserver',
+      value: function _initIntersectionObserver() {
+        var _this8 = this;
+
+        if (!hasIntersectionObserver) return;
+        this._observer = new IntersectionObserver(this._observerHandler.bind(this), this.options.observerOptions);
+        if (this.ListenerQueue.length) {
+          this.ListenerQueue.forEach(function (listener) {
+            _this8._observer.observe(listener.el);
+          });
+        }
+      }
+
+      /**
+      * init IntersectionObserver
+      * @return
+      */
+
+    }, {
+      key: '_observerHandler',
+      value: function _observerHandler(entries, observer) {
+        var _this9 = this;
+
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            _this9.ListenerQueue.forEach(function (listener) {
+              if (listener.el === entry.target) {
+                if (listener.state.loaded) return _this9._observer.unobserve(listener.el);
+                listener.load();
+              }
+            });
+          }
+        });
+      }
+
+      /**
+      * set element attribute with image'url and state
+      * @param  {object} lazyload listener object
+      * @param  {string} state will be rendered
+      * @param  {bool} inCache  is rendered from cache
+      * @return
+      */
+
+    }, {
+      key: '_elRenderer',
+      value: function _elRenderer(listener, state, cache) {
+        if (!listener.el) return;
+        var el = listener.el,
+            bindType = listener.bindType;
+
+
+        var src = void 0;
+        switch (state) {
+          case 'loading':
+            src = listener.loading;
+            break;
+          case 'error':
+            src = listener.error;
+            break;
+          default:
+            src = listener.src;
+            break;
+        }
+
+        if (bindType) {
+          el.style[bindType] = 'url("' + src + '")';
+        } else if (el.getAttribute('src') !== src) {
+          el.setAttribute('src', src);
+        }
+
+        el.setAttribute('lazy', state);
+
+        this.$emit(state, listener, cache);
+        this.options.adapter[state] && this.options.adapter[state](listener, this.options);
+
+        if (this.options.dispatchEvent) {
+          var event = new CustomEvent(state, {
+            detail: listener
+          });
+          el.dispatchEvent(event);
+        }
+      }
+
+      /**
+      * generate loading loaded error image url
+      * @param {string} image's src
+      * @return {object} image's loading, loaded, error url
+      */
+
+    }, {
+      key: '_valueFormatter',
+      value: function _valueFormatter(value) {
+        var src = value;
+        var loading = this.options.loading;
+        var error = this.options.error;
+
+        // value is object
+        if (isObject(value)) {
+          if (!value.src && !this.options.silent) console.error('Vue Lazyload warning: miss src with ' + value);
+          src = value.src;
+          loading = value.loading || this.options.loading;
+          error = value.error || this.options.error;
+        }
+        return {
+          src: src,
+          loading: loading,
+          error: error
+        };
+      }
+    }]);
+    return Lazy;
+  }();
+};
+
+var LazyComponent = (function (lazy) {
+  return {
+    props: {
+      tag: {
+        type: String,
+        default: 'div'
+      }
+    },
+    render: function render(h) {
+      if (this.show === false) {
+        return h(this.tag);
+      }
+      return h(this.tag, null, this.$slots.default);
+    },
+    data: function data() {
+      return {
+        el: null,
+        state: {
+          loaded: false
+        },
+        rect: {},
+        show: false
+      };
+    },
+    mounted: function mounted() {
+      this.el = this.$el;
+      lazy.addLazyBox(this);
+      lazy.lazyLoadHandler();
+    },
+    beforeDestroy: function beforeDestroy() {
+      lazy.removeComponent(this);
+    },
+
+    methods: {
+      getRect: function getRect() {
+        this.rect = this.$el.getBoundingClientRect();
+      },
+      checkInView: function checkInView() {
+        this.getRect();
+        return inBrowser && this.rect.top < window.innerHeight * lazy.options.preLoad && this.rect.bottom > 0 && this.rect.left < window.innerWidth * lazy.options.preLoad && this.rect.right > 0;
+      },
+      load: function load() {
+        this.show = true;
+        this.state.loaded = true;
+        this.$emit('show', this);
+      },
+      destroy: function destroy() {
+        return this.$destroy;
+      }
+    }
+  };
+});
+
+var LazyContainerMananger = function () {
+  function LazyContainerMananger(_ref) {
+    var lazy = _ref.lazy;
+    classCallCheck(this, LazyContainerMananger);
+
+    this.lazy = lazy;
+    lazy.lazyContainerMananger = this;
+    this._queue = [];
+  }
+
+  createClass(LazyContainerMananger, [{
+    key: 'bind',
+    value: function bind(el, binding, vnode) {
+      var container = new LazyContainer$1({ el: el, binding: binding, vnode: vnode, lazy: this.lazy });
+      this._queue.push(container);
+    }
+  }, {
+    key: 'update',
+    value: function update(el, binding, vnode) {
+      var container = find(this._queue, function (item) {
+        return item.el === el;
+      });
+      if (!container) return;
+      container.update({ el: el, binding: binding, vnode: vnode });
+    }
+  }, {
+    key: 'unbind',
+    value: function unbind(el, binding, vnode) {
+      var container = find(this._queue, function (item) {
+        return item.el === el;
+      });
+      if (!container) return;
+      container.clear();
+      remove(this._queue, container);
+    }
+  }]);
+  return LazyContainerMananger;
+}();
+
+var defaultOptions = {
+  selector: 'img'
+};
+
+var LazyContainer$1 = function () {
+  function LazyContainer(_ref2) {
+    var el = _ref2.el,
+        binding = _ref2.binding,
+        vnode = _ref2.vnode,
+        lazy = _ref2.lazy;
+    classCallCheck(this, LazyContainer);
+
+    this.el = null;
+    this.vnode = vnode;
+    this.binding = binding;
+    this.options = {};
+    this.lazy = lazy;
+
+    this._queue = [];
+    this.update({ el: el, binding: binding });
+  }
+
+  createClass(LazyContainer, [{
+    key: 'update',
+    value: function update(_ref3) {
+      var _this = this;
+
+      var el = _ref3.el,
+          binding = _ref3.binding;
+
+      this.el = el;
+      this.options = assignDeep({}, defaultOptions, binding.value);
+
+      var imgs = this.getImgs();
+      imgs.forEach(function (el) {
+        _this.lazy.add(el, assignDeep({}, _this.binding, {
+          value: {
+            src: 'dataset' in el ? el.dataset.src : el.getAttribute('data-src'),
+            error: ('dataset' in el ? el.dataset.error : el.getAttribute('data-error')) || _this.options.error,
+            loading: ('dataset' in el ? el.dataset.loading : el.getAttribute('data-loading')) || _this.options.loading
+          }
+        }), _this.vnode);
+      });
+    }
+  }, {
+    key: 'getImgs',
+    value: function getImgs() {
+      return ArrayFrom(this.el.querySelectorAll(this.options.selector));
+    }
+  }, {
+    key: 'clear',
+    value: function clear() {
+      var _this2 = this;
+
+      var imgs = this.getImgs();
+      imgs.forEach(function (el) {
+        return _this2.lazy.remove(el);
+      });
+
+      this.vnode = null;
+      this.binding = null;
+      this.lazy = null;
+    }
+  }]);
+  return LazyContainer;
+}();
+
+var LazyImage = (function (lazyManager) {
+  return {
+    props: {
+      src: [String, Object],
+      tag: {
+        type: String,
+        default: 'img'
+      }
+    },
+    render: function render(h) {
+      return h(this.tag, {
+        attrs: {
+          src: this.renderSrc
+        }
+      }, this.$slots.default);
+    },
+    data: function data() {
+      return {
+        el: null,
+        options: {
+          src: '',
+          error: '',
+          loading: '',
+          attempt: lazyManager.options.attempt
+        },
+        state: {
+          loaded: false,
+          error: false,
+          attempt: 0
+        },
+        rect: {},
+        renderSrc: ''
+      };
+    },
+
+    watch: {
+      src: function src() {
+        this.init();
+        lazyManager.addLazyBox(this);
+        lazyManager.lazyLoadHandler();
+      }
+    },
+    created: function created() {
+      this.init();
+      this.renderSrc = this.options.loading;
+    },
+    mounted: function mounted() {
+      this.el = this.$el;
+      lazyManager.addLazyBox(this);
+      lazyManager.lazyLoadHandler();
+    },
+    beforeDestroy: function beforeDestroy() {
+      lazyManager.removeComponent(this);
+    },
+
+    methods: {
+      init: function init() {
+        var _lazyManager$_valueFo = lazyManager._valueFormatter(this.src),
+            src = _lazyManager$_valueFo.src,
+            loading = _lazyManager$_valueFo.loading,
+            error = _lazyManager$_valueFo.error;
+
+        this.state.loaded = false;
+        this.options.src = src;
+        this.options.error = error;
+        this.options.loading = loading;
+        this.renderSrc = this.options.loading;
+      },
+      getRect: function getRect() {
+        this.rect = this.$el.getBoundingClientRect();
+      },
+      checkInView: function checkInView() {
+        this.getRect();
+        return inBrowser && this.rect.top < window.innerHeight * lazyManager.options.preLoad && this.rect.bottom > 0 && this.rect.left < window.innerWidth * lazyManager.options.preLoad && this.rect.right > 0;
+      },
+      load: function load() {
+        var _this = this;
+
+        var onFinish = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+
+        if (this.state.attempt > this.options.attempt - 1 && this.state.error) {
+          if (!lazyManager.options.silent) console.log('VueLazyload log: ' + this.options.src + ' tried too more than ' + this.options.attempt + ' times');
+          onFinish();
+          return;
+        }
+        var src = this.options.src;
+        loadImageAsync({ src: src }, function (_ref) {
+          var src = _ref.src;
+
+          _this.renderSrc = src;
+          _this.state.loaded = true;
+        }, function (e) {
+          _this.state.attempt++;
+          _this.renderSrc = _this.options.error;
+          _this.state.error = true;
+        });
+      }
+    }
+  };
+});
+
+var index = {
+  /*
+  * install function
+  * @param  {Vue} Vue
+  * @param  {object} options  lazyload options
+  */
+  install: function install(Vue) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var LazyClass = Lazy(Vue);
+    var lazy = new LazyClass(options);
+    var lazyContainer = new LazyContainerMananger({ lazy: lazy });
+
+    var isVue2 = Vue.version.split('.')[0] === '2';
+
+    Vue.prototype.$Lazyload = lazy;
+
+    if (options.lazyComponent) {
+      Vue.component('lazy-component', LazyComponent(lazy));
+    }
+
+    if (options.lazyImage) {
+      Vue.component('lazy-image', LazyImage(lazy));
+    }
+
+    if (isVue2) {
+      Vue.directive('lazy', {
+        bind: lazy.add.bind(lazy),
+        update: lazy.update.bind(lazy),
+        componentUpdated: lazy.lazyLoadHandler.bind(lazy),
+        unbind: lazy.remove.bind(lazy)
+      });
+      Vue.directive('lazy-container', {
+        bind: lazyContainer.bind.bind(lazyContainer),
+        componentUpdated: lazyContainer.update.bind(lazyContainer),
+        unbind: lazyContainer.unbind.bind(lazyContainer)
+      });
+    } else {
+      Vue.directive('lazy', {
+        bind: lazy.lazyLoadHandler.bind(lazy),
+        update: function update(newValue, oldValue) {
+          assignDeep(this.vm.$refs, this.vm.$els);
+          lazy.add(this.el, {
+            modifiers: this.modifiers || {},
+            arg: this.arg,
+            value: newValue,
+            oldValue: oldValue
+          }, {
+            context: this.vm
+          });
+        },
+        unbind: function unbind() {
+          lazy.remove(this.el);
+        }
+      });
+
+      Vue.directive('lazy-container', {
+        update: function update(newValue, oldValue) {
+          lazyContainer.update(this.el, {
+            modifiers: this.modifiers || {},
+            arg: this.arg,
+            value: newValue,
+            oldValue: oldValue
+          }, {
+            context: this.vm
+          });
+        },
+        unbind: function unbind() {
+          lazyContainer.unbind(this.el);
+        }
+      });
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/App.vue?vue&type=template&id=4ad23c97&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/App.vue?vue&type=template&id=4ad23c97& ***!
@@ -38625,550 +40247,142 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "section",
+      {
+        staticClass: "features__Search sub__Category--banner",
+        style: { backgroundImage: "url(" + _vm.oneCategory.image + ")" }
+      },
+      [
+        _c("div", { staticClass: "features__Search__Content" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.oneCategory.title))])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("main", { attrs: { id: "main__Content" } }, [
+      _c("section", { staticClass: "sub__Ctgry--abut" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row cst__Row" }, [
+            _c(
+              "div",
+              { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-5" },
+              [
+                _c("div", { staticClass: "sub__Abut--title" }, [
+                  _c("h2", [_vm._v(_vm._s(_vm.oneCategory.title))])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-7" },
+              [
+                _c("div", { staticClass: "sub__Abut--content" }, [
+                  _c("h1", [_vm._v(_vm._s(_vm.oneCategory.description))])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "rted__Exp" }, [
+        _c("div", { staticClass: "container" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "rted__Exp--content cst__Row" },
+            _vm._l(_vm.categories, function(category, key) {
+              return _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
+                _c(
+                  "div",
+                  { staticClass: "rted__Exp--item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          to: {
+                            name: "experiences_list_by_cat",
+                            params: { category_name: category.slug }
+                          }
+                        }
+                      },
+                      [
+                        _c("figure", { staticClass: "rted__Exp--img" }, [
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "lazy",
+                                rawName: "v-lazy",
+                                value: category.image,
+                                expression: "category.image"
+                              }
+                            ],
+                            staticClass: "img-responsive",
+                            attrs: { alt: category.title, src: category.image }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "exp_count category_name_title" },
+                          [
+                            _vm._v(
+                              _vm._s(category.total_exp) + "+ Experiences "
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      { attrs: { title: "" } },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "experiences_list_by_cat",
+                                params: { category_name: category.slug }
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(category.title) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "section",
-        {
-          staticClass: "features__Search sub__Category--banner",
-          staticStyle: {
-            background:
-              "#000 url(http://61.246.140.190/godoexperience/uploads/categories/0d00cbd6-c7eb-48e7-9128-6a27699ff154.png)"
-          }
-        },
-        [
-          _c("div", { staticClass: "features__Search__Content" }, [
-            _c("h1", [
-              _vm._v(
-                "DPSG Palam Vihar Summer Activities to Help Your Kids Beat the Heat"
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "DPSG Palam Vihar Summer Activities to Help Your Kids Beat the Heat"
-              )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("main", { attrs: { id: "main__Content" } }, [
-        _c("section", { staticClass: "sub__Ctgry--abut" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row cst__Row" }, [
-              _c(
-                "div",
-                { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-5" },
-                [
-                  _c("div", { staticClass: "sub__Abut--title" }, [
-                    _c("h2", [
-                      _vm._v(
-                        "DPSG Palam Vihar Summer Activities to Help Your Kids Beat the Heat"
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-7" },
-                [
-                  _c("div", { staticClass: "sub__Abut--content" }, [
-                    _c("p", [
-                      _vm._v(
-                        "DPSG Palam Vihar Summer Activities to Help Your Kids Beat the Heat"
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("section", { staticClass: "rted__Exp" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "listing__Title" }, [
-              _c("h3", [_vm._v("All Categories")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "rted__Exp--content cst__Row" }, [
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experiences?category=historical-places-in-india"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Historical Places In India",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/b3cebb55-5b22-4cc2-a6cf-fce9f995b8e0.jpg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/b3cebb55-5b22-4cc2-a6cf-fce9f995b8e0.jpg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("0+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experiences?category=historical-places-in-india"
-                        }
-                      },
-                      [_vm._v("Historical Places In India")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=care"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Care",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/6ffe7d87-a3d2-4c00-ab60-ee7a3ff1bb63.jpg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/6ffe7d87-a3d2-4c00-ab60-ee7a3ff1bb63.jpg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("0+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/godoexperience/experiences?category=care"
-                        }
-                      },
-                      [_vm._v("Care")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experiences?category=rock-climbing"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Rock climbing",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/d9e7e349-5967-4f71-995f-b77d75a334e9.jpg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/d9e7e349-5967-4f71-995f-b77d75a334e9.jpg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("0+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experiences?category=rock-climbing"
-                        }
-                      },
-                      [_vm._v("Rock climbing")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=cycling"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Cycling",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/da3270dd-785d-47ea-8187-2ff45225fee4.jpg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/da3270dd-785d-47ea-8187-2ff45225fee4.jpg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("0+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/godoexperience/experiences?category=cycling"
-                        }
-                      },
-                      [_vm._v("Cycling")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=boating"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Boating",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/78ec24e1-2706-42d3-bda9-f08b66d619e7.jpg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/78ec24e1-2706-42d3-bda9-f08b66d619e7.jpg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("2+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/godoexperience/experiences?category=boating"
-                        }
-                      },
-                      [_vm._v("Boating")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=active"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Active",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/0d00cbd6-c7eb-48e7-9128-6a27699ff154.png",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/0d00cbd6-c7eb-48e7-9128-6a27699ff154.png"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("0+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/godoexperience/experiences?category=active"
-                        }
-                      },
-                      [_vm._v("Active")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=culinary"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Culinary",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/fb46cdbe-5668-4a36-8f09-529a3cd8f153.png",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/fb46cdbe-5668-4a36-8f09-529a3cd8f153.png"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("0+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/godoexperience/experiences?category=culinary"
-                        }
-                      },
-                      [_vm._v("Culinary")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=adventures"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Adventures",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/f2ef4129-237a-4f4b-9d49-a85aa71c8250.jpeg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/f2ef4129-237a-4f4b-9d49-a85aa71c8250.jpeg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("6+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experiences?category=adventures"
-                        }
-                      },
-                      [_vm._v("Adventures")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=animals"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Animals",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/98a22686-a345-4dff-93b3-cee7e9ac2faf.jpg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/98a22686-a345-4dff-93b3-cee7e9ac2faf.jpg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("8+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/godoexperience/experiences?category=animals"
-                        }
-                      },
-                      [_vm._v("Animals")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "/godoexperience/experiences?category=cooking"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          staticStyle: { display: "block" },
-                          attrs: {
-                            alt: "Cooking",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/categories/1ce14ba5-aa0e-4ab9-955d-5c7180f4c075.jpg",
-                            src:
-                              "http://61.246.140.190/godoexperience/uploads/categories/1ce14ba5-aa0e-4ab9-955d-5c7180f4c075.jpg"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "exp_count category_name_title" },
-                        [_vm._v("4+ Experiences ")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { title: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/godoexperience/experiences?category=cooking"
-                        }
-                      },
-                      [_vm._v("Cooking")]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "listing__Title" }, [
+      _c("h3", [_vm._v("All Categories")])
     ])
   }
 ]
@@ -39217,1289 +40431,177 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "section",
+      {
+        staticClass: "features__Search sub__Category--banner",
+        style: { backgroundImage: "url(" + _vm.oneExp.image + ")" }
+      },
+      [
+        _c("div", { staticClass: "features__Search__Content" }, [
+          _c("h1", [
+            _vm._v(
+              "\n              " + _vm._s(_vm.oneExp.title) + "\n            "
+            )
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("main", { attrs: { id: "main__Content" } }, [
+      _c("section", { staticClass: "sub__Ctgry--abut" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row cst__Row" }, [
+            _c(
+              "div",
+              { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-5" },
+              [
+                _c("div", { staticClass: "sub__Abut--title" }, [
+                  _c("h2", [
+                    _vm._v(
+                      "\n                               " +
+                        _vm._s(_vm.oneExp.title) +
+                        "\n                            "
+                    )
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-7" },
+              [
+                _c("div", { staticClass: "sub__Abut--content" }, [
+                  _c("p", [_vm._v(" " + _vm._s(_vm.oneExp.sub_title))])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" }),
+      _vm._v(" "),
+      _c("section", { staticClass: "features__Exp" }, [
+        _c("div", { staticClass: "container" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "features__Exp--content" }, [
+            _c(
+              "div",
+              { staticClass: "row cst__Row" },
+              _vm._l(_vm.experiences, function(experience, key) {
+                return _c(
+                  "div",
+                  {
+                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "features__Exp--item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "experiences_detail",
+                                params: { exp_slug: experience.slug }
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "features__Exp--img" }, [
+                              _c("img", {
+                                directives: [
+                                  {
+                                    name: "lazy",
+                                    rawName: "v-lazy",
+                                    value: experience.image,
+                                    expression: "experience.image"
+                                  }
+                                ],
+                                staticClass: "img-responsive",
+                                attrs: {
+                                  alt: experience.title,
+                                  src: experience.image
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "features__Exp--details" },
+                              [
+                                _c(
+                                  "p",
+                                  { staticClass: "category_name_title" },
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(experience.category.name) +
+                                        "\n                                        "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "features__Exp--title",
+                                    attrs: { title: experience.title }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(experience.title) +
+                                        "\n                                        "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "features__Exp--rating" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-star",
+                                      attrs: { "aria-hidden": "true" }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [_vm._v("4.87")])
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" })
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "section",
-        {
-          staticClass: "features__Search sub__Category--banner",
-          staticStyle: {
-            background:
-              "#000 url(http://61.246.140.190/godoexperience/uploads/experiences/a9d3fe4a-673f-4fe8-a049-1c33de05c45e.jpg)"
-          }
-        },
-        [
-          _c("div", { staticClass: "features__Search__Content" }, [
-            _c("h1", [
-              _vm._v(
-                "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen"
-              )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("main", { attrs: { id: "main__Content" } }, [
-        _c("section", { staticClass: "sub__Ctgry--abut" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row cst__Row" }, [
-              _c(
-                "div",
-                { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-5" },
-                [
-                  _c("div", { staticClass: "sub__Abut--title" }, [
-                    _c("h2", [
-                      _vm._v(
-                        "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen"
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-xs-12 col-sm-12 col-md-6 col-lg-7" },
-                [
-                  _c("div", { staticClass: "sub__Abut--content" }, [
-                    _c("p"),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen, devour a feast, drink like royalty, \n                                "
-                      ),
-                      _c("br"),
-                      _vm._v(
-                        " watch a private Live Drag show and much more. So, s..... "
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "clearfix" }),
-        _vm._v(" "),
-        _c("section", { staticClass: "features__Exp" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "listing__Title" }, [
-              _c("h3", [_vm._v("Our Features Experience")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "features__Exp--content" }, [
-              _c("div", { staticClass: "row cst__Row" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/15-best-culinary-tour-experiences-and-cooking-classes-in-india"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              staticStyle: { display: "block" },
-                              attrs: {
-                                alt:
-                                  "15 Best Culinary Tour Experiences and Cooking Classes in India",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/0e8f035a-b8d7-480b-bf23-7f05da46d7b7.jpg",
-                                src:
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/0e8f035a-b8d7-480b-bf23-7f05da46d7b7.jpg"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Cooking")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title:
-                                    "15 Best Culinary Tour Experiences and Cooking Classes in India"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            15 Best Culinary Tour Experiences and Cooking Classes in India "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $128/ person . 2 day")
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/secrets-of-newfoundland-s-irish-loop"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              staticStyle: { display: "block" },
-                              attrs: {
-                                alt: "Secrets of Newfoundland's Irish Loop",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/d2baea19-7337-4675-b899-3aacd2fc80cd.jpg",
-                                src:
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/d2baea19-7337-4675-b899-3aacd2fc80cd.jpg"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Adventures")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title: "Secrets of Newfoundland's Irish Loop"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            Secrets of Newfoundland's Irish Loop "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $220/ person . 5 day")
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/tracking-bumblebees-in-the-redwoods"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              staticStyle: { display: "block" },
-                              attrs: {
-                                alt: "Tracking Bumblebees in the Redwoods",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/3131bc28-5d3e-425a-847a-826f819c17e7.jpg",
-                                src:
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/3131bc28-5d3e-425a-847a-826f819c17e7.jpg"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Adventures")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title: "Tracking Bumblebees in the Redwoods"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            Tracking Bumblebees in the Redwoods "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $210/ person . 2 day")
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/our-journey-will-starts-with-a-walking-in-which-we-will-discover-the-village"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              staticStyle: { display: "block" },
-                              attrs: {
-                                alt:
-                                  "Our journey will starts with a walking in which we will discover the village",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/ff1c9a52-81ac-409c-b8ed-1c551141203b.jpeg",
-                                src:
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/ff1c9a52-81ac-409c-b8ed-1c551141203b.jpeg"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Animals")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title:
-                                    "Our journey will starts with a walking in which we will discover the village"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            Our journey will starts with a walking in which we will discover the village "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $540/ person . 1 day")
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/professionally-transformed-in-a-fabulous-queen"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              attrs: {
-                                alt:
-                                  "professionally transformed in a fabulous Queen",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/08d7b209-c11b-4fed-bc81-eae129ec0a31.jpeg",
-                                src:
-                                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Animals")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title:
-                                    "professionally transformed in a fabulous Queen"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            professionally transformed in a fabulous Queen "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $520/ person . 5 hours")
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/udaipur-is-a-popular-city-in-rajasthan-not-just-for-its-beauty-and-history-but-the-heritage-of-indian-gastronomy"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              attrs: {
-                                alt:
-                                  "Udaipur is a popular city in Rajasthan not just for its beauty and history but the heritage of Indian gastronomy",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/0d1fd3af-3972-4792-9b4a-446c5ce6365a.jpg",
-                                src:
-                                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Cooking")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title:
-                                    "Udaipur is a popular city in Rajasthan not just for its beauty and history but the heritage of Indian gastronomy"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            Udaipur is a popular city in Rajasthan not just for its beauty and history but the heritage of Indian gastronomy "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $455/ person . 5 day")
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/nova-scotia--maritime-lyrics---lore"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              attrs: {
-                                alt: "Nova Scotia: Maritime Lyrics & Lore",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/a9a2baa2-8a41-46aa-a499-b76458f7cfad.jpeg",
-                                src:
-                                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Adventures")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title: "Nova Scotia: Maritime Lyrics & Lore"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            Nova Scotia: Maritime Lyrics & Lore "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $453/ person . 7 day")
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-6 col-sm-6 col-md-4 col-lg-3 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "features__Exp--item" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href:
-                              "/godoexperience/experience/tunisia-through-the-sands-of-time"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "features__Exp--img" }, [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              attrs: {
-                                alt: "Tunisia Through the Sands of Time",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/experiences/3c015dd6-26f7-4ff0-a04c-e02cdcd0ee54.jpg",
-                                src:
-                                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "features__Exp--details" }, [
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Adventures")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "features__Exp--title",
-                                attrs: {
-                                  title: "Tunisia Through the Sands of Time"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                            Tunisia Through the Sands of Time "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--rating" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-star",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _c("span", [_vm._v("4.87")])
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $200/ person . 2 day")
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "clearfix" }),
-        _vm._v(" "),
-        _c("section", { staticClass: "rted__Exp" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "listing__Title" }, [
-              _c("h3", [_vm._v("Experiences For Product")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "rted__Exp--content cst__Row" }, [
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/there-are-many-variations-of-passages-of-lorem-ipsum-available"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "There are many variations of passages of Lorem Ipsum available",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/340f05ed-d639-423c-99c7-080224bb7ae8.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Animals")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "There are many variations of passages of Lorem Ipsum available"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    There are many variations of passages of... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $260/ person . 3 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/contrary-to-popular-belief"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt: "Contrary to popular belief",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/c69699f8-5371-4e81-a2d9-f02bf166e5d0.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Animals")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        { attrs: { title: "Contrary to popular belief" } },
-                        [
-                          _vm._v(
-                            "\n                                    Contrary to popular belief... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $700/ person . 4 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting-industry"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/75b509d5-b4c4-456b-baf6-489336dbd26e.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Cooking")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Lorem Ipsum is simply dummy text of the ... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $400/ person . 2 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/professionally-transformed-in-a-fabulous-queen"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "professionally transformed in a fabulous Queen",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/08d7b209-c11b-4fed-bc81-eae129ec0a31.jpeg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Animals")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "professionally transformed in a fabulous Queen"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    professionally transformed in a fabulous... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $520/ person . 5 hours")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/you-ll-cook-authentic-portuguese-recipes--be-professionally-transformed-in-a-fabulous-queen"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/a9d3fe4a-673f-4fe8-a049-1c33de05c45e.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Animals")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    You'll cook authentic Portuguese recipes... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $300/ person . 2 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/fjskfjklsdfjklsdjf-kldsf-dfjsfklj-dsklf-jdklsfj-kldsfjkljklj"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "fjskfjklsdfjklsdjf kldsf dfjsfklj dsklf jdklsfj kldsfjkljklj",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/1a5fc8ba-cf8f-4e87-898a-ab00374b4aff.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Cooking")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "fjskfjklsdfjklsdjf kldsf dfjsfklj dsklf jdklsfj kldsfjkljklj"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    fjskfjklsdfjklsdjf kldsf dfjsfklj dsklf ... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $150/ person . 2 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/this-island-is-canada-s-best-kept-secret"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt: "This Island is Canada's Best Kept Secret",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/4e81934a-c98c-4390-912e-2d85d31c8363.jpeg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Adventures")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title: "This Island is Canada's Best Kept Secret"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    This Island is Canada's Best Kept Secret... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $350/ person . 1 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/observe-cloud-forest-elephants-and-meet-the-community-who-care-for-them"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "Observe cloud forest elephants and meet the community who care for them",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/12c03a44-1972-4af1-924e-b8741106bde0.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Animals")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "Observe cloud forest elephants and meet the community who care for them"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Observe cloud forest elephants and meet ... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $452/ person . 1 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/fishing-trip--in-the-pacific-northwest"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt: "Fishing trip  in the Pacific Northwest",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/e7a31353-c85f-458c-8617-c5a976a4a7e4.png",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Boating")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title: "Fishing trip  in the Pacific Northwest"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Fishing trip in the Pacific Northwest... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $542/ person . 1 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/we-will-also-collect-ingredients-useful-in-our-cooking"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "We will also collect ingredients useful in our cooking",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/c7354d2f-7636-4f84-a698-60e25c9a0e3c.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Boating")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "We will also collect ingredients useful in our cooking"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    We will also collect ingredients useful ... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $855/ person . 2 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/our-journey-will-starts-with-a-walking-in-which-we-will-discover-the-village"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt:
-                              "Our journey will starts with a walking in which we will discover the village",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/ff1c9a52-81ac-409c-b8ed-1c551141203b.jpeg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Animals")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            title:
-                              "Our journey will starts with a walking in which we will discover the village"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Our journey will starts with a walking i... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $540/ person . 1 day")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                _c("div", { staticClass: "rted__Exp--item" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href:
-                          "/godoexperience/experience/adventuring-with-penni-the-dog"
-                      }
-                    },
-                    [
-                      _c("figure", { staticClass: "rted__Exp--img" }, [
-                        _c("img", {
-                          staticClass: "img-responsive lazy",
-                          attrs: {
-                            alt: "Adventuring with Penni the Dog",
-                            "data-original":
-                              "http://61.246.140.190/godoexperience/uploads/experiences/9ff1eea9-5891-41e2-b066-eaee3f9d7932.jpg",
-                            src:
-                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "category_name_title" }, [
-                        _vm._v("Animals")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        { attrs: { title: "Adventuring with Penni the Dog" } },
-                        [
-                          _vm._v(
-                            "\n                                    Adventuring with Penni the Dog... "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "price__Item--prduct" }, [
-                        _vm._v("From $622/ person . 5 day")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "listing__Title" }, [
+      _c("h3", [_vm._v("Experience List")])
     ])
   }
 ]
@@ -40524,6 +40626,639 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "homeComponent" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("main", { attrs: { id: "main__Content" } }, [
+      _c("div", { staticClass: "hm__Block" }, [
+        _c("section", { staticClass: "activities__Catgry" }, [
+          _c("div", { staticClass: "container" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row cst__Row" },
+              _vm._l(_vm.homeData.top_categories, function(category, key) {
+                return _c(
+                  "div",
+                  {
+                    key: key,
+                    staticClass: "col-xs-12 col-sm-4 col-md-4 col-lg-4 cst__Col"
+                  },
+                  [
+                    _c("div", { staticClass: "activities__Catgry--content" }, [
+                      _c(
+                        "figure",
+                        { staticClass: "activities__Catgry--img" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "experiences_list_by_cat",
+                                  params: { category_name: category.slug }
+                                }
+                              }
+                            },
+                            [
+                              _c("img", {
+                                directives: [
+                                  {
+                                    name: "lazy",
+                                    rawName: "v-lazy",
+                                    value: category.image,
+                                    expression: "category.image"
+                                  }
+                                ],
+                                staticClass: "img-responsive lazy",
+                                staticStyle: { display: "block" },
+                                attrs: {
+                                  alt: "Adventures",
+                                  src: category.image
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "figcation" }, [
+                                _vm._v(_vm._s(category.name))
+                              ])
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "activities__Catgry--link" },
+                        [
+                          _c("span", { staticClass: "cat_exp_count" }, [
+                            _vm._v(_vm._s(category.total_exp) + "+ Experiences")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "experiences_list_by_cat",
+                                  params: { category_name: category.slug }
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(category.name) +
+                                  "\n                                    "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [
+                            _vm._v(
+                              " \n                                        " +
+                                _vm._s(category.title) +
+                                "\n                                    "
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "clearfix" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "row cst__Row" }, [
+              _c("div", { staticClass: "col-sm-12 cst__Col" }, [
+                _c(
+                  "div",
+                  { staticClass: "show__all--exp" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "exp__Btn--outline",
+                        attrs: {
+                          to: { name: "experience_categories_list" },
+                          title: "Show All Categories"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          " \n                                   Show all "
+                        ),
+                        _c("i", {
+                          staticClass: "fa fa-angle-right",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" }),
+        _vm._v(" "),
+        _c("section", { staticClass: "meet__Host--world" }, [
+          _c("div", { staticClass: "container" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "meet__Host--content cst__Row" },
+              _vm._l(_vm.homeData.top_world_around_experiences, function(
+                experience,
+                key
+              ) {
+                return _c(
+                  "div",
+                  { key: key, staticClass: "meet__Host--col cst__Col" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "meet__Host--item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "experiences_detail",
+                                params: { exp_slug: experience.slug }
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "meet__Host--img" }, [
+                              _c("img", {
+                                directives: [
+                                  {
+                                    name: "lazy",
+                                    rawName: "v-lazy",
+                                    value: experience.image,
+                                    expression: "experience.image"
+                                  }
+                                ],
+                                staticClass: "img-responsive",
+                                attrs: {
+                                  alt: "experience.title",
+                                  src: experience.image
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "category_name_title" }, [
+                              _vm._v(_vm._s(experience.category.name))
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                staticClass: "exp_title",
+                                attrs: { title: experience.title }
+                              },
+                              [_vm._v(_vm._s(experience.title))]
+                            ),
+                            _vm._v(" "),
+                            _c("span", [
+                              _vm._v(
+                                "From  $" +
+                                  _vm._s(experience.price) +
+                                  "/ person . " +
+                                  _vm._s(
+                                    experience.duration +
+                                      " " +
+                                      experience.duration_type
+                                  )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "clearfix" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "row cst__Row" }, [
+              _c("div", { staticClass: "col-sm-12 cst__Col" }, [
+                _c(
+                  "div",
+                  { staticClass: "show__all--exp" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "exp__Btn--outline",
+                        attrs: {
+                          to: { name: "experiences_list" },
+                          title: "Show All Categories"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          " \n                                   Show all "
+                        ),
+                        _c("i", {
+                          staticClass: "fa fa-angle-right",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" }),
+        _vm._v(" "),
+        _c("section", { staticClass: "features__Exp" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row cst__Row" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "features__Exp--content" },
+                _vm._l(_vm.homeData.top_featured_experiences, function(
+                  experience,
+                  key
+                ) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass:
+                        "cst__Col col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "features__Exp--item" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "experiences_detail",
+                                  params: { exp_slug: experience.slug }
+                                }
+                              }
+                            },
+                            [
+                              _c("div", { staticClass: "features__Exp--img" }, [
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "lazy",
+                                      rawName: "v-lazy",
+                                      value: experience.image,
+                                      expression: "experience.image"
+                                    }
+                                  ],
+                                  staticClass: "img-responsive",
+                                  attrs: {
+                                    alt: "experience.title",
+                                    src: experience.image
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "category_name_title" }, [
+                                _vm._v(_vm._s(experience.category.name))
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "features__Exp--details" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "features__Exp--title",
+                                      attrs: { title: experience.title }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(experience.title) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "features__Exp--rating" },
+                                    [
+                                      _c("i", {
+                                        staticClass: "fa fa-star",
+                                        attrs: { "aria-hidden": "true" }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("span", [_vm._v("4.97")])
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticClass: "price__Item--prduct" },
+                                [
+                                  _vm._v(
+                                    "\n                                            From  $" +
+                                      _vm._s(experience.price) +
+                                      "/ person . " +
+                                      _vm._s(
+                                        experience.duration +
+                                          " " +
+                                          experience.duration_type
+                                      ) +
+                                      "\n                                        "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "clearfix" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "row cst__Row" }, [
+              _c("div", { staticClass: "col-sm-12 cst__Col" }, [
+                _c(
+                  "div",
+                  { staticClass: "show__all--exp" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "exp__Btn--outline",
+                        attrs: {
+                          to: { name: "experiences_list" },
+                          title: "Show All Categories"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          " \n                                   Show all "
+                        ),
+                        _c("i", {
+                          staticClass: "fa fa-angle-right",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" }),
+        _vm._v(" "),
+        _c("section", { staticClass: "rted__Exp" }, [
+          _c("div", { staticClass: "container" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "rted__Exp--content cst__Row" },
+              _vm._l(_vm.homeData.top_rated_experiences, function(
+                experience,
+                key
+              ) {
+                return _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
+                  _c(
+                    "div",
+                    { staticClass: "rted__Exp--item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: "experiences_detail",
+                              params: { exp_slug: experience.slug }
+                            }
+                          }
+                        },
+                        [
+                          _c("figure", { staticClass: "rted__Exp--img" }, [
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "lazy",
+                                  rawName: "v-lazy",
+                                  value: experience.image,
+                                  expression: "experience.image"
+                                }
+                              ],
+                              staticClass: "img-responsive",
+                              attrs: {
+                                alt: experience.title,
+                                src: experience.image
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "category_name_title" }, [
+                            _vm._v(_vm._s(experience.category.name))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              staticClass: "exp_title",
+                              attrs: { title: experience.title }
+                            },
+                            [_vm._v(_vm._s(experience.title))]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [
+                            _vm._v(
+                              "From  $" +
+                                _vm._s(experience.price) +
+                                "/ person . " +
+                                _vm._s(
+                                  experience.duration +
+                                    " " +
+                                    experience.duration_type
+                                )
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "clearfix" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "row cst__Row" }, [
+              _c("div", { staticClass: "col-sm-12 cst__Col" }, [
+                _c(
+                  "div",
+                  { staticClass: "show__all--exp" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "exp__Btn--outline",
+                        attrs: {
+                          to: { name: "experiences_list" },
+                          title: "Show All Categories"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          " \n                                   Show all "
+                        ),
+                        _c("i", {
+                          staticClass: "fa fa-angle-right",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" })
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "section",
+      {
+        staticClass: "features__Search",
+        staticStyle: {
+          background:
+            "#000 url(http://61.246.140.190/godoexperience/asset/images/background/banner4.jpg)"
+        }
+      },
+      [
+        _c("div", { staticClass: "features__Search__Content" }, [
+          _c("h1", [_vm._v("Go Do Experiences are vetted for quality")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "features__Search__Input features__mod" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { placeholder: "Search", type: "text" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "features__Search__Input" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { placeholder: "mm/dd/yyyy", type: "text" }
+            }),
+            _vm._v(" "),
+            _c("button", [_vm._v("Search")])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "activities__Catgry--title" }, [
+      _c("h2", [_vm._v("One-of-a-kind activities hosted by locals")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "listing__Title" }, [
+      _c("h3", [_vm._v("Meet hosts around the world")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-12 cst__Col" }, [
+      _c("div", { staticClass: "listing__Title" }, [
+        _c("h3", [_vm._v("Our Features Experience")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "listing__Title" }, [
+      _c("h3", [_vm._v("Top-rated experiences")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=template&id=cc3944c0&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=template&id=cc3944c0& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
@@ -40531,569 +41266,454 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "homeComponent" } }, [
-      _c(
-        "section",
-        {
-          staticClass: "features__Search",
-          staticStyle: {
-            background:
-              "#000 url(http://61.246.140.190/godoexperience/asset/images/background/banner4.jpg)"
-          }
-        },
-        [
-          _c("div", { staticClass: "features__Search__Content" }, [
-            _c("h1", [_vm._v("Go Do Experiences are vetted for quality")]),
+    return _c("main", { staticClass: "inner-Page" }, [
+      _c("div", { staticClass: "inner-Page-content" }, [
+        _c("div", { staticClass: "cst-breadcrumbs" }, [
+          _c("h1", [_vm._v("About us")]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _c("a", { attrs: { href: "<?= Url::to(['/']);?>" } }, [
+                _vm._v("home")
+              ])
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "features__Search__Input features__mod" },
-              [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { placeholder: "Search", type: "text" }
-                })
-              ]
-            ),
+            _c("li", [_c("span", [_vm._v("/")])]),
             _vm._v(" "),
-            _c("div", { staticClass: "features__Search__Input" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { placeholder: "mm/dd/yyyy", type: "text" }
-              }),
-              _vm._v(" "),
-              _c("button", [_vm._v("Search")])
+            _c("li", [
+              _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                _vm._v("about us")
+              ])
             ])
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("main", { attrs: { id: "main__Content" } }, [
-        _c("div", { staticClass: "hm__Block" }, [
-          _c("section", { staticClass: "activities__Catgry" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "activities__Catgry--title" }, [
-                _c("h2", [_vm._v("One-of-a-kind activities hosted by locals")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row cst__Row" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-12 col-sm-4 col-md-4 col-lg-4 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "activities__Catgry--content" }, [
-                      _c("figure", { staticClass: "activities__Catgry--img" }, [
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=template&id=ea760e9a&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=template&id=ea760e9a& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("main", { staticClass: "inner-Page" }, [
+      _c("section", { staticClass: "inner-Page-content" }, [
+        _c("div", { staticClass: "cst-breadcrumbs" }, [
+          _c("h1", [_vm._v("contact us")]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _c("a", { attrs: { href: "/godoexperience-php/" } }, [
+                _vm._v("home")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [_c("span", [_vm._v("/")])]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                _vm._v("Contact us")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "contact-page" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-xs-12 col-sm-12 col-md-4 col-lg-4" },
+                [
+                  _c("div", { staticClass: "contact-title" }, [
+                    _c("h3", [_vm._v("get in touch")]),
+                    _vm._v(" "),
+                    _c("p")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "contct-getin-touch" }, [
+                    _c("div", { staticClass: "contct-get-item" }, [
+                      _c("div", { staticClass: "contct-get-item-icn" }, [
+                        _c("i", {
+                          staticClass: "fa fa-phone",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "contct-get-item-info" }, [
                         _c(
                           "a",
                           {
                             attrs: {
-                              href:
-                                "/godoexperience/experiences?category=cooking"
+                              "data-toggle": "tooltip",
+                              title: "Make a call us",
+                              href: "tel:(+01) 34 56 7890"
                             }
                           },
                           [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              staticStyle: { display: "block" },
-                              attrs: {
-                                alt: "Cooking",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/categories/1ce14ba5-aa0e-4ab9-955d-5c7180f4c075.jpg",
-                                src:
-                                  "http://61.246.140.190/godoexperience/uploads/categories/1ce14ba5-aa0e-4ab9-955d-5c7180f4c075.jpg"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "figcation" }, [
-                              _vm._v("Cooking")
-                            ])
+                            _vm._v(
+                              "\n                                    (+01) 34 56 7890                                    "
+                            )
                           ]
                         )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "contct-get-item" }, [
+                      _c("div", { staticClass: "contct-get-item-icn" }, [
+                        _c("i", {
+                          staticClass: "fa fa-envelope-o",
+                          attrs: { "aria-hidden": "true" }
+                        })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "activities__Catgry--link" }, [
-                        _c("span", { staticClass: "cat_exp_count" }, [
-                          _vm._v("4+ Experiences")
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { attrs: { href: "sub-category.html" } }, [
-                          _vm._v("Cooking")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            " \n                                        Make and eat meals with locals who treat you like family                        \n                                    "
-                          )
-                        ])
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-12 col-sm-4 col-md-4 col-lg-4 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "activities__Catgry--content" }, [
-                      _c("figure", { staticClass: "activities__Catgry--img" }, [
+                      _c("div", { staticClass: "contct-get-item-info" }, [
                         _c(
                           "a",
                           {
                             attrs: {
-                              href:
-                                "/godoexperience/experiences?category=animals"
+                              "data-toggle": "tooltip",
+                              title: "Email Us",
+                              href: "mailto:info@godoexperience.com"
                             }
                           },
                           [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              staticStyle: { display: "block" },
-                              attrs: {
-                                alt: "Animals",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/categories/98a22686-a345-4dff-93b3-cee7e9ac2faf.jpg",
-                                src:
-                                  "http://61.246.140.190/godoexperience/uploads/categories/98a22686-a345-4dff-93b3-cee7e9ac2faf.jpg"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "figcation" }, [
-                              _vm._v("Animals")
-                            ])
+                            _vm._v(
+                              "\n                                        info@godoexperience.com                                    "
+                            )
                           ]
                         )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "contct-get-item" }, [
+                      _c("div", { staticClass: "contct-get-item-icn" }, [
+                        _c("i", {
+                          staticClass: "fa fa-map-o",
+                          attrs: { "aria-hidden": "true" }
+                        })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "activities__Catgry--link" }, [
-                        _c("span", { staticClass: "cat_exp_count" }, [
-                          _vm._v("8+ Experiences")
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { attrs: { href: "sub-category.html" } }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            " \n                                        Magical encounters hosted by animals and their advocates                       \n                                    "
-                          )
-                        ])
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-xs-12 col-sm-4 col-md-4 col-lg-4 cst__Col"
-                  },
-                  [
-                    _c("div", { staticClass: "activities__Catgry--content" }, [
-                      _c("figure", { staticClass: "activities__Catgry--img" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href:
-                                "/godoexperience/experiences?category=adventures"
-                            }
-                          },
-                          [
-                            _c("img", {
-                              staticClass: "img-responsive lazy",
-                              staticStyle: { display: "block" },
-                              attrs: {
-                                alt: "Adventures",
-                                "data-original":
-                                  "http://61.246.140.190/godoexperience/uploads/categories/f2ef4129-237a-4f4b-9d49-a85aa71c8250.jpeg",
-                                src:
-                                  "http://61.246.140.190/godoexperience/uploads/categories/f2ef4129-237a-4f4b-9d49-a85aa71c8250.jpeg"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "figcation" }, [
-                              _vm._v("Adventures")
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "activities__Catgry--link" }, [
-                        _c("span", { staticClass: "cat_exp_count" }, [
-                          _vm._v("6+ Experiences")
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { attrs: { href: "sub-category.html" } }, [
-                          _vm._v("Adventures")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            " \n                                        Hosted journeys to extraordinary places – all you have to do is show up\n                                    "
-                          )
-                        ])
-                      ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "row cst__Row" }, [
-                _c("div", { staticClass: "col-sm-12 cst__Col" }, [
-                  _c("div", { staticClass: "show__all--exp" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "exp__Btn--outline",
-                        attrs: {
-                          href: "/godoexperience/categories",
-                          title: "Show All Categories"
-                        }
-                      },
-                      [
+                      _c("div", { staticClass: "contct-get-item-info" }, [
                         _vm._v(
-                          "\n                                   Show all "
-                        ),
-                        _c("i", {
-                          staticClass: "fa fa-angle-right",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    )
+                          "\n                                    San Diego , CA 92120 USA                                "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "contct-getin-social" }, [
+                      _c("ul", [
+                        _c("li", [
+                          _c("a", { attrs: { href: "" } }, [
+                            _c("i", {
+                              staticClass: "fa fa-facebook",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "" } }, [
+                            _c("i", {
+                              staticClass: "fa fa-instagram",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "" } }, [
+                            _c("i", {
+                              staticClass: "fa fa-twitter",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "" } }, [
+                            _c("i", {
+                              staticClass: "fa fa-pinterest-p",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ])
+                        ])
+                      ])
+                    ])
                   ])
-                ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-xs-12 col-sm-12 col-md-8 col-lg-8" },
+                [
+                  _c("div", { staticClass: "contact-msg" }, [
+                    _c("div", { staticClass: "experience-categories-form" }, [
+                      _c(
+                        "form",
+                        {
+                          attrs: {
+                            id: "experiences_form",
+                            action: "/godoexperience-php/contact-us",
+                            method: "post"
+                          }
+                        },
+                        [
+                          _c("input", {
+                            attrs: {
+                              type: "hidden",
+                              name: "_csrf-frontend",
+                              value:
+                                "7mbX2A-AV2Y4bJ0I2-Y8QcfqoDxAqR0PbCWRzfAMYaiICOOoV7EmVnUnyUGEnFErgqPHaSafdTgpVM6MhWogwQ=="
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "form-group field-contactus-contact_name required"
+                            },
+                            [
+                              _c("label", { staticClass: "label_Mod" }, [
+                                _vm._v("Your Name"),
+                                _c("sub", [_vm._v("*")])
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control input_Mod",
+                                attrs: {
+                                  type: "text",
+                                  id: "contactus-contact_name",
+                                  name: "ContactUs[contact_name]",
+                                  placeholder: "Enter your name..",
+                                  "aria-required": "true"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "help-block" })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "form-group field-contactus-contact_email required"
+                            },
+                            [
+                              _c("label", { staticClass: "label_Mod" }, [
+                                _vm._v("Email"),
+                                _c("sub", [_vm._v("*")])
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control input_Mod",
+                                attrs: {
+                                  type: "text",
+                                  id: "contactus-contact_email",
+                                  name: "ContactUs[contact_email]",
+                                  placeholder: "Enter your name..",
+                                  "aria-required": "true"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "help-block" })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "form-group field-contactus-contact_phone required"
+                            },
+                            [
+                              _c("label", { staticClass: "label_Mod" }, [
+                                _vm._v("Phone"),
+                                _c("sub", [_vm._v("*")])
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control input_Mod",
+                                attrs: {
+                                  type: "text",
+                                  id: "contactus-contact_phone",
+                                  name: "ContactUs[contact_phone]",
+                                  placeholder: "Enter your name..",
+                                  "aria-required": "true"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "help-block" })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "form-group field-contactus-contact_message required"
+                            },
+                            [
+                              _c("label", { staticClass: "label_Mod" }, [
+                                _vm._v("Message"),
+                                _c("sub", [_vm._v("*")])
+                              ]),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                staticClass: "form-control input_Mod",
+                                attrs: {
+                                  id: "contactus-contact_message",
+                                  name: "ContactUs[contact_message]",
+                                  rows: "6",
+                                  cols: "32",
+                                  placeholder: "Write your note.",
+                                  "aria-required": "true"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "help-block" })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "contact-msg-btn" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn_Primary",
+                                attrs: { type: "submit" }
+                              },
+                              [_vm._v("Submit")]
+                            )
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/Faq.vue?vue&type=template&id=5d1c9aaa&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/Faq.vue?vue&type=template&id=5d1c9aaa& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("main", { staticClass: "inner-Page" }, [
+      _c("section", { staticClass: "inner-Page-content" }, [
+        _c("div", { staticClass: "cst-breadcrumbs" }, [
+          _c("h1", [_vm._v("FAQ's")]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _c("a", { attrs: { href: "<?= Url::to(['/']);?>" } }, [
+                _vm._v("home")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [_c("span", [_vm._v("/")])]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                _vm._v("faq")
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "clearfix" }),
-          _vm._v(" "),
-          _c("section", { staticClass: "meet__Host--world" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "listing__Title" }, [
-                _c("h3", [_vm._v("Meet hosts around the world")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "meet__Host--content cst__Row" }, [
-                _c("div", { staticClass: "meet__Host--col cst__Col" }, [
-                  _c("div", { staticClass: "meet__Host--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/there-are-many-variations-of-passages-of-lorem-ipsum-available"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "meet__Host--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "There are many variations of passages of Lorem Ipsum available",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/340f05ed-d639-423c-99c7-080224bb7ae8.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "exp_title" }, [
-                          _vm._v(
-                            "There are many variations of passages of Lorem Ipsum available"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("From  $260/ person . 3 day")])
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "meet__Host--col cst__Col" }, [
-                  _c("div", { staticClass: "meet__Host--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/contrary-to-popular-belief"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "meet__Host--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt: "Contrary to popular belief",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/c69699f8-5371-4e81-a2d9-f02bf166e5d0.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "exp_title" }, [
-                          _vm._v("Contrary to popular belief")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("From  $700/ person . 4 day")])
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "meet__Host--col cst__Col" }, [
-                  _c("div", { staticClass: "meet__Host--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting-industry"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "meet__Host--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/75b509d5-b4c4-456b-baf6-489336dbd26e.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Cooking")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "exp_title" }, [
-                          _vm._v(
-                            "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("From  $400/ person . 2 day")])
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "meet__Host--col cst__Col" }, [
-                  _c("div", { staticClass: "meet__Host--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/professionally-transformed-in-a-fabulous-queen"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "meet__Host--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "professionally transformed in a fabulous Queen",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/08d7b209-c11b-4fed-bc81-eae129ec0a31.jpeg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "exp_title" }, [
-                          _vm._v(
-                            "professionally transformed in a fabulous Queen"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("From  $520/ person . 5 hours")])
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "meet__Host--col cst__Col" }, [
-                  _c("div", { staticClass: "meet__Host--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/you-ll-cook-authentic-portuguese-recipes--be-professionally-transformed-in-a-fabulous-queen"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "meet__Host--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/a9d3fe4a-673f-4fe8-a049-1c33de05c45e.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "exp_title" }, [
-                          _vm._v(
-                            "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("From  $300/ person . 2 day")])
-                      ]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "row cst__Row" }, [
-                _c("div", { staticClass: "col-sm-12 cst__Col" }, [
-                  _c("div", { staticClass: "show__all--exp" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "exp__Btn--outline",
-                        attrs: {
-                          href: "/godoexperience/experiences",
-                          title: "Show All Experiences"
-                        }
-                      },
-                      [
-                        _vm._v("\n                    Show all "),
-                        _c("i", {
-                          staticClass: "fa fa-angle-right",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "clearfix" }),
-          _vm._v(" "),
-          _c("section", { staticClass: "features__Exp" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "row cst__Row" }, [
-                _c("div", { staticClass: "col-sm-12 cst__Col" }, [
-                  _c("div", { staticClass: "listing__Title" }, [
-                    _c("h3", [_vm._v("Our Features Experience")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "features__Exp--content" }, [
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "fqa-page" }, [
+            _c(
+              "div",
+              {
+                staticClass: "panel-group",
+                attrs: {
+                  id: "accordion",
+                  role: "tablist",
+                  "aria-multiselectable": "true"
+                }
+              },
+              [
+                _c("div", { staticClass: "panel panel-default" }, [
                   _c(
                     "div",
                     {
-                      staticClass:
-                        "cst__Col col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                      staticClass: "panel-heading",
+                      attrs: { role: "tab", id: "headingOne" }
                     },
                     [
-                      _c("div", { staticClass: "features__Exp--item" }, [
+                      _c("h4", { staticClass: "panel-title" }, [
                         _c(
                           "a",
                           {
                             attrs: {
-                              href:
-                                "/godoexperience/experience/there-are-many-variations-of-passages-of-lorem-ipsum-available"
+                              role: "button",
+                              "data-toggle": "collapse",
+                              "data-parent": "#accordion",
+                              href: "#collapseOne",
+                              "aria-expanded": "true",
+                              "aria-controls": "collapseOne"
                             }
                           },
                           [
-                            _c("div", { staticClass: "features__Exp--img" }, [
-                              _c("img", {
-                                staticClass: "img-responsive lazy",
-                                attrs: {
-                                  alt:
-                                    "There are many variations of passages of Lorem Ipsum available",
-                                  "data-original":
-                                    "http://61.246.140.190/godoexperience/uploads/experiences/340f05ed-d639-423c-99c7-080224bb7ae8.jpg",
-                                  src:
-                                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Animals")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--details" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--title" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                There are many variations of passages of Lorem Ipsum available "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--rating" },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-star",
-                                      attrs: { "aria-hidden": "true" }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("span", [_vm._v("4.97")])
-                                  ]
-                                )
-                              ]
+                            _vm._v(
+                              "\n                                    Where does it come from?\n                                "
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "price__Item--prduct" }, [
-                          _vm._v("From $260/ person . 3 day")
-                        ])
+                        )
                       ])
                     ]
                   ),
@@ -41101,71 +41721,51 @@ var staticRenderFns = [
                   _c(
                     "div",
                     {
-                      staticClass:
-                        "cst__Col col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                      staticClass: "panel-collapse collapse in",
+                      attrs: {
+                        id: "collapseOne",
+                        role: "tabpanel",
+                        "aria-labelledby": "headingOne"
+                      }
                     },
                     [
-                      _c("div", { staticClass: "features__Exp--item" }, [
+                      _c("div", { staticClass: "panel-body" }, [
+                        _vm._v(
+                          "\n                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\n                                has been the industry's standard dummy text ever since the 1500s, when an unknown\n                                printer took a galley of type and scrambled it to make a type specimen book. It has\n                                survived not only five centuries, but also the leap into electronic typesetting,\n                                remaining essentially unchanged. It was popularised in the 1960s with the release of\n                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop\n                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                            "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-heading",
+                      attrs: { role: "tab", id: "headingTwo" }
+                    },
+                    [
+                      _c("h4", { staticClass: "panel-title" }, [
                         _c(
                           "a",
                           {
+                            staticClass: "collapsed",
                             attrs: {
-                              href:
-                                "/godoexperience/experience/contrary-to-popular-belief"
+                              role: "button",
+                              "data-toggle": "collapse",
+                              "data-parent": "#accordion",
+                              href: "#collapseTwo",
+                              "aria-expanded": "false",
+                              "aria-controls": "collapseTwo"
                             }
                           },
                           [
-                            _c("div", { staticClass: "features__Exp--img" }, [
-                              _c("img", {
-                                staticClass: "img-responsive lazy",
-                                attrs: {
-                                  alt: "Contrary to popular belief",
-                                  "data-original":
-                                    "http://61.246.140.190/godoexperience/uploads/experiences/c69699f8-5371-4e81-a2d9-f02bf166e5d0.jpg",
-                                  src:
-                                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Animals")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--details" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--title" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                Contrary to popular belief "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--rating" },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-star",
-                                      attrs: { "aria-hidden": "true" }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("span", [_vm._v("4.97")])
-                                  ]
-                                )
-                              ]
+                            _vm._v(
+                              "\n                                    Where can I get some?\n                                "
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "price__Item--prduct" }, [
-                          _vm._v("From $700/ person . 4 day")
-                        ])
+                        )
                       ])
                     ]
                   ),
@@ -41173,72 +41773,51 @@ var staticRenderFns = [
                   _c(
                     "div",
                     {
-                      staticClass:
-                        "cst__Col col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                      staticClass: "panel-collapse collapse",
+                      attrs: {
+                        id: "collapseTwo",
+                        role: "tabpanel",
+                        "aria-labelledby": "headingTwo"
+                      }
                     },
                     [
-                      _c("div", { staticClass: "features__Exp--item" }, [
+                      _c("div", { staticClass: "panel-body" }, [
+                        _vm._v(
+                          "\n                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\n                                has been the industry's standard dummy text ever since the 1500s, when an unknown\n                                printer took a galley of type and scrambled it to make a type specimen book. It has\n                                survived not only five centuries, but also the leap into electronic typesetting,\n                                remaining essentially unchanged. It was popularised in the 1960s with the release of\n                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop\n                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                            "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-heading",
+                      attrs: { role: "tab", id: "headingThree" }
+                    },
+                    [
+                      _c("h4", { staticClass: "panel-title" }, [
                         _c(
                           "a",
                           {
+                            staticClass: "collapsed",
                             attrs: {
-                              href:
-                                "/godoexperience/experience/lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting-industry"
+                              role: "button",
+                              "data-toggle": "collapse",
+                              "data-parent": "#accordion",
+                              href: "#collapseThree",
+                              "aria-expanded": "false",
+                              "aria-controls": "collapseThree"
                             }
                           },
                           [
-                            _c("div", { staticClass: "features__Exp--img" }, [
-                              _c("img", {
-                                staticClass: "img-responsive lazy",
-                                attrs: {
-                                  alt:
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                  "data-original":
-                                    "http://61.246.140.190/godoexperience/uploads/experiences/75b509d5-b4c4-456b-baf6-489336dbd26e.jpg",
-                                  src:
-                                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Cooking")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--details" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--title" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--rating" },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-star",
-                                      attrs: { "aria-hidden": "true" }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("span", [_vm._v("4.97")])
-                                  ]
-                                )
-                              ]
+                            _vm._v(
+                              "\n                                    Where does it come from?\n                                "
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "price__Item--prduct" }, [
-                          _vm._v("From $400/ person . 2 day")
-                        ])
+                        )
                       ])
                     ]
                   ),
@@ -41246,398 +41825,323 @@ var staticRenderFns = [
                   _c(
                     "div",
                     {
-                      staticClass:
-                        "cst__Col col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                      staticClass: "panel-collapse collapse",
+                      attrs: {
+                        id: "collapseThree",
+                        role: "tabpanel",
+                        "aria-labelledby": "headingThree"
+                      }
                     },
                     [
-                      _c("div", { staticClass: "features__Exp--item" }, [
+                      _c("div", { staticClass: "panel-body" }, [
+                        _vm._v(
+                          "\n                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\n                                has been the industry's standard dummy text ever since the 1500s, when an unknown\n                                printer took a galley of type and scrambled it to make a type specimen book. It has\n                                survived not only five centuries, but also the leap into electronic typesetting,\n                                remaining essentially unchanged. It was popularised in the 1960s with the release of\n                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop\n                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                            "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-heading",
+                      attrs: { role: "tab", id: "headingThree" }
+                    },
+                    [
+                      _c("h4", { staticClass: "panel-title" }, [
                         _c(
                           "a",
                           {
+                            staticClass: "collapsed",
                             attrs: {
-                              href:
-                                "/godoexperience/experience/professionally-transformed-in-a-fabulous-queen"
+                              role: "button",
+                              "data-toggle": "collapse",
+                              "data-parent": "#accordion",
+                              href: "#collapseFour",
+                              "aria-expanded": "false",
+                              "aria-controls": "collapseFour"
                             }
                           },
                           [
-                            _c("div", { staticClass: "features__Exp--img" }, [
-                              _c("img", {
-                                staticClass: "img-responsive lazy",
-                                attrs: {
-                                  alt:
-                                    "professionally transformed in a fabulous Queen",
-                                  "data-original":
-                                    "http://61.246.140.190/godoexperience/uploads/experiences/08d7b209-c11b-4fed-bc81-eae129ec0a31.jpeg",
-                                  src:
-                                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "category_name_title" }, [
-                              _vm._v("Animals")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "features__Exp--details" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--title" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                professionally transformed in a fabulous Queen "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "features__Exp--rating" },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-star",
-                                      attrs: { "aria-hidden": "true" }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("span", [_vm._v("4.97")])
-                                  ]
-                                )
-                              ]
+                            _vm._v(
+                              "\n                                    Why do we use it?\n                                "
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "price__Item--prduct" }, [
-                          _vm._v("From $520/ person . 5 hours")
-                        ])
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-collapse collapse",
+                      attrs: {
+                        id: "collapseFour",
+                        role: "tabpanel",
+                        "aria-labelledby": "headingThree"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "panel-body" }, [
+                        _vm._v(
+                          "\n                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\n                                has been the industry's standard dummy text ever since the 1500s, when an unknown\n                                printer took a galley of type and scrambled it to make a type specimen book. It has\n                                survived not only five centuries, but also the leap into electronic typesetting,\n                                remaining essentially unchanged. It was popularised in the 1960s with the release of\n                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop\n                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                            "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-heading",
+                      attrs: { role: "tab", id: "headingFive" }
+                    },
+                    [
+                      _c("h4", { staticClass: "panel-title" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "collapsed",
+                            attrs: {
+                              role: "button",
+                              "data-toggle": "collapse",
+                              "data-parent": "#accordion",
+                              href: "#collapseFive",
+                              "aria-expanded": "false",
+                              "aria-controls": "collapseFive"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    What is Lorem Ipsum?\n                                "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-collapse collapse",
+                      attrs: {
+                        id: "collapseFive",
+                        role: "tabpanel",
+                        "aria-labelledby": "headingFive"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "panel-body" }, [
+                        _vm._v(
+                          "\n                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\n                                has been the industry's standard dummy text ever since the 1500s, when an unknown\n                                printer took a galley of type and scrambled it to make a type specimen book. It has\n                                survived not only five centuries, but also the leap into electronic typesetting,\n                                remaining essentially unchanged. It was popularised in the 1960s with the release of\n                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop\n                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                            "
+                        )
                       ])
                     ]
                   )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "row cst__Row" }, [
-                _c("div", { staticClass: "col-sm-12 cst__Col" }, [
-                  _c("div", { staticClass: "show__all--exp" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "exp__Btn--outline",
-                        attrs: {
-                          href: "/godoexperience/experiences",
-                          title: "Show All Experiences"
-                        }
-                      },
-                      [
-                        _vm._v("\n                    Show all "),
-                        _c("i", {
-                          staticClass: "fa fa-angle-right",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    )
-                  ])
-                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=template&id=26737c2f&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=template&id=26737c2f& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("main", { staticClass: "inner-Page" }, [
+      _c("section", { staticClass: "inner-Page-content" }, [
+        _c("div", { staticClass: "cst-breadcrumbs" }, [
+          _c("h1", [_vm._v("privacy policy")]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _c("a", { attrs: { href: "<?= Url::to(['/']);?>" } }, [
+                _vm._v("home")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [_c("span", [_vm._v("/")])]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                _vm._v("privacy policy")
               ])
             ])
-          ]),
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "privacy-policy-content" }, [
+            _c("h2", [_vm._v("Where does it come from?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("Where can I get some?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("Where does it come from?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("Why do we use it?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("What is Lorem Ipsum?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=template&id=2efe5aa3&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=template&id=2efe5aa3& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("main", { staticClass: "inner-Page" }, [
+      _c("section", { staticClass: "inner-Page-content" }, [
+        _c("div", { staticClass: "cst-breadcrumbs" }, [
+          _c("h1", [_vm._v("Terms & conditions")]),
           _vm._v(" "),
-          _c("div", { staticClass: "clearfix" }),
-          _vm._v(" "),
-          _c("section", { staticClass: "rted__Exp" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "listing__Title" }, [
-                _c("h3", [_vm._v("Top-rated experiences")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rted__Exp--content cst__Row" }, [
-                _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                  _c("div", { staticClass: "rted__Exp--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/there-are-many-variations-of-passages-of-lorem-ipsum-available"
-                        }
-                      },
-                      [
-                        _c("figure", { staticClass: "rted__Exp--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "There are many variations of passages of Lorem Ipsum available",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/340f05ed-d639-423c-99c7-080224bb7ae8.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v(
-                            "There are many variations of passages of Lorem Ipsum available"
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "price__Item--prduct" }, [
-                      _vm._v("From $260/ person . 3 day")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                  _c("div", { staticClass: "rted__Exp--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/contrary-to-popular-belief"
-                        }
-                      },
-                      [
-                        _c("figure", { staticClass: "rted__Exp--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt: "Contrary to popular belief",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/c69699f8-5371-4e81-a2d9-f02bf166e5d0.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("Contrary to popular belief")])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "price__Item--prduct" }, [
-                      _vm._v("From $700/ person . 4 day")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                  _c("div", { staticClass: "rted__Exp--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting-industry"
-                        }
-                      },
-                      [
-                        _c("figure", { staticClass: "rted__Exp--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/75b509d5-b4c4-456b-baf6-489336dbd26e.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Cooking")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v(
-                            "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "price__Item--prduct" }, [
-                      _vm._v("From $400/ person . 2 day")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                  _c("div", { staticClass: "rted__Exp--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/professionally-transformed-in-a-fabulous-queen"
-                        }
-                      },
-                      [
-                        _c("figure", { staticClass: "rted__Exp--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "professionally transformed in a fabulous Queen",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/08d7b209-c11b-4fed-bc81-eae129ec0a31.jpeg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v(
-                            "professionally transformed in a fabulous Queen"
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "price__Item--prduct" }, [
-                      _vm._v("From $520/ person . 5 hours")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                  _c("div", { staticClass: "rted__Exp--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/you-ll-cook-authentic-portuguese-recipes--be-professionally-transformed-in-a-fabulous-queen"
-                        }
-                      },
-                      [
-                        _c("figure", { staticClass: "rted__Exp--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/a9d3fe4a-673f-4fe8-a049-1c33de05c45e.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Animals")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v(
-                            "You'll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen"
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "price__Item--prduct" }, [
-                      _vm._v("From $300/ person . 2 day")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rted__Exp--col cst__Col" }, [
-                  _c("div", { staticClass: "rted__Exp--item" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "/godoexperience/experience/fjskfjklsdfjklsdjf-kldsf-dfjsfklj-dsklf-jdklsfj-kldsfjkljklj"
-                        }
-                      },
-                      [
-                        _c("figure", { staticClass: "rted__Exp--img" }, [
-                          _c("img", {
-                            staticClass: "img-responsive lazy",
-                            attrs: {
-                              alt:
-                                "fjskfjklsdfjklsdjf kldsf dfjsfklj dsklf jdklsfj kldsfjkljklj",
-                              "data-original":
-                                "http://61.246.140.190/godoexperience/uploads/experiences/1a5fc8ba-cf8f-4e87-898a-ab00374b4aff.jpg",
-                              src:
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "category_name_title" }, [
-                          _vm._v("Cooking")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v(
-                            "fjskfjklsdfjklsdjf kldsf dfjsfklj dsklf jdklsfj kldsfjkljklj"
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "price__Item--prduct" }, [
-                      _vm._v("From $150/ person . 2 day")
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "row cst__Row" }, [
-                _c("div", { staticClass: "col-sm-12 cst__Col" }, [
-                  _c("div", { staticClass: "show__all--exp" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "exp__Btn--outline",
-                        attrs: {
-                          href: "/godoexperience/experiences",
-                          title: "Show All Experiences"
-                        }
-                      },
-                      [
-                        _vm._v("\n                    Show all "),
-                        _c("i", {
-                          staticClass: "fa fa-angle-right",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    )
-                  ])
-                ])
+          _c("ul", [
+            _c("li", [
+              _c("a", { attrs: { href: "<?= Url::to(['/']);?>" } }, [
+                _vm._v("home")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [_c("span", [_vm._v("/")])]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                _vm._v("Terms & conditions")
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "clearfix" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "privacy-policy-content" }, [
+            _c("h2", [_vm._v("Where does it come from?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("Where can I get some?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("Where does it come from?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("Why do we use it?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+              )
+            ]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("What is Lorem Ipsum?")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+              )
+            ])
+          ])
         ])
       ])
     ])
@@ -41664,220 +42168,277 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("footer", { staticClass: "footer", attrs: { id: "footerC" } }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
+          _c("div", { staticClass: "fter__Item" }, [
+            _c("h5", [_vm._v("Go Do Experience")]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "fter__List" }, [
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: { name: "faq" } } }, [
+                    _vm._v(
+                      "\n                     frequently asked quetions\n                  "
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: { name: "about_us" } } }, [
+                    _vm._v(
+                      "\n                       about us\n                  "
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: { name: "contact_us" } } }, [
+                    _vm._v(
+                      "\n                        contact us\n                  "
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "privacy_policy" } } },
+                    [
+                      _vm._v(
+                        "\n                       privacy policy\n                  "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "terms_and_conditions" } } },
+                    [
+                      _vm._v(
+                        "\n                      terms & conditions\n                  "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
+          _c("div", { staticClass: "fter__Item" }, [
+            _c("h5", [_vm._v("Support")]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "fter__List" }, [
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: { name: "contact_us" } } }, [
+                    _vm._v("Help")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-12 col-sm-12 col-md-12 col-lg-12" }, [
+          _c("div", { staticClass: "fter__Bottom" }, [
+            _c("div", { staticClass: "fter__Bottom--Coupyrgt" }, [
+              _c("span", [
+                _vm._v(
+                  "© " +
+                    _vm._s(_vm.date) +
+                    " Go Do Experiences, All rights reserved."
+                )
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "fter__Bottom--list" }, [
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: { name: "terms_and_conditions" } } },
+                      [
+                        _vm._v("\n                     terms "),
+                        _c("i", {
+                          staticClass: "fa fa-circle",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: { name: "privacy_policy" } } },
+                      [
+                        _vm._v(
+                          "\n                        privacy policy\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" })
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "footer", attrs: { id: "footerC" } }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
-            _c("div", { staticClass: "fter__Item" }, [
-              _c("h5", [_vm._v("Go Do Experience")]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "fter__List" }, [
-                _c("li", [
-                  _c("a", { attrs: { href: "/godoexperience/faq" } }, [
-                    _vm._v("frequently asked quetions")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "/godoexperience/about-us" } }, [
-                    _vm._v("about us")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "/godoexperience/contact-us" } }, [
-                    _vm._v("contact us")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "a",
-                    { attrs: { href: "/godoexperience/terms-and-conditions" } },
-                    [_vm._v("terms & conditions")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "a",
-                    { attrs: { href: "/godoexperience/privacy-policy" } },
-                    [_vm._v("privacy policy")]
-                  )
-                ])
-              ])
-            ])
+    return _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
+      _c("div", { staticClass: "fter__Item" }, [
+        _c("h5", [_vm._v("Discover")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "fter__List" }, [
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Trust & Safety")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
-            _c("div", { staticClass: "fter__Item" }, [
-              _c("h5", [_vm._v("Discover")]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "fter__List" }, [
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Trust & Safety")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Travel Credit")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Airbnb Citizen")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Business Travel")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Things To Do")])
-                ])
-              ])
-            ])
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Travel Credit")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
-            _c("div", { staticClass: "fter__Item" }, [
-              _c("h5", [_vm._v("Hosting")]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "fter__List" }, [
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Why Host")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Hospitality")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("Responsible Hosting")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("Community Centre")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("Host an Experience")
-                  ])
-                ])
-              ])
-            ])
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Airbnb Citizen")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
-            _c("div", { staticClass: "fter__Item" }, [
-              _c("h5", [_vm._v("Support")]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "fter__List" }, [
-                _c("li", [
-                  _c("a", { attrs: { href: "/godoexperience/contact-us" } }, [
-                    _vm._v("Help")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "mailto:info@support.com" } }, [
-                    _vm._v("info@support.com")
-                  ]),
-                  _c("span", [_vm._v("new")])
-                ])
-              ])
-            ])
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Business Travel")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Things To Do")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-3 col-sm-3 col-md-3 col-lg-3" }, [
+      _c("div", { staticClass: "fter__Item" }, [
+        _c("h5", [_vm._v("Hosting")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "fter__List" }, [
+          _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Why Host")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Hospitality")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Responsible Hosting")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Community Centre")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Host an Experience")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "mailto:info@support.com" } }, [
+        _vm._v("info@support.com")
+      ]),
+      _vm._v(" "),
+      _c("span", [_vm._v("new")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fter__Social--Item" }, [
+      _c("ul", { staticClass: "list-inline" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", {
+              staticClass: "fa fa-facebook",
+              attrs: { "aria-hidden": "true" }
+            })
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "clearfix" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-xs-12 col-sm-12 col-md-12 col-lg-12" },
-            [
-              _c("div", { staticClass: "fter__Bottom" }, [
-                _c("div", { staticClass: "fter__Bottom--Coupyrgt" }, [
-                  _c("span", [
-                    _vm._v("© 2020 Go Do Experiences, All rights reserved.")
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "fter__Bottom--list" }, [
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href: "/godoexperience/terms-and-conditions"
-                          }
-                        },
-                        [
-                          _vm._v("terms "),
-                          _c("i", {
-                            staticClass: "fa fa-circle",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        { attrs: { href: "/godoexperience/privacy-policy" } },
-                        [_vm._v("privacy")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "fter__Social--Item" }, [
-                  _c("ul", { staticClass: "list-inline" }, [
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", {
-                          staticClass: "fa fa-facebook",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", {
-                          staticClass: "fa fa-twitter",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", {
-                          staticClass: "fa fa-instagram",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ]
-          )
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", {
+              staticClass: "fa fa-twitter",
+              attrs: { "aria-hidden": "true" }
+            })
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "clearfix" })
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", {
+              staticClass: "fa fa-instagram",
+              attrs: { "aria-hidden": "true" }
+            })
+          ])
+        ])
       ])
     ])
   }
@@ -41903,43 +42464,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("header", { staticClass: "Header", attrs: { id: "headerC" } }, [
-    _c("nav", { staticClass: "navbar widget__Nav" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c(
-          "div",
-          { staticClass: "navbar-header" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
-                staticClass: "navbar-brand widget__header--logo",
-                attrs: {
-                  to: { name: "experiences_home" },
-                  title: "Go Do Experience"
-                }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-responsive",
+  return _c(
+    "header",
+    { staticClass: "Header", class: _vm.header_bg, attrs: { id: "headerC" } },
+    [
+      _c("nav", { staticClass: "navbar widget__Nav" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c(
+            "div",
+            { staticClass: "navbar-header" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "navbar-brand widget__header--logo",
                   attrs: {
-                    src:
-                      "http://61.246.140.190/godoexperience/asset/images/icons/godo_logo.png",
-                    alt: "Go/Do Experience"
+                    to: { name: "experiences_home" },
+                    title: "Go Do Experience"
                   }
-                })
-              ]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _vm._m(1)
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-responsive",
+                    attrs: {
+                      src:
+                        "http://61.246.140.190/godoexperience/asset/images/icons/godo_logo.png",
+                      alt: "Go/Do Experience"
+                    }
+                  })
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "goDOExprinc" }
+            },
+            [
+              _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: { name: "contact_us" } } },
+                      [_vm._v("Help")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
+            ]
+          )
+        ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -41969,39 +42563,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "collapse navbar-collapse", attrs: { id: "goDOExprinc" } },
-      [
-        _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("host a home")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("host an experience")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/godoexperience/contact-us" } }, [
-              _vm._v("Help")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/godoexperience/register" } }, [
-              _vm._v("sign up")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/godoexperience/login" } }, [
-              _vm._v("log in")
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("host a home")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("host an experience")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "/godoexperience/register" } }, [
+        _vm._v("sign up")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "/godoexperience/login" } }, [_vm._v("log in")])
+    ])
   }
 ]
 render._withStripped = true
@@ -57034,6 +57624,1078 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vuex/dist/vuex.esm.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: default, Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.1.3
+ * (c) 2020 Evan You
+ * @license MIT
+ */
+function applyMixin (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+}
+
+var target = typeof window !== 'undefined'
+  ? window
+  : typeof global !== 'undefined'
+    ? global
+    : {};
+var devtoolHook = target.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+function partial (fn, arg) {
+  return function () {
+    return fn(arg)
+  }
+}
+
+// Base data struct for store's module, package with some attribute and method
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  // Store some children item
+  this._children = Object.create(null);
+  // Store the origin module object which passed by programmer
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+
+  // Store the origin module's state
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors = { namespaced: { configurable: true } };
+
+prototypeAccessors.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+  this._makeLocalGettersCache = Object.create(null);
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  var state = this._modules.root.state;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
+  if (useDevtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors$1 = { state: { configurable: true } };
+
+prototypeAccessors$1.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors$1.state.set = function (v) {
+  if (true) {
+    assert(false, "use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+
+  this._subscribers
+    .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+    .forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+      .filter(function (sub) { return sub.before; })
+      .forEach(function (sub) { return sub.before(action, this$1.state); });
+  } catch (e) {
+    if (true) {
+      console.warn("[vuex] error in before action subscribers: ");
+      console.error(e);
+    }
+  }
+
+  var result = entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload);
+
+  return result.then(function (res) {
+    try {
+      this$1._actionSubscribers
+        .filter(function (sub) { return sub.after; })
+        .forEach(function (sub) { return sub.after(action, this$1.state); });
+    } catch (e) {
+      if (true) {
+        console.warn("[vuex] error in after action subscribers: ");
+        console.error(e);
+      }
+    }
+    return res
+  })
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  var subs = typeof fn === 'function' ? { before: fn } : fn;
+  return genericSubscribe(subs, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  // reset local getters cache
+  store._makeLocalGettersCache = Object.create(null);
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    // direct inline function use will lead to closure preserving oldVm.
+    // using partial to return function with only arguments preserved in closure environment.
+    computed[key] = partial(fn, store);
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    if (store._modulesNamespaceMap[namespace] && "development" !== 'production') {
+      console.error(("[vuex] duplicate namespace " + namespace + " for the namespaced module " + (path.join('/'))));
+    }
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      if (true) {
+        if (moduleName in parentState) {
+          console.warn(
+            ("[vuex] state field \"" + moduleName + "\" was overridden by a module with the same name at \"" + (path.join('.')) + "\"")
+          );
+        }
+      }
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  if (!store._makeLocalGettersCache[namespace]) {
+    var gettersProxy = {};
+    var splitPos = namespace.length;
+    Object.keys(store.getters).forEach(function (type) {
+      // skip if the target getter is not match this namespace
+      if (type.slice(0, splitPos) !== namespace) { return }
+
+      // extract local getter type
+      var localType = type.slice(splitPos);
+
+      // Add a port to the getters proxy.
+      // Define as getter property because
+      // we do not want to evaluate the getters in this time.
+      Object.defineProperty(gettersProxy, localType, {
+        get: function () { return store.getters[type]; },
+        enumerable: true
+      });
+    });
+    store._makeLocalGettersCache[namespace] = gettersProxy;
+  }
+
+  return store._makeLocalGettersCache[namespace]
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.reduce(function (state, key) { return state[key]; }, state)
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+/**
+ * Reduce the code which written in Vue.js for getting the state.
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
+ * @param {Object}
+ */
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  if ( true && !isValidMap(states)) {
+    console.error('[vuex] mapState: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for committing the mutation
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept anthor params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  if ( true && !isValidMap(mutations)) {
+    console.error('[vuex] mapMutations: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // Get the commit method from store
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for getting the getters
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} getters
+ * @return {Object}
+ */
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  if ( true && !isValidMap(getters)) {
+    console.error('[vuex] mapGetters: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    // The namespace has been mutated by normalizeNamespace
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for dispatch the action
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  if ( true && !isValidMap(actions)) {
+    console.error('[vuex] mapActions: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // get dispatch function from store
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
+ * @param {String} namespace
+ * @return {Object}
+ */
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+/**
+ * Normalize the map
+ * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
+ * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
+ * @param {Array|Object} map
+ * @return {Object}
+ */
+function normalizeMap (map) {
+  if (!isValidMap(map)) {
+    return []
+  }
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+/**
+ * Validate whether given map is valid or not
+ * @param {*} map
+ * @return {Boolean}
+ */
+function isValidMap (map) {
+  return Array.isArray(map) || isObject(map)
+}
+
+/**
+ * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
+ * @param {Function} fn
+ * @return {Function}
+ */
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+/**
+ * Search a special module from store by namespace. if module not exist, print error message.
+ * @param {Object} store
+ * @param {String} helper
+ * @param {String} namespace
+ * @return {Object}
+ */
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.1.3',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -57167,8 +58829,12 @@ if (token) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _frontend_routes_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./frontend/routes/router */ "./resources/js/frontend/routes/router.js");
-/* harmony import */ var _frontend_components_App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/components/App.vue */ "./resources/js/frontend/components/App.vue");
+/* harmony import */ var vue_lazyload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-lazyload */ "./node_modules/vue-lazyload/vue-lazyload.esm.js");
+/* harmony import */ var _frontend_routes_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/routes/router */ "./resources/js/frontend/routes/router.js");
+/* harmony import */ var _frontend_store_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/store/index */ "./resources/js/frontend/store/index.js");
+/* harmony import */ var _frontend_components_App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/components/App.vue */ "./resources/js/frontend/components/App.vue");
+
+
 
 
 
@@ -57176,11 +58842,18 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var BASEURL = window.location.origin + '/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  preLoad: 1,
+  error: BASEURL + 'images/default.png',
+  loading: BASEURL + 'images/lazy_default.gif',
+  attempt: 2
+});
 /* harmony default export */ __webpack_exports__["default"] = (new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
-  router: _frontend_routes_router__WEBPACK_IMPORTED_MODULE_1__["default"],
+  router: _frontend_routes_router__WEBPACK_IMPORTED_MODULE_2__["default"],
+  store: _frontend_store_index__WEBPACK_IMPORTED_MODULE_3__["default"],
   render: function render(h) {
-    return h(_frontend_components_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+    return h(_frontend_components_App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
   }
 }));
 
@@ -57531,6 +59204,351 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/frontend/components/public/extra/AboutUs.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/AboutUs.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AboutUs_vue_vue_type_template_id_cc3944c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AboutUs.vue?vue&type=template&id=cc3944c0& */ "./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=template&id=cc3944c0&");
+/* harmony import */ var _AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutUs.vue?vue&type=script&lang=js& */ "./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AboutUs_vue_vue_type_template_id_cc3944c0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AboutUs_vue_vue_type_template_id_cc3944c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/frontend/components/public/extra/AboutUs.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AboutUs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=template&id=cc3944c0&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=template&id=cc3944c0& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_template_id_cc3944c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AboutUs.vue?vue&type=template&id=cc3944c0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/AboutUs.vue?vue&type=template&id=cc3944c0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_template_id_cc3944c0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutUs_vue_vue_type_template_id_cc3944c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/ContactUs.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/ContactUs.vue ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ContactUs_vue_vue_type_template_id_ea760e9a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContactUs.vue?vue&type=template&id=ea760e9a& */ "./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=template&id=ea760e9a&");
+/* harmony import */ var _ContactUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContactUs.vue?vue&type=script&lang=js& */ "./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ContactUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ContactUs_vue_vue_type_template_id_ea760e9a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ContactUs_vue_vue_type_template_id_ea760e9a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/frontend/components/public/extra/ContactUs.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ContactUs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=template&id=ea760e9a&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=template&id=ea760e9a& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactUs_vue_vue_type_template_id_ea760e9a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ContactUs.vue?vue&type=template&id=ea760e9a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/ContactUs.vue?vue&type=template&id=ea760e9a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactUs_vue_vue_type_template_id_ea760e9a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactUs_vue_vue_type_template_id_ea760e9a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/Faq.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/Faq.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Faq_vue_vue_type_template_id_5d1c9aaa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Faq.vue?vue&type=template&id=5d1c9aaa& */ "./resources/js/frontend/components/public/extra/Faq.vue?vue&type=template&id=5d1c9aaa&");
+/* harmony import */ var _Faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Faq.vue?vue&type=script&lang=js& */ "./resources/js/frontend/components/public/extra/Faq.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Faq_vue_vue_type_template_id_5d1c9aaa___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Faq_vue_vue_type_template_id_5d1c9aaa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/frontend/components/public/extra/Faq.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/Faq.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/Faq.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Faq.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/Faq.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/Faq.vue?vue&type=template&id=5d1c9aaa&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/Faq.vue?vue&type=template&id=5d1c9aaa& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Faq_vue_vue_type_template_id_5d1c9aaa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Faq.vue?vue&type=template&id=5d1c9aaa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/Faq.vue?vue&type=template&id=5d1c9aaa&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Faq_vue_vue_type_template_id_5d1c9aaa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Faq_vue_vue_type_template_id_5d1c9aaa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/PrivacyPolicy.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/PrivacyPolicy.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrivacyPolicy_vue_vue_type_template_id_26737c2f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrivacyPolicy.vue?vue&type=template&id=26737c2f& */ "./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=template&id=26737c2f&");
+/* harmony import */ var _PrivacyPolicy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrivacyPolicy.vue?vue&type=script&lang=js& */ "./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PrivacyPolicy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrivacyPolicy_vue_vue_type_template_id_26737c2f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrivacyPolicy_vue_vue_type_template_id_26737c2f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/frontend/components/public/extra/PrivacyPolicy.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrivacyPolicy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PrivacyPolicy.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrivacyPolicy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=template&id=26737c2f&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=template&id=26737c2f& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrivacyPolicy_vue_vue_type_template_id_26737c2f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PrivacyPolicy.vue?vue&type=template&id=26737c2f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/PrivacyPolicy.vue?vue&type=template&id=26737c2f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrivacyPolicy_vue_vue_type_template_id_26737c2f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrivacyPolicy_vue_vue_type_template_id_26737c2f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/TermsAndConditions.vue":
+/*!******************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/TermsAndConditions.vue ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TermsAndConditions_vue_vue_type_template_id_2efe5aa3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TermsAndConditions.vue?vue&type=template&id=2efe5aa3& */ "./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=template&id=2efe5aa3&");
+/* harmony import */ var _TermsAndConditions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TermsAndConditions.vue?vue&type=script&lang=js& */ "./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TermsAndConditions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TermsAndConditions_vue_vue_type_template_id_2efe5aa3___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TermsAndConditions_vue_vue_type_template_id_2efe5aa3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/frontend/components/public/extra/TermsAndConditions.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TermsAndConditions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./TermsAndConditions.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TermsAndConditions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=template&id=2efe5aa3&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=template&id=2efe5aa3& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TermsAndConditions_vue_vue_type_template_id_2efe5aa3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./TermsAndConditions.vue?vue&type=template&id=2efe5aa3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/frontend/components/public/extra/TermsAndConditions.vue?vue&type=template&id=2efe5aa3&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TermsAndConditions_vue_vue_type_template_id_2efe5aa3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TermsAndConditions_vue_vue_type_template_id_2efe5aa3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/frontend/components/shared/Footer.vue":
 /*!************************************************************!*\
   !*** ./resources/js/frontend/components/shared/Footer.vue ***!
@@ -57685,9 +59703,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_public_Experiences_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/public/Experiences.vue */ "./resources/js/frontend/components/public/Experiences.vue");
 /* harmony import */ var _components_public_ExperienceDetail_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/public/ExperienceDetail.vue */ "./resources/js/frontend/components/public/ExperienceDetail.vue");
 /* harmony import */ var _components_public_Categories_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/public/Categories.vue */ "./resources/js/frontend/components/public/Categories.vue");
+/* harmony import */ var _components_public_extra_AboutUs_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/public/extra/AboutUs.vue */ "./resources/js/frontend/components/public/extra/AboutUs.vue");
+/* harmony import */ var _components_public_extra_ContactUs_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/public/extra/ContactUs.vue */ "./resources/js/frontend/components/public/extra/ContactUs.vue");
+/* harmony import */ var _components_public_extra_Faq_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/public/extra/Faq.vue */ "./resources/js/frontend/components/public/extra/Faq.vue");
+/* harmony import */ var _components_public_extra_PrivacyPolicy_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/public/extra/PrivacyPolicy.vue */ "./resources/js/frontend/components/public/extra/PrivacyPolicy.vue");
+/* harmony import */ var _components_public_extra_TermsAndConditions_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/public/extra/TermsAndConditions.vue */ "./resources/js/frontend/components/public/extra/TermsAndConditions.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); //Router Module  
+
+
+
+
+ //Other Pages
+
 
 
 
@@ -57699,15 +59728,73 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     name: 'experiences_home',
     path: '/',
-    component: _components_public_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _components_public_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    meta: {
+      header_cls: ''
+    }
+  }, {
+    name: 'experience_categories_list',
+    path: '/categories',
+    component: _components_public_Categories_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    meta: {
+      header_cls: ''
+    }
   }, {
     name: 'experiences_list',
     path: '/experiences',
-    component: _components_public_Experiences_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _components_public_Experiences_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    meta: {
+      header_cls: ''
+    }
   }, {
-    name: 'experience_categories_list',
-    path: '/experiences/categories',
-    component: _components_public_Categories_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    name: 'experiences_list_by_cat',
+    path: '/experiences/category/:category_name',
+    component: _components_public_Experiences_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    meta: {
+      header_cls: ''
+    }
+  }, {
+    name: 'experiences_detail',
+    path: '/experience/:exp_slug',
+    component: _components_public_ExperienceDetail_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    meta: {
+      header_cls: ''
+    }
+  }, {
+    name: 'about_us',
+    path: '/about-us',
+    component: _components_public_extra_AboutUs_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    meta: {
+      header_cls: 'header_bg'
+    }
+  }, {
+    name: 'contact_us',
+    path: '/contact-us',
+    component: _components_public_extra_ContactUs_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    meta: {
+      header_cls: 'header_bg'
+    }
+  }, {
+    name: 'faq',
+    path: '/faq',
+    component: _components_public_extra_Faq_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
+    meta: {
+      header_cls: 'header_bg'
+    }
+  }, {
+    name: 'privacy_policy',
+    path: '/privacy-policy',
+    component: _components_public_extra_PrivacyPolicy_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
+    meta: {
+      header_cls: 'header_bg'
+    }
+  }, {
+    name: 'terms_and_conditions',
+    path: '/terms-and-conditions',
+    component: _components_public_extra_TermsAndConditions_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
+    meta: {
+      header_cls: 'header_bg'
+    }
   }, {
     name: '404_not_found',
     path: '**',
@@ -57715,6 +59802,143 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
+
+/***/ }),
+
+/***/ "./resources/js/frontend/store/actions/commonActions.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/frontend/store/actions/commonActions.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(axios__WEBPACK_IMPORTED_MODULE_1___default.a);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getExperiencesHome: function getExperiencesHome(_ref, payload) {
+    var commit = _ref.commit,
+        state = _ref.state;
+    return new Promise(function (resolve, reject) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = "Bearer ".concat(localStorage.getItem('front_token'));
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(state.baseURL + 'experiences/home', payload).then(function (response) {
+        return resolve(response.data);
+      })["catch"](function (error) {
+        return reject(error.response);
+      });
+    });
+  },
+  getAllExperiences: function getAllExperiences(_ref2, payload) {
+    var commit = _ref2.commit,
+        state = _ref2.state;
+    return new Promise(function (resolve, reject) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = "Bearer ".concat(localStorage.getItem('front_token'));
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(state.baseURL + 'experiences', payload).then(function (response) {
+        return resolve(response.data);
+      })["catch"](function (error) {
+        return reject(error.response);
+      });
+    });
+  },
+  getAllCategories: function getAllCategories(_ref3, payload) {
+    var commit = _ref3.commit,
+        state = _ref3.state;
+    return new Promise(function (resolve, reject) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = "Bearer ".concat(localStorage.getItem('front_token'));
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(state.baseURL + 'categories', payload).then(function (response) {
+        return resolve(response.data);
+      })["catch"](function (error) {
+        return reject(error.response);
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/frontend/store/index.js":
+/*!**********************************************!*\
+  !*** ./resources/js/frontend/store/index.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mutations_commonMutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations/commonMutations */ "./resources/js/frontend/store/mutations/commonMutations.js");
+/* harmony import */ var _actions_commonActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/commonActions */ "./resources/js/frontend/store/actions/commonActions.js");
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(axios__WEBPACK_IMPORTED_MODULE_2___default.a);
+axios__WEBPACK_IMPORTED_MODULE_2___default.a.interceptors.response.use(function (response) {
+  return response;
+}, function (err) {
+  if (typeof err.response !== 'undefined') {
+    if (typeof err.response.status !== 'undefined' && err.response.status == 401 && err.response.data.message == 'Unauthenticated.') {
+      localStorage.removeItem('token');
+      alert('Your session has been expired please login..');
+      window.location.href = '/';
+    }
+  }
+});
+var BASEURL = window.location.origin + '/api/client/'; //All Mutations
+
+
+var mutations = Object.assign({}, _mutations_commonMutations__WEBPACK_IMPORTED_MODULE_3__["default"]); //All Actions 
+
+
+var actions = Object.assign({}, _actions_commonActions__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  state: {
+    baseURL: BASEURL,
+    data: {
+      list: [],
+      list_total: 0,
+      editData: [],
+      categories: []
+    },
+    userData: []
+  },
+  mutations: mutations,
+  actions: actions
+});
+/* harmony default export */ __webpack_exports__["default"] = (store);
+
+/***/ }),
+
+/***/ "./resources/js/frontend/store/mutations/commonMutations.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/frontend/store/mutations/commonMutations.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getCategory: function getCategory(state, data) {
+    state.data.list = data;
+  },
+  editCategory: function editCategory(state, data) {
+    state.data.editData = data;
+  },
+  categoryCount: function categoryCount(state, total) {
+    state.data.list_total = total;
+  }
+});
 
 /***/ }),
 

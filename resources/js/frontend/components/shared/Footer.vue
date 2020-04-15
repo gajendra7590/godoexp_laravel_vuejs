@@ -6,11 +6,31 @@
             <div class="fter__Item">
               <h5>Go Do Experience</h5>
               <ul class="fter__List">
-                <li><a href="/godoexperience/faq">frequently asked quetions</a></li>
-                <li><a href="/godoexperience/about-us">about us</a></li>
-                <li><a href="/godoexperience/contact-us">contact us</a></li>
-                <li><a href="/godoexperience/terms-and-conditions">terms &amp; conditions</a></li>
-                <li><a href="/godoexperience/privacy-policy">privacy policy</a></li>
+                <li>
+                    <router-link :to="{ name : 'faq' }">
+                       frequently asked quetions
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name : 'about_us' }">
+                         about us
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name : 'contact_us' }">
+                          contact us
+                    </router-link>
+                </li>
+                 <li>
+                    <router-link :to="{ name : 'privacy_policy' }">
+                         privacy policy
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name : 'terms_and_conditions' }">
+                        terms &amp; conditions
+                    </router-link>
+                </li> 
               </ul>
             </div>
           </div>
@@ -42,8 +62,13 @@
             <div class="fter__Item">
               <h5>Support</h5>
               <ul class="fter__List">
-                <li><a href="/godoexperience/contact-us">Help</a></li>
-                <li><a href="mailto:info@support.com">info@support.com</a><span>new</span></li>
+                <li>
+                    <router-link :to="{ name : 'contact_us' }">Help</router-link>
+                </li>
+                <li>
+                    <a href="mailto:info@support.com">info@support.com</a>
+                    <span>new</span>
+                </li>
               </ul>
             </div>
           </div>
@@ -52,10 +77,18 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="fter__Bottom">
-              <div class="fter__Bottom--Coupyrgt"> <span>© 2020 Go Do Experiences, All rights reserved.</span>
+              <div class="fter__Bottom--Coupyrgt"> <span>© {{ date }} Go Do Experiences, All rights reserved.</span>
                 <ul class="fter__Bottom--list">
-                  <li><a href="/godoexperience/terms-and-conditions">terms <i class="fa fa-circle" aria-hidden="true"></i></a></li>
-                  <li><a href="/godoexperience/privacy-policy">privacy</a></li>
+                  <li>
+                    <router-link :to="{ name : 'terms_and_conditions' }">
+                       terms <i class="fa fa-circle" aria-hidden="true"></i>
+                    </router-link>
+                  </li>
+                  <li>
+                      <router-link :to="{ name : 'privacy_policy' }">
+                          privacy policy
+                      </router-link>
+                  </li>
                 </ul>
               </div>
               <div class="fter__Social--Item">
@@ -77,6 +110,7 @@
       name : 'footerC',
       data : function() {
           return {
+            date : ( new Date().getFullYear() )
 
           } 
       }

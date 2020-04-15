@@ -1,5 +1,5 @@
-<template>
-    <header class="Header" id="headerC">
+<template> 
+    <header class="Header" :class="header_bg" id="headerC">
         <nav class="navbar widget__Nav">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -24,7 +24,7 @@
                            <a href="#">host an experience</a>
                         </li>
                         <li>
-                           <a href="/godoexperience/contact-us">Help</a>
+                           <router-link :to="{ name : 'contact_us' }">Help</router-link>
                         </li>
                         <li>
                            <a href="/godoexperience/register">sign up</a>
@@ -42,8 +42,17 @@
 export default {
     name : 'headerC',
     data : function() {
-        return { 
+        return {
+            header_bg : '' 
         } 
-    }
+    },
+    created(){ 
+        this.header_bg = ( typeof(this.$route.meta.header_cls)!=undefined?this.$route.meta.header_cls:'');
+    },
+    watch:{
+        '$route' (to, from){ 
+            this.header_bg = ( typeof(to.meta.header_cls)!=undefined?to.meta.header_cls:'');
+        },
+    },
 }
 </script>

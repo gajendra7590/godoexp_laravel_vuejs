@@ -23,50 +23,7 @@ class ExperiencesController extends Controller
             'top_rated_experiences' => $this->topRatedExperiences()
         ];
     }
-
-    /**
-     * Function for get all experiences list
-     * @param Request $request
-     * @return array
-     */
-    public function experiences(Request $request){
-        return Experiences::with([
-            'category'=> function($model){
-                $model->select(['id','name','slug']);
-            }
-        ])
-        ->where(['status'=>'1'])
-        ->select([
-            'id','category_id','user_id','title','sub_title','slug','experiences_image_url',
-            'price','duration','duration_type','group_size','activity_level','featured'
-        ])
-        ->orderBy('id','DESC')
-        ->limit(12)
-        ->get()
-        ->all();
-    }
-
-    /**
-     * Function for get experiences list by category id
-     * @param Request $request
-     * @param $category
-     * @return array|mixed
-     */
-    public function getExperiencesByCateogy(Request $request,$category){
-        $cat = Categories::select(['id','slug'])->where(['slug' => $category])->get()->first();
-        if(!$cat){
-            return [];
-        }
-        return Experiences::with([
-            'category'=> function($model){
-                $model->select(['id','name','slug']);
-            }
-        ])
-        ->where(['category_id' => $cat->id ])
-        ->select(['*'])
-        ->get()
-        ->first();
-    }
+ 
 
     //Function for get categories( callback for home page )
     private function topCategories(){
@@ -87,7 +44,7 @@ class ExperiencesController extends Controller
             'id','category_id','user_id','title','sub_title','slug','experiences_image_url',
             'price','duration','duration_type','group_size','activity_level','featured'
         ])
-        ->orderBy('id','DESC')->limit(6)->get()->all();
+        ->orderBy('id','DESC')->limit(5)->get()->all();
     }
 
     //Function for get topFeaturedExperiences( callback for home page )
@@ -118,6 +75,51 @@ class ExperiencesController extends Controller
             'price','duration','duration_type','group_size','activity_level','featured'
         ])
         ->orderBy('id','DESC')->limit(5)->get()->all();
+    }
+
+
+     /**
+     * Function for get all experiences list
+     * @param Request $request
+     * @return array
+     */
+     public function experiences(Request $request){
+        return Experiences::with([
+            'category'=> function($model){
+                    $model->select(['id','name','slug']);
+                }
+            ])
+            ->where(['status'=>'1'])
+            ->select([
+                'id','category_id','user_id','title','sub_title','slug','experiences_image_url',
+                'price','duration','duration_type','group_size','activity_level','featured'
+            ])
+            ->orderBy('id','DESC')
+            ->limit(8)
+            ->get()
+            ->all();
+    }
+
+    /**
+     * Function for get experiences list by category id
+     * @param Request $request
+     * @param $category
+     * @return array|mixed
+     */
+    public function getExperiencesByCateogy(Request $request,$category){
+        $cat = Categories::select(['id','slug'])->where(['slug' => $category])->get()->first();
+        if(!$cat){
+            return [];
+        }
+        return Experiences::with([
+            'category'=> function($model){
+                $model->select(['id','name','slug']);
+            }
+        ])
+        ->where(['category_id' => $cat->id ])
+        ->select(['*'])
+        ->get()
+        ->first();
     }
 
 }
