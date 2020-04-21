@@ -1,0 +1,878 @@
+-- Adminer 4.7.6 MySQL dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DROP TABLE IF EXISTS `amenities`;
+CREATE TABLE `amenities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `icon` varchar(100) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` varchar(256) NOT NULL,
+  `status` smallint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `category_id` (`category_id`),
+  CONSTRAINT `amenities_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `experience_categories` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `amenities` (`id`, `category_id`, `icon`, `title`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1,	28,	'fa fa-cutlery',	'Passionate cooks',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh. ultrices fringilla est tortor sollicitudin dignissim libero fringilla.',	1,	'2020-03-16 17:08:10',	'2020-03-16 17:36:39'),
+(2,	28,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh. ultrices fringilla est tortor sollicitudin dignissim libero fringilla',	1,	'2020-03-16 17:08:31',	'2020-03-16 17:28:22'),
+(3,	28,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh. ultrices fringilla est tortor sollicitudin dignissim libero fringilla.',	1,	'2020-03-16 17:31:28',	'2020-03-16 17:31:28'),
+(7,	29,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:55:51',	'2020-03-16 17:55:51'),
+(8,	29,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:55:51',	'2020-03-16 17:55:51'),
+(9,	29,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:55:51',	'2020-03-16 17:55:51'),
+(10,	30,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:21',	'2020-03-16 17:56:21'),
+(11,	30,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:21',	'2020-03-16 17:56:21'),
+(12,	30,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:21',	'2020-03-16 17:56:21'),
+(13,	31,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:24',	'2020-03-16 17:56:24'),
+(14,	31,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:24',	'2020-03-16 17:56:24'),
+(15,	31,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:24',	'2020-03-16 17:56:24'),
+(16,	32,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:29',	'2020-03-16 17:56:29'),
+(17,	32,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:29',	'2020-03-16 17:56:29'),
+(18,	32,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:29',	'2020-03-16 17:56:29'),
+(19,	32,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:36',	'2020-03-16 17:56:36'),
+(20,	32,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:36',	'2020-03-16 17:56:36'),
+(21,	32,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:36',	'2020-03-16 17:56:36'),
+(22,	33,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:41',	'2020-03-16 17:56:41'),
+(23,	33,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:41',	'2020-03-16 17:56:41'),
+(24,	33,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:41',	'2020-03-16 17:56:41'),
+(25,	34,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:45',	'2020-03-16 17:56:45'),
+(26,	34,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:45',	'2020-03-16 17:56:45'),
+(27,	34,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:45',	'2020-03-16 17:56:45'),
+(28,	35,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:49',	'2020-03-16 17:56:49'),
+(29,	35,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:49',	'2020-03-16 17:56:49'),
+(30,	35,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:49',	'2020-03-16 17:56:49'),
+(31,	36,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:53',	'2020-03-16 17:56:53'),
+(32,	36,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:53',	'2020-03-16 17:56:53'),
+(33,	36,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:53',	'2020-03-16 17:56:53'),
+(34,	36,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:56:56',	'2020-03-16 17:56:56'),
+(35,	36,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:56',	'2020-03-16 17:56:56'),
+(36,	36,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:56:56',	'2020-03-16 17:56:56'),
+(37,	37,	'fa fa-cutlery',	'Passionate',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam veh.',	1,	'2020-03-16 17:57:03',	'2020-03-16 17:57:03'),
+(38,	37,	'fa fa-cog',	'Intimate settings',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:57:03',	'2020-03-16 17:57:03'),
+(39,	37,	'fa fa-check',	'Vetted by GoDo Experience',	'Donec feugiat id augue consequat vulputate at magna mattis dignissim libero fringilla leo aiquam.',	1,	'2020-03-16 17:57:03',	'2020-03-16 17:57:03');
+
+DROP TABLE IF EXISTS `company`;
+CREATE TABLE `company` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_owner` varchar(100) DEFAULT NULL,
+  `company_name` varchar(100) DEFAULT NULL,
+  `company_logo` varchar(100) DEFAULT NULL,
+  `company_desc` varchar(100) DEFAULT NULL,
+  `company_phone` varchar(256) DEFAULT NULL,
+  `company_city` varchar(256) DEFAULT NULL,
+  `company_state` varchar(256) DEFAULT NULL,
+  `company_country` varchar(256) DEFAULT NULL,
+  `company_zip` varchar(256) DEFAULT NULL,
+  `company_full_address` varchar(256) DEFAULT NULL,
+  `company_email` varchar(256) DEFAULT NULL,
+  `company_facebook` varchar(100) DEFAULT NULL,
+  `company_instagram` varchar(100) DEFAULT NULL,
+  `company_twiiter` varchar(100) DEFAULT NULL,
+  `company_pinterest` varchar(100) DEFAULT NULL,
+  `status` smallint(1) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `company` (`id`, `company_owner`, `company_name`, `company_logo`, `company_desc`, `company_phone`, `company_city`, `company_state`, `company_country`, `company_zip`, `company_full_address`, `company_email`, `company_facebook`, `company_instagram`, `company_twiiter`, `company_pinterest`, `status`, `created_at`, `updated_at`) VALUES
+(1,	'Bitcot Technologies',	'GoDo Experiences',	'uploads/other/1585489927.jpg',	'gdgdfgdfgdfg',	'(+01) 34 56 7890',	'San Diego',	'CA',	'USA',	'45210',	'San Diego ,CA 45210 USA',	'info@godoexperience.com',	'gg',	'gg',	'ggg',	'ggg',	1,	NULL,	'2020-03-29 13:52:41');
+
+DROP TABLE IF EXISTS `contact_us`;
+CREATE TABLE `contact_us` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `contact_name` varchar(100) DEFAULT NULL,
+  `contact_email` varchar(256) DEFAULT NULL,
+  `contact_phone` varchar(256) DEFAULT NULL,
+  `contact_message` text DEFAULT NULL,
+  `contact_time` datetime DEFAULT NULL,
+  `reply_subject` varchar(256) DEFAULT NULL,
+  `reply_email` varchar(256) DEFAULT NULL,
+  `reply_body` text DEFAULT NULL,
+  `reply_time` datetime DEFAULT NULL,
+  `reply_user` int(11) DEFAULT NULL COMMENT 'User ID',
+  `is_reply` smallint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `contact_us` (`id`, `contact_name`, `contact_email`, `contact_phone`, `contact_message`, `contact_time`, `reply_subject`, `reply_email`, `reply_body`, `reply_time`, `reply_user`, `is_reply`) VALUES
+(1,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(2,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(3,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(4,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(6,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(7,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(8,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(9,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(13,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(14,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(15,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(16,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(17,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(18,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(19,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(20,	'Gajendra ',	'test@g.com',	'123456712',	'ff sjfkl sjdf;jafkj kfjkafjkldas\r\nfs fklsdfj;sdjf;lsjdflsdf sdf sdfdfsf',	'2020-03-17 16:41:51',	'',	'',	'',	NULL,	NULL,	0),
+(21,	'gdfgd',	'test2fsdfsdf@fsdfsdf.com',	'12121212121',	'dsf dsfsdfkdjsfkl jsdflk jsdfkl jlskdfj',	'2020-03-19 19:43:13',	'',	'',	NULL,	NULL,	NULL,	0),
+(22,	'dumy contact',	'contact@test.com',	'123456789',	'I founded a bug in your website please fix it.',	'2020-03-20 10:59:40',	'fsfd sdf sdfsdf sdfsdf',	'noreply@godoexperience.com',	'<p><em>Lorem ipsum</em>, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero&#39;s De Finibus Bonorum et Malorum for use in a type specimen book.</p>\r\n\r\n<p>fshdf h;sdfh;dshf ;jsdhfj; hsdf;jhsdjfh;jsdhfkj;s dhfj hsdfjh dsfh s;dfhdjs f;sdhf;k</p>\r\n',	'2020-03-20 03:17:15',	37,	1),
+(23,	'gajendra contact',	'gajendra@bitcot.com',	'1234567890',	'your services are very poors.',	'2020-03-20 15:28:51',	'gd gdfg dfg dfg dfg dfg dfg gdg dfgdfg',	'noreply@godoexperience.com',	'<p><em><strong>Lorem ipsum dolor sit amet,</strong></em></p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n',	'2020-03-20 04:22:07',	37,	1),
+(24,	'fsdfdsf',	'dsfdsfdsf@fsfsdf.com',	'1234567890',	'fsdf sdf sdf sdf',	'2020-03-20 16:56:55',	NULL,	NULL,	NULL,	NULL,	NULL,	0);
+
+DROP TABLE IF EXISTS `experiences`;
+CREATE TABLE `experiences` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `sub_title` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `slug` text DEFAULT NULL,
+  `experiences_image_url` varchar(255) DEFAULT NULL,
+  `experiences_video_url` varchar(255) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `duration` int(3) DEFAULT 0,
+  `duration_type` varchar(10) DEFAULT NULL,
+  `group_size` int(3) DEFAULT 1,
+  `activity_level` varchar(50) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `latitude` varchar(50) DEFAULT NULL,
+  `longitude` varchar(50) DEFAULT NULL,
+  `status` smallint(1) NOT NULL DEFAULT 1,
+  `featured` smallint(1) DEFAULT 0,
+  `featured_date` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_experiences_category_id` (`category_id`),
+  KEY `fk_experiences_user_id` (`user_id`),
+  CONSTRAINT `fk_experiences_category_id` FOREIGN KEY (`category_id`) REFERENCES `experience_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_experiences_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experiences` (`id`, `category_id`, `user_id`, `title`, `sub_title`, `description`, `slug`, `experiences_image_url`, `experiences_video_url`, `price`, `duration`, `duration_type`, `group_size`, `activity_level`, `country`, `state`, `city`, `latitude`, `longitude`, `status`, `featured`, `featured_date`, `created_at`, `updated_at`) VALUES
+(21,	28,	8,	'15 Best Culinary Tour Experiences and Cooking Classes in India',	'15 Best Culinary Tour Experiences and Cooking Classes in India',	'<p>Culinary tours in India is a gastronomic delight where travelers can explore their love for Indian cuisines. Get the real taste of some of India’s culinary traditions. Experience the delights of Mughal, Rajasthani, Gujarati, South Indian, Portuguese-tinged flavors with a chance for insider experiences and cultural interactions. What if you could not just treat your taste buds but also learn to prepare Indian recipes? A treat for the foodies, we bring to you some of the best cooking classes in India. Learn the preparation of Indian delicacies from master chefs and renowned cooks with expertise in the kitchen.</p><p>\n\n</p><p>There is something very special about cooking classes in India if you happen to be at this award winning cook based in Kerala.&nbsp; Be prepared for delicious home-cooked meals, cookery demonstrations, or even foodie home-stays. These classes are just the thing you need to learn the ins-and-outs of the local cuisine. Nimmy is a professional cookery instructor and consultant who has expertise in dishes that liven your senses. Treat your taste buds to a variety of traditional Kerala Syrian Christian cooking classes in her home. Class duration can range from three hours to a full day. You can also stay at Nimmy’s home and experience the Keralan lifestyle and culture.</p><p>\n\n</p><p><strong>Duration:&nbsp;</strong>3-5 Hours a Day.</p><p>\n\n</p><p><strong>Cost:&nbsp;</strong>INR 1000 per person.</p><p>\n\n</p><p>&nbsp;</p><p>\n\n</p><p>The Philipkutty’s Farm in Kottayam is one of Kerala’s best holiday properties. Relaxing holidays drenched in bliss are a norm here. The lesser known secret is the wonderful gastronomic pleasures by Mrs. Mathew Senior, the nurturing mother of the resort. The traditional Keralan recipes are concocted here with fresh produce of the farm. Coconuts and bananas grow in abundance. There are daily cooking classes where you learn the preparation of Kerala cuisine. A stay of at least three to four days is recommended or a week would be just perfect to get a better hand at cooking Keralan cuisines.</p><p>\n\n</p><p><strong>Duration:</strong>&nbsp;2-3 Hours for minimum 4 Days.</p><p>\n\n</p><p><strong>Cost:</strong>&nbsp;Available on request.</p><p>\n</p>',	'15-best-culinary-tour-experiences-and-cooking-classes-in-india',	'uploads/experiences/1585460812.jpg',	NULL,	128,	2,	'days',	5,	'moderate',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-12 19:48:12',	'2020-03-29 05:46:52'),
+(22,	28,	8,	'Udaipur is a popular city in Rajasthan not just for its beauty and history but the heritage of Indian gastronomy',	'Udaipur is a popular city in Rajasthan not just for its beauty and history but the heritage of Indian gastronomy',	'<p>Cook with one of the best chefs ever: Our grandma, Nonna Nerina. She and her sisters will show you how to prepare the perfect pasta—no machines, just your hands, the freshest local ingredients, and love. You’ll be part of our crazy family for a day and join us as we walk the tiny medieval streets to Grandma’s kitchen, located in the old winepress where my great-grandpa used to make wine that the community tapped straight from the barrel. It\'s a special place for my family and the entire village.</p><p>\n\n</p><p>Udaipur is a popular city in Rajasthan not just for its beauty and history but the heritage of Indian gastronomy. Shashi, a warrior woman of Udaipur offers cooking classes with wisdom and humor like a fine seasoning to the meal. The basic cooking lessons are conducted in four to five hour classes a day. In her cooking classes, learn how to prepare Indian staples such as masala chai, pakoras, parathas, chutneys, vegetable curry, vegetable pulao, and paneer. Offering one of the best cooking classes in India, Shashi will teach you to prepare these mouthwatering dishes at home within minutes. Take home the secrets of the hearty Indian food.</p><p>\n\n</p><p>Udaipur is a popular city in Rajasthan not just for its beauty and history but the heritage of Indian gastronomy. Shashi, a warrior woman of Udaipur offers cooking classes with wisdom and humor like a fine seasoning to the meal. The basic cooking lessons are conducted in four to five hour classes a day. In her cooking classes, learn how to prepare Indian staples such as masala chai, pakoras, parathas, chutneys, vegetable curry, vegetable pulao, and paneer. Offering one of the best cooking classes in India, Shashi will teach you to prepare these mouthwatering dishes at home within minutes. Take home the secrets of the hearty Indian food.</p><p>\n</p>',	'udaipur-is-a-popular-city-in-rajasthan-not-just-for-its-beauty-and-history-but-the-heritage-of-indian-gastronomy',	'uploads/experiences/1585460795.jpg',	NULL,	455,	5,	'days',	1,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-13 15:28:02',	'2020-03-29 05:46:35'),
+(23,	30,	8,	'Secrets of Newfoundland\'s Irish Loop',	'Secrets of Newfoundland\'s Irish Loop',	'<p>Adventures should be accessible to everyone. You don\'t need to be a BASE-jumping adrenaline junkie or a fearless wild camper. The only thing you need is the right guide.That\'s why Airbnb Adventures are hosted by thoughtful experts with deep ties to their local communities. They\'ve created curated journeys for the nervous novice up to the seasoned trekker, for a range of budgets, interests, and locations. And everything is pre-planned, so just book and go.</p><p>\n\n</p><p>Adventures should be accessible to everyone. You don\'t need to be a BASE-jumping adrenaline junkie or a fearless wild camper. The only thing you need is the right guide.That\'s why Airbnb Adventures are hosted by thoughtful experts with deep ties to their local communities. They\'ve created curated journeys for the nervous novice up to the seasoned trekker, for a range of budgets, interests, and locations. And everything is pre-planned, so just book and go.</p><p>\n\n</p><p>Adventures should be accessible to everyone. You don\'t need to be a BASE-jumping adrenaline junkie or a fearless wild camper. The only thing you need is the right guide.That\'s why Airbnb Adventures are hosted by thoughtful experts with deep ties to their local communities. They\'ve created curated journeys for the nervous novice up to the seasoned trekker, for a range of budgets, interests, and locations. And everything is pre-planned, so just book and go.</p><p>\n\n</p><p>Adventures should be accessible to everyone. You don\'t need to be a BASE-jumping adrenaline junkie or a fearless wild camper. The only thing you need is the right guide.That\'s why Airbnb Adventures are hosted by thoughtful experts with deep ties to their local communities. They\'ve created curated journeys for the nervous novice up to the seasoned trekker, for a range of budgets, interests, and locations. And everything is pre-planned, so just book and go.</p><p>\n</p>',	'secrets-of-newfoundland\'s-irish-loop',	'uploads/experiences/1585460762.jpg',	NULL,	220,	5,	'days',	1,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-13 16:21:44',	'2020-03-29 05:46:02'),
+(24,	30,	8,	'Tracking Bumblebees in the Redwoods',	'Tracking Bumblebees in the Redwoods',	'<p>Tracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the Redwoods.</p><p>\n\n</p><p>Tracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the Redwoods.</p><p>\n\n</p><p>Tracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the RedwoodsTracking Bumblebees in the Redwoods</p><p>\n</p>',	'tracking-bumblebees-in-the-redwoods',	'uploads/experiences/1585460741.jpg',	NULL,	210,	2,	'days',	10,	'light',	'india',	'mp',	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:05:13',	'2020-03-29 05:45:41'),
+(25,	30,	8,	'Nova Scotia: Maritime Lyrics & Lore',	'Nova Scotia: Maritime Lyrics & Lore',	'<p>Nova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; Lore</p><p>\n\n</p><p>Nova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; Lore</p><p>\n\n</p><p>Nova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; Lore</p><p>\n\n</p><p>Nova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; LoreNova Scotia: Maritime Lyrics &amp; Lore</p><p>\n</p>',	'nova-scotia:-maritime-lyrics-&-lore',	'uploads/experiences/1585460717.jpg',	NULL,	453,	7,	'days',	15,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:07:34',	'2020-03-29 05:45:17'),
+(26,	30,	8,	'Tunisia Through the Sands of Time',	'Tunisia Through the Sands of Time',	'<p><strong>Tunisia Through the Sands of Time</strong></p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n</p>',	'tunisia-through-the-sands-of-time',	'uploads/experiences/1585460692.jpg',	NULL,	200,	2,	'days',	12,	'moderate',	'india',	NULL,	'Chennai',	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:08:54',	'2020-03-29 05:44:52'),
+(27,	30,	8,	'Dartmoor\'s Ancient Woods & Folklore',	'Dartmoor\'s Ancient Woods & Folklore Dartmoor\'s Ancient Woods & Folklore',	'<p><strong>Dartmoor\'s Ancient Woods &amp; Folklore Dartmoor\'s Ancient Woods &amp; Folklore</strong></p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n</p>',	'dartmoor\'s-ancient-woods-&-folklore',	'uploads/experiences/1585460666.jpg',	NULL,	213,	1,	'days',	10,	'strenuous',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:10:30',	'2020-03-29 05:44:26'),
+(28,	29,	8,	'A day at an ornamental fish culture farm',	'meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia',	'<p><strong>A day at an ornamental fish culture farm</strong></p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>&nbsp;</p><p>\n</p>',	'a-day-at-an-ornamental-fish-culture-farm',	'uploads/experiences/1585460644.jpg',	NULL,	255,	5,	'days',	5,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	'2020-02-21 16:14:54',	'2020-04-12 17:01:03'),
+(29,	29,	8,	'Adventuring with Penni the Dog',	'Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta',	'<p><strong>Adventuring with Penni the Dog</strong></p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>&nbsp;</p><p>\n</p>',	'adventuring-with-penni-the-dog',	'uploads/experiences/1585460607.jpg',	NULL,	622,	5,	'days',	5,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:15:53',	'2020-04-12 17:00:37'),
+(30,	29,	8,	'Our journey will starts with a walking in which we will discover the village',	'We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region',	'<p><strong>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. </strong></p><p>\n\n</p><p>We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p><strong>Our journey will starts with a walking in which we will discover the village, </strong></p><p>\n\n</p><p>its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n</p>',	'our-journey-will-starts-with-a-walking-in-which-we-will-discover-the-village',	'uploads/experiences/1585460012.jpg',	NULL,	540,	1,	'days',	5,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:16:34',	'2020-04-12 17:00:11'),
+(31,	33,	8,	'We will also collect ingredients useful in our cooking',	'Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning',	'<p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n</p>',	'we-will-also-collect-ingredients-useful-in-our-cooking',	'uploads/experiences/1585460583.jpg',	NULL,	855,	2,	'days',	15,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:18:05',	'2020-04-12 16:59:40'),
+(32,	33,	8,	'Fishing trip  in the Pacific Northwest',	'Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen',	'<p><strong>Fishing trip in the Pacific Northwest</strong>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n\n</p><p>Our journey will starts with a walking in which we will discover the village, its farmers and food tradition. We will also collect ingredients useful in our cooking. So, after reached our kitchen, we will prepare our meal in a cooking class learning how to set up traditional and innovative recipes using the best of food production of the region. Many of this products belongs to the Ark of Taste and Slow Food Presidia or comes directly from some local Slow Food Community. We always prepare the entire lunch making several starters, colorful salads, fresh pasta, pesto or other sauces and desserts. We will end our food journey tasting the prepared 4 courses learning how to pair it with 3 different wines and homemade liquors.</p><p>\n</p>',	'fishing-trip-in-the-pacific-northwest',	'uploads/experiences/1585460566.jpg',	NULL,	542,	1,	'days',	10,	'light',	'india',	NULL,	NULL,	NULL,	NULL,	1,	1,	NULL,	'2020-02-21 16:19:11',	'2020-04-12 16:59:23'),
+(33,	29,	37,	'Observe cloud forest elephants and meet the community who care for them',	'Observe cloud forest elephants and meet the community who care for them',	'<p>We are dedicated to working in partnership with Karen communities and their captive elephants. The communities are rich in culture and elephants are at the very heart of this. When logging was banned in Thailand in the late 1980’s the mahouts and their elephants had to leave their villages to work in the trekking camps around Chiang Mai. There is now a real desire within the communities to return the elephants back to the forests, where they can live as naturally as possible,</p><p>\n\n</p><p>deep in their forest habitat. Offering observation only guest experiences. By partnering with these communities we are able to help them grow sustainable community based projects, where visitors are able to observe the elephants living naturally deep in the forest and spend time immersed in the community learning traditional skills such as fabric and basket making. Embark on a wondrous journey into the beautiful mountains of northern Thailand and learn about the Karen community and their elephants.</p><p>\n\n</p><p>Our expert mountain drivers will pick you up in Mae Sot and escort you to the site near the Karen village where you’ll be lead on a tour of the local community. The next day, we’ll head into the forest to observe and learn about the region’s elephants, as well as the surrounding forest ecosystem. During this time you’ll learn about traditional local culture and observe elephants roaming in the forest.</p><p>\n</p>',	'observe-cloud-forest-elephants-and-meet-the-community-who-care-for-them',	'uploads/experiences/1585459947.jpg',	NULL,	452,	1,	'days',	12,	'light',	'india',	'MP',	'Indore',	NULL,	NULL,	1,	0,	NULL,	'2020-03-04 17:48:04',	'2020-03-29 05:32:27'),
+(34,	30,	35,	'This Island is Canada\'s Best Kept Secret',	'Break down the elitism in adventure—that’s the goal that  set when he struck off on a year of microadventures in his native U.K., a feat that earned him the title of National Geographic Adventurer of the Year',	'<p>Break down the elitism in adventure—that’s the goal that&nbsp;&nbsp;set when he struck off on a year of microadventures in his native U.K., a feat that earned him the title of&nbsp;<a href=\"https://adserver.pressboard.ca/c/link?c=244012&amp;w=173188&amp;l=244400\" target=\"_blank\">National Geographic Adventurer of the Year</a>. And when he set out to explore Nova Scotia’s&nbsp;<a href=\"https://adserver.pressboard.ca/c/link?c=244012&amp;w=173188&amp;l=244399\" target=\"_blank\">Cape Breton Island</a>, a scenic, culturally diverse spot that joins the mainland by causeway, he found that the eastern Canadian province did that for him. “Even more than the lovely landscapes and the lobster, what stood out were the people,” Humphreys says. “The pride they have in their homeland and their culture, . . .the sense of fun, and the kindness—we got such a friendly reception everywhere we went.\" Here’s how he did it, and how you can too.</p><p>\n</p>',	'this-island-is-canada\'s-best-kept-secret',	'uploads/experiences/1585459919.jpg',	NULL,	350,	1,	'hours',	10,	'light',	'India',	'GOA',	'GOA',	NULL,	NULL,	1,	1,	NULL,	'2020-03-04 18:10:10',	'2020-04-12 16:58:53'),
+(35,	28,	37,	'Dolor sed viverra ipsum nunc aliquet. Dui sapien eget mi proin sed libero enim sed faucibus',	'Dolor sed viverra ipsum nunc aliquet. Dui sapien eget mi proin sed libero enim sed faucibus. Vitae ultricies leo integer malesuada nunc vel. Id aliquet risus feugiat in. Blandit turpis cursus in hac. Lorem ipsum dolor sit amet. Sit amet justo donec enim',	'<p>Dolor sed viverra ipsum nunc aliquet. Dui sapien eget mi proin sed libero enim sed faucibus. Vitae ultricies leo integer malesuada nunc vel. Id aliquet risus feugiat in. Blandit turpis cursus in hac. Lorem ipsum dolor sit amet. Sit amet justo donec enim. Eu ultrices vitae auctor eu augue ut. Massa eget egestas purus viverra accumsan in nisl. Lacus sed turpis tincidunt id aliquet risus feugiat. Consequat nisl vel pretium lectus quam. Porttitor lacus luctus accumsan tortor posuere ac ut consequat semper. Nisi lacus sed viverra tellus in hac habitasse.</p><p>Ornare lectus sit amet est placerat in. Donec adipiscing tristique risus nec feugiat. Elit sed vulputate mi sit amet mauris commodo quis imperdiet. Dui id ornare arcu odio. Felis eget velit aliquet sagittis. Tristique senectus et netus et malesuada fames ac turpis egestas. Est velit egestas dui id ornare arcu. Rhoncus est pellentesque elit ullamcorper dignissim cras. Praesent tristique magna sit amet purus. Turpis egestas maecenas pharetra convallis posuere. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Neque egestas congue quisque egestas diam in arcu cursus euismod. Blandit massa enim nec dui nunc mattis enim ut. Vulputate ut pharetra sit amet aliquam id. Neque volutpat ac tincidunt vitae semper quis lectus.\n</p>',	'dolor-sed-viverra-ipsum-nunc-aliquet.-dui-sapien-eget-mi-proin-sed-libero-enim-sed-faucibus',	'uploads/experiences/1585459900.jpg',	NULL,	150,	2,	'days',	10,	'moderate',	'India',	'MP',	'ICHennai',	NULL,	NULL,	1,	0,	NULL,	'2020-03-19 18:38:03',	'2020-04-12 16:58:30'),
+(36,	29,	37,	'You\'ll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen',	'You\'ll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen, devour a feast, drink like royalty,watch a private Live Drag show and much more',	'<p>You\'ll cook authentic Portuguese recipes, be professionally transformed in a fabulous Queen, devour a feast, drink like royalty,&nbsp;\nwatch a private Live Drag show and much more. So, start your engines and get ready for your once in a Lifetime Experience!&nbsp;</p><p>\n\n</p><p>Your evening will start with pink champagne served by the most gorgeous Drag Queens. While our funky music is playing,&nbsp;\nit\'s time to wash your hands, put on your sexy aprons and start the cooking class!</p><p>\n\n</p><p>With glamour and excitement, your Drag Chef will guide you through all the recipe steps and reveal cooking tips and tricks,&nbsp;\nso you can cook like the Portuguese! From appetizers, flaming chorizos, main courses, BEST homemade sangria, and famous desserts,&nbsp;\nwe\'ll cook it all together, with authenticity, fun and excitement! We happily accommodate all dietary restrictions and preferences\nWhile dinner is cooking, the action goes to the Drag Makeup Studio;&nbsp;\nyou\'ll have the opportunity to be fully transformed into the Drag Queen or King of your dreams! After the professional makeover,\n&nbsp;you\'ll choose from a huge selection of wigs, dresses, jewelry, high heels, accessories and more, until you are a gorgeous,&nbsp;\n&nbsp;unique and unrecognizable QUEEN! Food\'s ready, you\'re Queened up, it\'s time for a the Dinner Party with a table full of&nbsp;\n&nbsp;Queens from all over the world, laughing sharing stories, and watching the most amazing LIVE DRAG SHOW of your life!</p><p>\n</p>',	'you\'ll-cook-authentic-portuguese-recipes,-be-professionally-transformed-in-a-fabulous-queen',	'uploads/experiences/1585459392.jpg',	NULL,	300,	2,	'days',	10,	'light',	'India',	'MP',	'Indore',	NULL,	NULL,	1,	1,	NULL,	'2020-03-19 19:16:46',	'2020-04-12 16:54:20'),
+(37,	29,	37,	'professionally transformed in a fabulous Queen',	'With glamour and excitement, your Drag Chef will guide you through all the recipe steps and reveal cooking tips and tricks, \r\nso you can cook like the Portuguese! From appetizers, flaming schizos, main courses, BEST homemade sangria, and famous desserts, \r\nwe\'ll cook it all together, with authenticity',	'<p>\n<strong><em>With glamour and excitement, </em></strong></p><p>your Drag Chef will guide you through all the recipe steps and reveal cooking tips and tricks,&nbsp;\nso you can cook like the Portuguese! From appetizers, flaming schizos, main courses, BEST homemade sangria, and famous desserts,&nbsp;\nwe\'ll cook it all together, with authenticity, fun and excitement! We happily accommodate all dietary restrictions and preferences\nWhile dinner is cooking, the action goes to the Drag Makeup Studio;&nbsp;\nyou\'ll have the opportunity to be fully transformed into the Drag Queen or King of your dreams! After the professional makeover,\n&nbsp;you\'ll choose from a huge selection of wigs, dresses, jewelry, high heels, accessories and more, until you are a gorgeous,&nbsp;\n&nbsp;unique and unrecognizable QUEEN! Food\'s ready, you\'re Queened up, it\'s time for a the Dinner Party with a table full of&nbsp;\n&nbsp;Queens from all over the world, laughing sharing stories, and watching the most amazing LIVE DRAG SHOW of your life!</p>',	'professionally-transformed-in-a-fabulous-queen',	'uploads/experiences/1585457166.jpg',	NULL,	520,	5,	'hours',	5,	'light',	'USA',	'CA',	'CA',	NULL,	NULL,	1,	1,	NULL,	'2020-03-19 19:37:37',	'2020-04-12 16:53:41'),
+(38,	28,	8,	'Historical Places In India',	'zxczxczxc czx czxc xzc',	'<h2>What is Lorem Ipsum?</h2><p class=\"ql-align-justify\"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p>',	'historical-places-in-india',	'uploads/experiences/1585453804.jpg',	NULL,	100,	10,	'days',	12,	'moderate',	NULL,	NULL,	NULL,	NULL,	NULL,	2,	1,	NULL,	'2020-03-29 03:50:04',	'2020-03-29 07:59:13'),
+(39,	30,	8,	'An adventure is an exciting experience that is typically a bold',	'An adventure is an exciting experience that is typically a bold, sometimes risky, undertaking. Adventures may be activities with some potential for physical danger such as traveling, exploring, skydiving, mountain climbing, scuba diving, river rafting or participating in extreme sports.',	'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',	'an-adventure-is-an-exciting-experience-that-is-typically-a-bold',	'uploads/experiences/1585989761.jpg',	NULL,	300,	2,	'days',	15,	'light',	'india',	'MP',	'indore',	NULL,	NULL,	1,	1,	NULL,	'2020-04-04 08:42:41',	'2020-04-12 16:53:02'),
+(40,	29,	8,	'Animals are multicellular eukaryotic organisms that form the biological kingdom Animalia',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',	'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',	'animals-are-multicellular-eukaryotic-organisms-that-form-the-biological-kingdom-animalia',	'uploads/experiences/1585989856.jpg',	NULL,	300,	1,	'days',	15,	'light',	'india',	'MP',	'indore',	NULL,	NULL,	1,	1,	NULL,	'2020-04-04 08:44:16',	'2020-04-12 16:51:27'),
+(41,	28,	8,	'Lorem ipsum dolor sit amet',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate',	'<p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit</strong></p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',	'lorem-ipsum-dolor-sit-amet',	'uploads/experiences/1585991756.jpg',	NULL,	300,	1,	'days',	15,	'light',	'india',	'MP',	'indore',	NULL,	NULL,	1,	1,	NULL,	'2020-04-04 08:45:45',	'2020-04-12 16:50:17');
+
+DROP TABLE IF EXISTS `experiences_order`;
+CREATE TABLE `experiences_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `experience_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `payment_id` int(11) NOT NULL,
+  `experience_price` int(11) NOT NULL,
+  `experience_adons_price` int(11) NOT NULL,
+  `net_pay` int(11) NOT NULL,
+  `experience_adons_ids` varchar(50) DEFAULT NULL,
+  `experience_adons_detail` text DEFAULT NULL,
+  `experience_avl_id` int(11) DEFAULT NULL,
+  `experience_start_date` date DEFAULT NULL,
+  `experience_end_date` date DEFAULT NULL,
+  `schedule_detail` varchar(256) DEFAULT NULL,
+  `total_guest_adults` int(11) DEFAULT 1,
+  `total_guest_children` int(11) DEFAULT 0,
+  `total_guest_infants` int(11) DEFAULT 0 COMMENT 'Age under 2 years age',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `experience_id` (`experience_id`),
+  KEY `payment_id` (`payment_id`),
+  KEY `user_id` (`user_id`),
+  KEY `experience_avl_id` (`experience_avl_id`),
+  CONSTRAINT `experiences_order_ibfk_1` FOREIGN KEY (`experience_id`) REFERENCES `experiences` (`id`),
+  CONSTRAINT `experiences_order_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `experiences_payment` (`id`),
+  CONSTRAINT `experiences_order_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `experiences_order_ibfk_4` FOREIGN KEY (`experience_avl_id`) REFERENCES `experience_availability` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experiences_order` (`id`, `experience_id`, `user_id`, `payment_id`, `experience_price`, `experience_adons_price`, `net_pay`, `experience_adons_ids`, `experience_adons_detail`, `experience_avl_id`, `experience_start_date`, `experience_end_date`, `schedule_detail`, `total_guest_adults`, `total_guest_children`, `total_guest_infants`, `created_at`, `updated_at`) VALUES
+(29,	32,	22,	32,	542,	0,	542,	'',	'a:0:{}',	77,	'2020-03-12',	'2020-03-12',	'a:3:{s:8:\"duration\";i:1;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:10;}',	1,	0,	0,	'2020-03-12 16:08:15',	NULL),
+(30,	30,	22,	33,	540,	27,	567,	'34,35',	'a:2:{i:0;a:3:{s:2:\"id\";s:2:\"34\";s:4:\"name\";s:5:\"Lunch\";s:5:\"price\";s:2:\"15\";}i:1;a:3:{s:2:\"id\";s:2:\"35\";s:4:\"name\";s:6:\"Deaner\";s:5:\"price\";s:2:\"12\";}}',	211,	'2020-03-21',	'2020-03-21',	'a:3:{s:8:\"duration\";i:1;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:5;}',	1,	0,	0,	'2020-03-12 17:47:08',	NULL),
+(31,	34,	22,	34,	350,	0,	350,	'',	'a:0:{}',	248,	'2020-03-20',	'2020-03-20',	'a:3:{s:8:\"duration\";i:1;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:10;}',	1,	0,	0,	'2020-03-12 17:48:14',	NULL),
+(32,	24,	36,	35,	210,	108,	318,	'22,23',	'a:2:{i:0;a:3:{s:2:\"id\";s:2:\"22\";s:4:\"name\";s:5:\"tsttt\";s:5:\"price\";s:2:\"54\";}i:1;a:3:{s:2:\"id\";s:2:\"23\";s:4:\"name\";s:5:\"fghfg\";s:5:\"price\";s:2:\"54\";}}',	157,	'2020-03-17',	'2020-03-18',	'a:3:{s:8:\"duration\";i:2;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:10;}',	1,	0,	0,	'2020-03-13 15:19:05',	NULL),
+(33,	30,	36,	36,	540,	27,	567,	'34,35',	'a:2:{i:0;a:3:{s:2:\"id\";s:2:\"34\";s:4:\"name\";s:5:\"Lunch\";s:5:\"price\";s:2:\"15\";}i:1;a:3:{s:2:\"id\";s:2:\"35\";s:4:\"name\";s:6:\"Deaner\";s:5:\"price\";s:2:\"12\";}}',	211,	'2020-03-21',	'2020-03-21',	'a:3:{s:8:\"duration\";i:1;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:5;}',	1,	0,	0,	'2020-03-13 17:18:16',	NULL),
+(34,	23,	36,	37,	220,	804,	2124,	'16,19',	'a:2:{i:0;a:3:{s:2:\"id\";s:2:\"16\";s:4:\"name\";s:4:\"Food\";s:5:\"price\";s:2:\"54\";}i:1;a:3:{s:2:\"id\";s:2:\"19\";s:4:\"name\";s:10:\"Travelling\";s:5:\"price\";s:2:\"80\";}}',	147,	'2020-03-31',	'2020-04-04',	'a:3:{s:8:\"duration\";i:5;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:1;}',	3,	1,	2,	'2020-03-19 12:46:17',	NULL),
+(35,	29,	36,	38,	622,	300,	1544,	'29',	'a:1:{i:0;a:3:{s:2:\"id\";s:2:\"29\";s:4:\"name\";s:12:\"Morning food\";s:5:\"price\";s:3:\"150\";}}',	202,	'2020-03-28',	'2020-04-01',	'a:3:{s:8:\"duration\";i:5;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:5;}',	1,	1,	0,	'2020-03-19 15:34:48',	NULL),
+(36,	35,	39,	39,	150,	81,	531,	'45,46',	'a:2:{i:0;a:3:{s:2:\"id\";s:2:\"45\";s:4:\"name\";s:4:\"Food\";s:5:\"price\";s:2:\"15\";}i:1;a:3:{s:2:\"id\";s:2:\"46\";s:4:\"name\";s:11:\"Traveeling \";s:5:\"price\";s:2:\"12\";}}',	299,	'2020-03-31',	'2020-04-01',	'a:3:{s:8:\"duration\";i:2;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:10;}',	2,	1,	0,	'2020-03-19 18:42:48',	NULL),
+(37,	37,	36,	40,	300,	65,	365,	'47,48',	'a:2:{i:0;a:3:{s:2:\"id\";s:2:\"47\";s:4:\"name\";s:4:\"food\";s:5:\"price\";s:2:\"15\";}i:1;a:3:{s:2:\"id\";s:2:\"48\";s:4:\"name\";s:10:\"Travelling\";s:5:\"price\";s:2:\"50\";}}',	308,	'2020-04-08',	'2020-04-09',	'a:3:{s:8:\"duration\";i:2;s:13:\"duration_type\";s:3:\"day\";s:10:\"group_size\";i:10;}',	1,	0,	0,	'2020-03-19 19:20:22',	NULL);
+
+DROP TABLE IF EXISTS `experiences_payment`;
+CREATE TABLE `experiences_payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `payment_success_id` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `experience_id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `payment_description` varchar(100) DEFAULT NULL,
+  `payment_amount` int(11) DEFAULT NULL,
+  `payment_created` int(10) DEFAULT NULL,
+  `payment_currency` varchar(10) DEFAULT NULL,
+  `payment_receipt_email` varchar(100) DEFAULT NULL,
+  `payment_receipt_url` varchar(256) DEFAULT NULL,
+  `payment_brand` varchar(50) DEFAULT NULL,
+  `payment_exp_month` int(10) DEFAULT NULL,
+  `payment_exp_year` int(10) DEFAULT NULL,
+  `payment_last4` int(10) DEFAULT NULL,
+  `payment_country` varchar(50) DEFAULT NULL,
+  `payment_network` varchar(10) DEFAULT NULL,
+  `billing_city` varchar(50) DEFAULT NULL,
+  `billing_state` varchar(50) DEFAULT NULL,
+  `billing_country` varchar(50) DEFAULT NULL,
+  `billing_postal_code` varchar(50) DEFAULT NULL,
+  `billing_line1` varchar(50) DEFAULT NULL,
+  `billing_line2` varchar(50) DEFAULT NULL,
+  `payment_status` smallint(1) DEFAULT 1 COMMENT '0=>failure,1=>success',
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `experience_id` (`experience_id`),
+  CONSTRAINT `experiences_payment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `experiences_payment_ibfk_2` FOREIGN KEY (`experience_id`) REFERENCES `experiences` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experiences_payment` (`id`, `payment_success_id`, `user_id`, `experience_id`, `name`, `email`, `phone`, `payment_description`, `payment_amount`, `payment_created`, `payment_currency`, `payment_receipt_email`, `payment_receipt_url`, `payment_brand`, `payment_exp_month`, `payment_exp_year`, `payment_last4`, `payment_country`, `payment_network`, `billing_city`, `billing_state`, `billing_country`, `billing_postal_code`, `billing_line1`, `billing_line2`, `payment_status`, `created_at`) VALUES
+(32,	'ch_1GLoQcAHwB8RivKjRydkKc6t',	22,	32,	'dev@bitcot.com',	NULL,	NULL,	'Booking For : 1 Guest $(1 ×  542 ) = $542',	542,	1584009494,	'usd',	'dev@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GLoQcAHwB8RivKjRydkKc6t/rcpt_GtbdpTtags08vfH5KKW5lLBtoqfBsb5',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-12 16:08:15'),
+(33,	'ch_1GLpyJAHwB8RivKjy3DQQfze',	22,	30,	'dev@bitcot.com',	NULL,	NULL,	'Booking For : 1 Guest $(1 ×  567 ) = $567',	567,	1584015427,	'usd',	'dev@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GLpyJAHwB8RivKjy3DQQfze/rcpt_GtdEz9bgfq0bLznPROtJyqqvVOLkr12',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-12 17:47:08'),
+(34,	'ch_1GLpzOAHwB8RivKjA5uKuQIu',	22,	34,	'dev@bitcot.com',	NULL,	NULL,	'Booking For : 1 Guest $(1 ×  350 ) = $350',	350,	1584015494,	'usd',	'dev@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GLpzOAHwB8RivKjA5uKuQIu/rcpt_GtdFlSv2J1iqMCx9p2PiobNCgHxk1sq',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-12 17:48:14'),
+(35,	'ch_1GMA8aAHwB8RivKjxoO1Plp1',	36,	24,	'client.test@bitcot.com',	NULL,	NULL,	'Booking For : 1 Guest $(1 ×  318 ) = $318',	318,	1584092944,	'usd',	'client.test@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GMA8aAHwB8RivKjxoO1Plp1/rcpt_Gty4V1ECul4PMJVk1OcHwEe83zreLsQ',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-13 15:19:05'),
+(36,	'ch_1GMBzwAHwB8RivKjb6HQtgSU',	36,	30,	'client.test@bitcot.com',	NULL,	NULL,	'Booking For : 1 Guest $(1 ×  567 ) = $567',	567,	1584100096,	'usd',	'client.test@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GMBzwAHwB8RivKjb6HQtgSU/rcpt_GtzzfmY4O4KnemFHUNNuHo5GCxRv3zr',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-13 17:18:16'),
+(37,	'ch_1GOIc0AHwB8RivKjecAlCcDD',	36,	23,	'client.test@bitcot.com',	NULL,	NULL,	'Booking For : 6 Guest $(6 ×  354 ) = $2124',	2124,	1584602176,	'usd',	'client.test@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GOIc0AHwB8RivKjecAlCcDD/rcpt_GwAxdl1XWoiYVdAzvHZQfyG86JVUZ6H',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-19 12:46:17'),
+(38,	'ch_1GOLF5AHwB8RivKjbn9sondE',	36,	29,	'client.test@bitcot.com',	NULL,	NULL,	'Booking For : 2 Guest $(2 ×  772 ) = $1544',	1544,	1584612287,	'usd',	'client.test@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GOLF5AHwB8RivKjbn9sondE/rcpt_GwDgrZRvQQG7jlh5MT5mzO53YZ4aGCM',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-19 15:34:48'),
+(39,	'ch_1GOOB1AHwB8RivKjWRzktLkt',	39,	35,	'bitcot.test@gmail.com',	NULL,	NULL,	'Booking For : 3 Guest $(3 ×  177 ) = $531',	531,	1584623567,	'usd',	'bitcot.test@gmail.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GOOB1AHwB8RivKjWRzktLkt/rcpt_GwGi1eZmPLM1y0lJaFYdRrGiSj6TXlg',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-19 18:42:48'),
+(40,	'ch_1GOOlNAHwB8RivKjiD7ofrEi',	36,	36,	'client.test@bitcot.com',	NULL,	NULL,	'Booking For : 1 Guest $(1 ×  365 ) = $365',	365,	1584625821,	'usd',	'client.test@bitcot.com',	'https://pay.stripe.com/receipts/acct_1GBNSzAHwB8RivKj/ch_1GOOlNAHwB8RivKjiD7ofrEi/rcpt_GwHKNomTPqz2VPMsWxGr5j1Vo5yTblu',	'visa',	12,	2022,	4242,	'US',	'visa',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	'2020-03-19 19:20:22');
+
+DROP TABLE IF EXISTS `experiences_saved`;
+CREATE TABLE `experiences_saved` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `experiences_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `experiences_id` (`experiences_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `experiences_saved_ibfk_1` FOREIGN KEY (`experiences_id`) REFERENCES `experiences` (`id`),
+  CONSTRAINT `experiences_saved_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experiences_saved` (`id`, `experiences_id`, `user_id`, `created_at`) VALUES
+(47,	30,	20,	'2020-03-02 16:48:45'),
+(60,	21,	20,	'2020-03-03 10:37:04'),
+(67,	24,	22,	'2020-03-04 18:27:05'),
+(68,	32,	22,	'2020-03-04 19:01:01'),
+(69,	31,	22,	'2020-03-12 18:44:44'),
+(70,	34,	22,	'2020-03-12 18:44:58');
+
+DROP TABLE IF EXISTS `experience_adons`;
+CREATE TABLE `experience_adons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `experiences_id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `price` int(11) DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `experiences_id` (`experiences_id`),
+  CONSTRAINT `experience_adons_ibfk_1` FOREIGN KEY (`experiences_id`) REFERENCES `experiences` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experience_adons` (`id`, `experiences_id`, `name`, `description`, `price`, `created_at`, `updated_at`) VALUES
+(13,	22,	'AfterNoon Nasta',	'AfterNoon Nasta',	5,	'2020-02-13 15:28:02',	'2020-03-19 16:19:20'),
+(14,	22,	'Morning Food',	'Morning Food',	5,	'2020-02-13 15:28:02',	'2020-03-19 16:19:20'),
+(16,	23,	'Food',	'food will be available',	54,	'2020-02-13 16:45:45',	'2020-03-19 16:21:54'),
+(19,	23,	'Travelling',	'travelling will be available',	80,	'2020-02-13 17:34:55',	'2020-03-19 16:21:54'),
+(22,	24,	'Food',	'Food',	10,	'2020-02-21 16:05:13',	'2020-03-19 16:22:50'),
+(23,	24,	'Travelling Facility',	'Travelling Facility',	15,	'2020-02-21 16:05:13',	'2020-03-19 16:22:50'),
+(24,	25,	'Travelling Facility',	'Travelling Facility',	8,	'2020-02-21 16:07:34',	'2020-03-19 16:23:57'),
+(25,	26,	'Travelling facility',	'You will get Travelling facility for full trip',	12,	'2020-02-21 16:08:54',	'2020-03-19 16:25:22'),
+(26,	26,	'Food',	'You will get food for full trip',	8,	'2020-02-21 16:08:54',	'2020-03-19 16:25:22'),
+(27,	27,	'gdfg',	'gdfgdfgdfg',	10,	'2020-02-21 16:10:30',	'2020-02-21 16:10:30'),
+(28,	28,	'Safety',	'We will safe you in full trip',	10,	'2020-02-21 16:14:54',	'2020-03-19 16:26:39'),
+(29,	29,	'Morning food',	'You will get food every day in morning',	150,	'2020-02-21 16:15:53',	'2020-02-28 11:20:43'),
+(30,	29,	'Evening Food',	'450',	200,	'2020-02-28 11:20:43',	'2020-02-28 11:20:43'),
+(31,	31,	'BreakFast',	'You will get every breakFast lunch',	2,	'2020-03-03 15:33:58',	'2020-03-19 16:55:53'),
+(32,	31,	'Lunch',	'You will get every morning lunch',	2,	'2020-03-03 15:33:58',	'2020-03-19 16:55:53'),
+(33,	31,	'Diner',	'Deaner is valiable',	5,	'2020-03-03 15:33:58',	'2020-03-19 16:55:53'),
+(34,	30,	'Lunch',	'get every day luch',	15,	'2020-03-04 14:52:21',	'2020-03-04 16:17:28'),
+(35,	30,	'Deaner',	'get every day deaner',	12,	'2020-03-04 14:52:21',	'2020-03-04 16:17:28'),
+(36,	21,	'Nasta',	'your will get nasta',	10,	'2020-03-05 16:09:08',	'2020-03-19 17:02:53'),
+(37,	21,	'Lunch',	'your will get lunch',	10,	'2020-03-05 16:09:08',	'2020-03-19 17:02:53'),
+(38,	25,	'Food',	'You will get food for trip',	11,	'2020-03-19 16:23:57',	'2020-03-19 16:23:57'),
+(39,	28,	'Travelling',	'you will get travelling facility for full trip',	12,	'2020-03-19 16:26:39',	'2020-03-19 16:26:39'),
+(40,	28,	'Food',	'you will get food for full trip',	15,	'2020-03-19 16:26:39',	'2020-03-19 16:26:39'),
+(41,	32,	'Travelling',	'You will get travelling facility for full trip',	15,	'2020-03-19 16:28:27',	'2020-03-19 16:28:47'),
+(42,	32,	'Food',	'You will get food in full trip',	12,	'2020-03-19 16:28:27',	'2020-03-19 16:28:47'),
+(43,	33,	'Animal expert faciliy',	'Animal expert faciliy',	5,	'2020-03-19 16:30:41',	'2020-03-19 16:30:41'),
+(44,	33,	'Animal safety kit',	'Animal safety kit',	10,	'2020-03-19 16:30:41',	'2020-03-19 16:30:41'),
+(45,	35,	'Food',	'You will allowed free food',	15,	'2020-03-19 18:38:03',	'2020-03-19 18:38:03'),
+(46,	35,	'Traveeling',	'You will allowed free travelling',	12,	'2020-03-19 18:38:03',	'2020-04-12 16:55:32'),
+(47,	36,	'food',	'free food',	15,	'2020-03-19 19:16:46',	'2020-03-19 19:16:46'),
+(48,	36,	'Travelling',	'free travelling',	50,	'2020-03-19 19:16:46',	'2020-03-19 19:16:46'),
+(49,	37,	'Food',	'get free food',	50,	'2020-03-19 19:37:37',	'2020-03-19 19:38:55'),
+(52,	37,	'gfghgfh dgfg',	'gdg',	45,	'2020-04-03 13:34:23',	'2020-04-03 13:40:36'),
+(53,	41,	'v',	'vxcvxc',	12,	'2020-04-04 09:14:53',	'2020-04-04 09:15:06'),
+(54,	41,	'vxcvxcv',	'vxcvxcv',	12,	'2020-04-04 09:14:53',	'2020-04-04 09:15:06');
+
+DROP TABLE IF EXISTS `experience_availability`;
+CREATE TABLE `experience_availability` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `experiences_id` int(11) NOT NULL,
+  `year` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `date` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `experiences_id` (`experiences_id`),
+  CONSTRAINT `experience_availability_ibfk_1` FOREIGN KEY (`experiences_id`) REFERENCES `experiences` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experience_availability` (`id`, `experiences_id`, `year`, `month`, `date`, `created_at`, `updated_at`) VALUES
+(3,	22,	2020,	2,	25,	'2020-02-13 00:00:00',	'2020-02-18 00:00:00'),
+(23,	22,	2020,	2,	23,	'2020-02-13 00:00:00',	'2020-02-18 00:00:00'),
+(24,	22,	NULL,	NULL,	NULL,	'2020-02-13 00:00:00',	'2020-02-18 00:00:00'),
+(25,	22,	NULL,	NULL,	NULL,	'2020-02-13 00:00:00',	'2020-02-18 00:00:00'),
+(31,	23,	NULL,	NULL,	NULL,	'2020-02-13 00:00:00',	'2020-02-19 00:00:00'),
+(32,	23,	NULL,	NULL,	NULL,	'2020-02-13 00:00:00',	'2020-02-19 00:00:00'),
+(33,	23,	NULL,	NULL,	NULL,	'2020-02-13 00:00:00',	'2020-02-19 00:00:00'),
+(34,	22,	2020,	2,	17,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(36,	22,	2020,	2,	21,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(37,	22,	2020,	3,	1,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(38,	22,	2020,	3,	4,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(39,	22,	2020,	3,	17,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(40,	22,	2020,	3,	23,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(41,	22,	2020,	3,	9,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(42,	22,	2020,	3,	28,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(43,	22,	2020,	3,	27,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(44,	22,	2020,	2,	2,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(45,	22,	2020,	2,	3,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(46,	22,	2020,	2,	4,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(47,	22,	2020,	2,	12,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(48,	22,	2020,	2,	18,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(49,	22,	2020,	2,	19,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(50,	22,	2020,	5,	4,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(51,	22,	2020,	5,	3,	'2020-02-19 00:00:00',	'2020-02-19 00:00:00'),
+(52,	21,	2020,	2,	29,	'2020-02-27 00:00:00',	'2020-02-27 00:00:00'),
+(54,	21,	2020,	3,	12,	'2020-02-27 00:00:00',	'2020-02-27 00:00:00'),
+(60,	21,	2020,	3,	16,	'2020-02-27 00:00:00',	'2020-02-27 00:00:00'),
+(61,	21,	2020,	4,	10,	'2020-02-27 00:00:00',	'2020-02-27 00:00:00'),
+(62,	21,	2020,	4,	16,	'2020-02-27 00:00:00',	'2020-02-27 00:00:00'),
+(63,	21,	2020,	4,	14,	'2020-02-27 00:00:00',	'2020-02-27 00:00:00'),
+(65,	21,	2020,	4,	28,	'2020-02-27 00:00:00',	'2020-02-27 00:00:00'),
+(66,	29,	2020,	2,	29,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(67,	29,	2020,	2,	28,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(68,	29,	2020,	3,	5,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(70,	29,	2020,	3,	10,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(73,	32,	2020,	2,	29,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(74,	32,	2020,	2,	28,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(75,	32,	2020,	3,	1,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(76,	32,	2020,	3,	8,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(77,	32,	2020,	3,	12,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(79,	32,	2020,	3,	17,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(80,	32,	2020,	3,	21,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(82,	32,	2020,	3,	30,	'2020-02-28 00:00:00',	'2020-02-28 00:00:00'),
+(88,	25,	2020,	3,	2,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(99,	25,	2020,	3,	7,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(106,	25,	2020,	3,	24,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(112,	25,	2020,	3,	28,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(113,	25,	2020,	3,	10,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(118,	21,	2020,	6,	5,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(119,	21,	2020,	6,	10,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(120,	21,	2020,	6,	20,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(121,	21,	2020,	6,	28,	'2020-03-02 00:00:00',	'2020-03-02 00:00:00'),
+(126,	21,	2020,	3,	13,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(129,	21,	2020,	3,	14,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(133,	21,	2020,	3,	28,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(134,	21,	2020,	3,	29,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(138,	21,	2020,	3,	15,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(141,	21,	2020,	3,	6,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(142,	21,	2020,	3,	7,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(143,	23,	2020,	3,	7,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(144,	23,	2020,	3,	12,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(145,	23,	2020,	3,	17,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(146,	23,	2020,	3,	27,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(147,	23,	2020,	3,	31,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(148,	23,	2020,	4,	2,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(150,	23,	2020,	4,	16,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(151,	23,	2020,	4,	22,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(152,	23,	2020,	4,	19,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(153,	22,	2020,	4,	9,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(154,	22,	2020,	4,	22,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(155,	22,	2020,	4,	26,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(156,	24,	2020,	3,	7,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(157,	24,	2020,	3,	17,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(158,	24,	2020,	3,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(159,	24,	2020,	3,	31,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(160,	24,	2020,	4,	2,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(161,	24,	2020,	4,	16,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(162,	24,	2020,	4,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(163,	24,	2020,	4,	26,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(165,	25,	2020,	3,	19,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(166,	25,	2020,	4,	2,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(167,	25,	2020,	4,	8,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(168,	25,	2020,	4,	17,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(169,	25,	2020,	4,	22,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(170,	25,	2020,	4,	26,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(171,	25,	2020,	4,	29,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(172,	26,	2020,	3,	6,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(173,	26,	2020,	3,	11,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(174,	26,	2020,	3,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(175,	26,	2020,	3,	24,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(176,	26,	2020,	4,	10,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(177,	26,	2020,	4,	14,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(178,	26,	2020,	4,	18,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(179,	26,	2020,	4,	23,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(180,	26,	2020,	4,	28,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(181,	27,	2020,	3,	5,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(182,	27,	2020,	3,	17,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(183,	27,	2020,	3,	22,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(184,	27,	2020,	3,	19,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(185,	27,	2020,	4,	3,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(186,	27,	2020,	4,	8,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(187,	27,	2020,	4,	18,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(188,	27,	2020,	4,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(189,	27,	2020,	4,	25,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(191,	28,	2020,	3,	7,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(192,	28,	2020,	3,	11,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(193,	28,	2020,	3,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(194,	28,	2020,	3,	24,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(195,	28,	2020,	3,	31,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(196,	28,	2020,	4,	9,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(197,	28,	2020,	4,	16,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(198,	28,	2020,	4,	13,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(199,	28,	2020,	4,	30,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(200,	28,	2020,	4,	5,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(201,	28,	2020,	4,	1,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(202,	29,	2020,	3,	28,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(204,	29,	2020,	4,	9,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(205,	29,	2020,	4,	13,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(206,	29,	2020,	4,	17,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(207,	29,	2020,	4,	23,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(208,	29,	2020,	4,	29,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(209,	30,	2020,	3,	5,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(210,	30,	2020,	3,	11,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(211,	30,	2020,	3,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(212,	30,	2020,	3,	24,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(213,	30,	2020,	4,	2,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(214,	30,	2020,	4,	8,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(215,	30,	2020,	4,	19,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(216,	30,	2020,	4,	15,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(217,	30,	2020,	4,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(218,	30,	2020,	4,	24,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(219,	31,	2020,	3,	7,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(220,	31,	2020,	3,	17,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(221,	31,	2020,	3,	12,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(222,	31,	2020,	3,	22,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(223,	31,	2020,	3,	26,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(224,	31,	2020,	3,	31,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(225,	31,	2020,	4,	3,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(226,	31,	2020,	4,	9,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(227,	31,	2020,	4,	14,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(228,	31,	2020,	4,	17,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(229,	31,	2020,	4,	23,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(230,	31,	2020,	4,	29,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(231,	32,	2020,	4,	9,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(232,	32,	2020,	4,	7,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(233,	32,	2020,	4,	18,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(234,	32,	2020,	4,	22,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(235,	32,	2020,	4,	26,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(236,	32,	2020,	4,	30,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(237,	32,	2020,	5,	7,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(238,	32,	2020,	5,	21,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(239,	32,	2020,	5,	19,	'2020-03-03 00:00:00',	'2020-03-03 00:00:00'),
+(240,	33,	2020,	3,	5,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(241,	33,	2020,	3,	13,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(242,	33,	2020,	3,	17,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(243,	33,	2020,	3,	18,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(244,	33,	2020,	3,	21,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(245,	33,	2020,	3,	24,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(246,	34,	2020,	3,	5,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(247,	34,	2020,	3,	18,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(248,	34,	2020,	3,	20,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(249,	34,	2020,	3,	24,	'2020-03-04 00:00:00',	'2020-03-04 00:00:00'),
+(251,	31,	2020,	3,	14,	'2020-03-05 00:00:00',	'2020-03-05 00:00:00'),
+(252,	31,	2020,	3,	6,	'2020-03-05 00:00:00',	'2020-03-05 00:00:00'),
+(254,	31,	2020,	3,	20,	'2020-03-05 00:00:00',	'2020-03-05 00:00:00'),
+(255,	21,	2020,	4,	19,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(257,	21,	2020,	4,	30,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(290,	21,	2020,	3,	22,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(291,	21,	2020,	3,	21,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(295,	29,	2020,	3,	19,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(296,	29,	2020,	3,	31,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(297,	35,	2020,	3,	20,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(298,	35,	2020,	3,	26,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(299,	35,	2020,	3,	31,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(300,	35,	2020,	3,	29,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(301,	35,	2020,	4,	2,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(302,	35,	2020,	4,	14,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(303,	35,	2020,	4,	17,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(304,	35,	2020,	4,	30,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(305,	36,	2020,	3,	20,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(306,	36,	2020,	3,	27,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(307,	36,	2020,	3,	31,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(308,	36,	2020,	4,	4,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(309,	36,	2020,	4,	8,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(310,	36,	2020,	4,	16,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(311,	36,	2020,	4,	23,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(312,	36,	2020,	4,	21,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(313,	36,	2020,	4,	28,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(314,	36,	2020,	4,	18,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(315,	37,	2020,	3,	19,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(316,	37,	2020,	3,	28,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(317,	37,	2020,	3,	31,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(318,	37,	2020,	7,	3,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(319,	37,	2020,	7,	16,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(320,	37,	2020,	7,	21,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(321,	37,	2020,	7,	26,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(322,	37,	2020,	7,	31,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(323,	37,	2020,	4,	3,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(324,	37,	2020,	4,	8,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(325,	37,	2020,	4,	18,	'2020-03-19 00:00:00',	'2020-03-19 00:00:00'),
+(329,	37,	2020,	4,	13,	'2020-04-05 16:54:54',	'2020-04-05 16:54:54'),
+(334,	37,	2020,	4,	29,	'2020-04-05 17:18:18',	'2020-04-05 17:18:18'),
+(335,	37,	2020,	5,	4,	'2020-04-05 17:18:22',	'2020-04-05 17:18:22'),
+(336,	37,	2020,	5,	7,	'2020-04-05 17:18:25',	'2020-04-05 17:18:25'),
+(337,	37,	2020,	5,	13,	'2020-04-05 17:18:26',	'2020-04-05 17:18:26'),
+(338,	37,	2020,	5,	27,	'2020-04-05 17:18:28',	'2020-04-05 17:18:28'),
+(339,	37,	2020,	5,	15,	'2020-04-05 17:18:30',	'2020-04-05 17:18:30'),
+(340,	37,	2020,	5,	17,	'2020-04-05 17:18:32',	'2020-04-05 17:18:32'),
+(341,	37,	2020,	5,	29,	'2020-04-05 17:18:34',	'2020-04-05 17:18:34'),
+(342,	37,	2020,	5,	25,	'2020-04-05 17:18:36',	'2020-04-05 17:18:36'),
+(343,	37,	2020,	5,	9,	'2020-04-05 17:18:37',	'2020-04-05 17:18:37'),
+(344,	37,	2020,	5,	31,	'2020-04-05 17:18:39',	'2020-04-05 17:18:39'),
+(345,	37,	2020,	4,	9,	'2020-04-05 17:27:07',	'2020-04-05 17:27:07'),
+(346,	37,	2020,	4,	16,	'2020-04-05 17:27:09',	'2020-04-05 17:27:09'),
+(347,	37,	2020,	4,	27,	'2020-04-05 17:27:12',	'2020-04-05 17:27:12'),
+(348,	37,	2020,	4,	30,	'2020-04-05 17:27:15',	'2020-04-05 17:27:15'),
+(349,	37,	2020,	4,	24,	'2020-04-05 17:27:17',	'2020-04-05 17:27:17'),
+(350,	37,	2020,	4,	21,	'2020-04-05 17:27:18',	'2020-04-05 17:27:18'),
+(351,	37,	2020,	4,	5,	'2020-04-05 17:27:20',	'2020-04-05 17:27:20'),
+(352,	41,	2020,	4,	22,	'2020-04-17 10:44:26',	'2020-04-17 10:44:26'),
+(353,	33,	2020,	4,	17,	'2020-04-17 10:44:36',	'2020-04-17 10:44:36'),
+(354,	33,	2020,	4,	22,	'2020-04-17 10:44:38',	'2020-04-17 10:44:38'),
+(355,	33,	2020,	4,	24,	'2020-04-17 10:44:39',	'2020-04-17 10:44:39'),
+(356,	33,	2020,	4,	30,	'2020-04-17 10:44:41',	'2020-04-17 10:44:41'),
+(357,	33,	2020,	5,	6,	'2020-04-17 10:44:46',	'2020-04-17 10:44:46'),
+(358,	33,	2020,	5,	15,	'2020-04-17 10:44:47',	'2020-04-17 10:44:47'),
+(359,	33,	2020,	5,	19,	'2020-04-17 10:44:48',	'2020-04-17 10:44:48'),
+(360,	33,	2020,	5,	21,	'2020-04-17 10:44:50',	'2020-04-17 10:44:50'),
+(361,	33,	2020,	5,	25,	'2020-04-17 10:44:51',	'2020-04-17 10:44:51'),
+(362,	33,	2020,	5,	29,	'2020-04-17 10:44:53',	'2020-04-17 10:44:53');
+
+DROP TABLE IF EXISTS `experience_categories`;
+CREATE TABLE `experience_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `description` text DEFAULT NULL,
+  `slug` varchar(100) DEFAULT NULL,
+  `category_image_url` varchar(255) DEFAULT NULL,
+  `category_video_url` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `status` smallint(6) NOT NULL DEFAULT 1,
+  `featured` smallint(1) DEFAULT 0,
+  `featured_date` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experience_categories` (`id`, `name`, `title`, `description`, `slug`, `category_image_url`, `category_video_url`, `parent_id`, `status`, `featured`, `featured_date`, `created_at`, `updated_at`) VALUES
+(28,	'Cooking',	'Make and eat meals with locals who treat you like family',	'Make and eat meals with locals who treat you like family',	'cooking',	'uploads/categories/1585382504.jpg',	NULL,	NULL,	1,	1,	'2020-02-29 12:41:49',	'2020-02-05 09:37:20',	'2020-03-28 08:01:44'),
+(29,	'Animals',	'Magical encounters hosted by animals and their advocates',	'Magical encounters hosted by animals and their advocates',	'animals',	'uploads/categories/1585382492.jpg',	NULL,	NULL,	1,	1,	'2020-03-16 17:55:51',	'2020-02-05 09:37:39',	'2020-03-28 08:01:32'),
+(30,	'Adventures',	'Hosted journeys to extraordinary places – all you have to do is show up',	'Hosted journeys to extraordinary places – all you have to do is show up',	'adventures',	'uploads/categories/1585382477.jpg',	NULL,	NULL,	1,	1,	'2020-03-16 17:56:21',	'2020-02-05 09:41:46',	'2020-03-28 08:01:17'),
+(31,	'Culinary',	'Culinary',	'Culinary',	'culinary',	'uploads/categories/1585382464.jpg',	NULL,	NULL,	1,	0,	'2020-03-16 17:56:24',	'2020-02-08 10:35:11',	'2020-03-28 08:01:04'),
+(32,	'Active',	'DPSG Palam Vihar Summer Activities to Help Your Kids Beat the Heat',	'DPSG Palam Vihar Summer Activities to Help Your Kids Beat the Heat',	'active',	'uploads/categories/1585382451.jpg',	NULL,	NULL,	1,	0,	'2020-03-16 17:56:36',	'2020-02-08 10:36:27',	'2020-03-28 08:00:51'),
+(33,	'Boating',	'An Epic Way to Enjoy God’s Own Country',	'An Epic Way to Enjoy God’s Own Country',	'boating',	'uploads/categories/1585382434.jpg',	NULL,	NULL,	1,	0,	'2020-03-16 17:56:41',	'2020-02-08 10:37:34',	'2020-03-28 08:00:34'),
+(34,	'Cycling',	'cycling adventure travel programs',	'cycling adventure travel programs',	'cycling',	'uploads/categories/1585382409.jpg',	NULL,	NULL,	1,	0,	'2020-03-16 17:56:45',	'2020-02-08 10:40:17',	'2020-03-28 08:00:09'),
+(35,	'Rock climbing',	'Rock climbing adventure travel programs',	'Rock climbing adventure travel programs',	'rock-climbing',	'uploads/categories/1585382393.jpg',	NULL,	NULL,	1,	0,	'2020-03-16 17:56:49',	'2020-02-08 10:41:29',	'2020-03-28 07:59:53'),
+(36,	'Care',	'Care Them wth live experience',	'Care Them wth live experience',	'care',	'uploads/categories/1585382383.jpg',	NULL,	NULL,	1,	0,	'2020-03-16 17:57:00',	'2020-02-08 10:56:35',	'2020-03-28 07:59:43'),
+(37,	'Historical Places In India',	'Historical Places In India',	'Historical Places In India',	'historical-places-in-india',	'uploads/categories/1585218488.jpg',	NULL,	NULL,	1,	0,	'2020-03-16 17:57:03',	'2020-02-08 11:05:58',	'2020-03-26 10:28:08'),
+(38,	'testing cat',	'testing cat',	'testing cattesting cattesting cattesting cattesting cattesting cattesting cattesting cattesting cattesting cattesting cattesting cattesting cat',	'testing-cat',	'uploads/categories/1585222111.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-26 11:28:31',	'2020-03-28 08:36:43'),
+(39,	'sdfsdf',	'sdfsdf',	'sfsdfsdf',	'sdfsdf',	'uploads/categories/1585313839.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-27 12:57:33',	'2020-03-28 08:36:29'),
+(40,	'sdfsdf',	'sdfsdf',	'sfsdfsdf ffsdf',	'sdfsdf',	'uploads/categories/1585313859.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-27 12:57:39',	'2020-03-28 08:35:53'),
+(41,	'cxzczxc',	'czxczxc',	'czxczxczxczxc fsdfsfd dasdasdasd  czczxcxc',	'cxzczxc',	'uploads/categories/1585381314.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-28 07:41:54',	'2020-03-28 08:33:14'),
+(42,	'tsr',	'XZXfsdfsdf',	'fsdfsdfsdf',	'tsr',	'uploads/categories/1585381851.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-28 07:50:51',	'2020-03-28 08:31:43'),
+(43,	'dsad',	'dasd',	'dasdasd',	'dsad',	'uploads/categories/1585384635.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-28 08:37:15',	'2020-03-28 08:37:25'),
+(44,	'sdfsdf',	'dfsdfsd',	'fsdfdsf',	'sdfsdf',	'uploads/categories/1585384772.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-28 08:39:32',	'2020-03-28 08:40:59'),
+(45,	'dasdas',	'dasd',	'asdasdasd',	'dasdas',	'uploads/categories/1585384808.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-28 08:40:08',	'2020-03-28 08:40:50'),
+(46,	'asd',	'dasd',	'dasdasd',	'asd',	'uploads/categories/1585384824.jpg',	NULL,	NULL,	2,	0,	NULL,	'2020-03-28 08:40:24',	'2020-03-28 08:40:44'),
+(47,	'New Testing Category',	'New Testing Category',	'New Testing Category New Testing Category New Testing Category New Testing Category New Testing Category New Testing Category',	'new-testing-category',	'uploads/categories/1585403421.jpg',	NULL,	NULL,	1,	1,	NULL,	'2020-03-28 13:50:21',	'2020-04-04 08:47:23');
+
+DROP TABLE IF EXISTS `experience_guest`;
+CREATE TABLE `experience_guest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `booked_self` int(1) DEFAULT 0,
+  `first_name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_id` (`order_id`),
+  CONSTRAINT `experience_guest_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `experiences_order` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `experience_guest` (`id`, `order_id`, `booked_self`, `first_name`, `last_name`, `email`, `phone`, `gender`, `created_at`, `updated_at`) VALUES
+(41,	29,	1,	'dev',	'bitcot',	'dev@bitcot.com',	NULL,	NULL,	'2020-03-12 16:08:15',	'2020-03-12 16:08:15'),
+(42,	30,	1,	'dev',	'bitcot',	'dev@bitcot.com',	NULL,	NULL,	'2020-03-12 17:47:08',	'2020-03-12 17:47:08'),
+(43,	31,	1,	'dev',	'bitcot',	'dev@bitcot.com',	NULL,	NULL,	'2020-03-12 17:48:14',	'2020-03-12 17:48:14'),
+(44,	32,	1,	'client fsdffsdf',	'test',	'client.test@bitcot.com',	NULL,	'male',	'2020-03-13 15:19:05',	'2020-03-13 15:19:05'),
+(45,	33,	1,	'Herry',	'copper',	'client.test@bitcot.com',	NULL,	'male',	'2020-03-13 17:18:16',	'2020-03-13 17:18:16'),
+(46,	34,	1,	'Steve',	'Austin',	'client.test@bitcot.com',	NULL,	'male',	'2020-03-19 12:46:17',	'2020-03-19 15:00:22'),
+(47,	34,	0,	'dasdasd',	'dfgdfgdf',	'dasdasd@dfsfsdf.com',	NULL,	'male',	'2020-03-19 12:46:17',	'2020-03-19 16:05:30'),
+(48,	34,	0,	'ggfdgdf gdfg dfg',	'gdfgdfg',	'client.test@bitcot.com',	NULL,	'female',	'2020-03-19 12:46:17',	'2020-03-19 16:05:30'),
+(49,	34,	0,	'gdfgg dfg dfggf',	'gdfgdfgdfg',	'client.test@bitcot.com',	NULL,	'female',	'2020-03-19 12:46:17',	'2020-03-19 16:05:30'),
+(50,	34,	0,	'ds ffsdfsdfsdf gdfg dfg dfg',	'dasdasd',	'client.test@bitcot.com',	NULL,	'male',	'2020-03-19 12:46:17',	'2020-03-19 16:05:30'),
+(51,	34,	0,	'dasd gdfgdfg fsdfsdfsdf fsdfdsf',	'dasdsa',	'client.test@bitcot.com',	NULL,	'male',	'2020-03-19 12:46:17',	'2020-03-19 16:05:30'),
+(52,	35,	1,	'Steve',	'Austin',	'client.test@bitcot.com',	NULL,	'male',	'2020-03-19 15:34:48',	'2020-03-19 15:34:48'),
+(53,	35,	0,	'fdsfdsfdsfdsf gd gdfg',	'fdsfdsfdsf gdfgdfg',	'fdsfdsfsdf@fdsfsdf.com',	NULL,	'male',	'2020-03-19 15:34:48',	'2020-03-19 15:35:27'),
+(54,	36,	1,	'bitcot',	'test',	'bitcot.test@gmail.com',	NULL,	NULL,	'2020-03-19 18:42:48',	'2020-03-19 18:42:48'),
+(55,	36,	0,	'fsdfsdfsdf ffsdfdsf',	'fdsfsdf',	'fsdfsdf@fsfsdf.com',	NULL,	'male',	'2020-03-19 18:42:48',	'2020-03-20 16:55:05'),
+(56,	36,	0,	'test',	'hdasdudysui',	'test@test.com',	NULL,	'female',	'2020-03-19 18:42:48',	'2020-03-20 16:55:05'),
+(57,	37,	1,	'Steve',	'Austin',	'client.test@bitcot.com',	NULL,	'male',	'2020-03-19 19:20:22',	'2020-03-19 19:20:22');
+
+DROP TABLE IF EXISTS `media`;
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `experiences_id` int(11) NOT NULL,
+  `image_name` varchar(100) DEFAULT NULL,
+  `image_mime` varchar(100) DEFAULT NULL,
+  `image_size` varchar(100) DEFAULT NULL,
+  `image_url` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `experiences_id` (`experiences_id`),
+  CONSTRAINT `media_ibfk_1` FOREIGN KEY (`experiences_id`) REFERENCES `experiences` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `media` (`id`, `experiences_id`, `image_name`, `image_mime`, `image_size`, `image_url`, `created_at`, `updated_at`) VALUES
+(87,	37,	'845795605224616200.jpg',	'image/jpeg',	'8183',	'uploads/media/845795605224616200.jpg',	'2020-04-03 09:57:23',	'2020-04-03 09:57:23'),
+(88,	37,	'175188380531337400.jpg',	'image/jpeg',	'8595',	'uploads/media/175188380531337400.jpg',	'2020-04-03 09:57:24',	'2020-04-03 09:57:24'),
+(90,	37,	'2385469339074601000.jpg',	'image/jpeg',	'10710',	'uploads/media/2385469339074601000.jpg',	'2020-04-03 13:49:07',	'2020-04-03 13:49:07'),
+(91,	37,	'1810634616813721600.jpg',	'image/jpeg',	'8183',	'uploads/media/1810634616813721600.jpg',	'2020-04-03 13:49:11',	'2020-04-03 13:49:11'),
+(93,	41,	'1978587676184421400.jpg',	'image/jpeg',	'255618',	'uploads/media/1978587676184421400.jpg',	'2020-04-04 09:15:53',	'2020-04-04 09:15:53'),
+(94,	41,	'1923606328479103000.jpg',	'image/jpeg',	'8595',	'uploads/media/1923606328479103000.jpg',	'2020-04-04 09:15:54',	'2020-04-04 09:15:54'),
+(95,	39,	'1641204412581927200.jpg',	'image/jpeg',	'8183',	'uploads/media/1641204412581927200.jpg',	'2020-04-12 16:53:00',	'2020-04-12 16:53:00'),
+(96,	39,	'2092769963119283000.jpg',	'image/jpeg',	'5678',	'uploads/media/2092769963119283000.jpg',	'2020-04-12 16:53:00',	'2020-04-12 16:53:00'),
+(97,	36,	'3087399656651802600.jpg',	'image/jpeg',	'9021',	'uploads/media/3087399656651802600.jpg',	'2020-04-12 16:54:18',	'2020-04-12 16:54:18'),
+(98,	35,	'1295769971251036700.jpg',	'image/jpeg',	'16970',	'uploads/media/1295769971251036700.jpg',	'2020-04-12 16:55:30',	'2020-04-12 16:55:30'),
+(99,	34,	'650470877289292800.jpg',	'image/jpeg',	'8183',	'uploads/media/650470877289292800.jpg',	'2020-04-12 16:58:50',	'2020-04-12 16:58:50'),
+(100,	30,	'867100759861162800.jpg',	'image/jpeg',	'8183',	'uploads/media/867100759861162800.jpg',	'2020-04-12 17:00:08',	'2020-04-12 17:00:08'),
+(101,	30,	'371027093787360000.jpg',	'image/jpeg',	'10890',	'uploads/media/371027093787360000.jpg',	'2020-04-12 17:00:09',	'2020-04-12 17:00:09'),
+(102,	29,	'2852339592217566700.jpg',	'image/jpeg',	'10890',	'uploads/media/2852339592217566700.jpg',	'2020-04-12 17:00:36',	'2020-04-12 17:00:36'),
+(103,	29,	'1753786128420505600.jpg',	'image/jpeg',	'16970',	'uploads/media/1753786128420505600.jpg',	'2020-04-12 17:00:36',	'2020-04-12 17:00:36'),
+(104,	28,	'1217910538572147700.jpg',	'image/jpeg',	'35954',	'uploads/media/1217910538572147700.jpg',	'2020-04-12 17:01:01',	'2020-04-12 17:01:01'),
+(105,	28,	'2919014757523085300.jpg',	'image/jpeg',	'183201',	'uploads/media/2919014757523085300.jpg',	'2020-04-12 17:01:01',	'2020-04-12 17:01:01'),
+(106,	41,	'337755999599222850.jpg',	'image/jpeg',	'2978',	'uploads/media/337755999599222850.jpg',	'2020-04-14 08:03:05',	'2020-04-14 08:03:05'),
+(107,	41,	'1923291584886278100.jpg',	'image/jpeg',	'5789',	'uploads/media/1923291584886278100.jpg',	'2020-04-14 08:03:06',	'2020-04-14 08:03:06'),
+(108,	41,	'2254485625160144400.jpg',	'image/jpeg',	'3401',	'uploads/media/2254485625160144400.jpg',	'2020-04-14 08:03:16',	'2020-04-14 08:03:16'),
+(109,	41,	'1158462767416823600.jpg',	'image/jpeg',	'4731',	'uploads/media/1158462767416823600.jpg',	'2020-04-14 08:03:17',	'2020-04-14 08:03:17');
+
+SET NAMES utf8mb4;
+
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1,	'2016_06_01_000001_create_oauth_auth_codes_table',	1),
+(2,	'2016_06_01_000002_create_oauth_access_tokens_table',	1),
+(3,	'2016_06_01_000003_create_oauth_refresh_tokens_table',	1),
+(4,	'2016_06_01_000004_create_oauth_clients_table',	1),
+(5,	'2016_06_01_000005_create_oauth_personal_access_clients_table',	1);
+
+DROP TABLE IF EXISTS `oauth_access_tokens`;
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `client_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_access_tokens_user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('077708932e010e9fb03bf12238f69f4e6ec100d2bae9a58cbe13329d6394325520af3f912dae147c',	44,	1,	'Access Token',	'[]',	0,	'2020-03-29 23:53:07',	'2020-03-29 23:53:07',	'2020-09-30 05:23:07'),
+('4506c92b6e125d836453efdd7f13e746bb5af43b5ee3218049355976e037fdfa07297afade465030',	45,	1,	'Personal Access Token',	'[]',	0,	'2020-04-11 07:36:44',	'2020-04-11 07:36:44',	'2020-10-11 13:06:43'),
+('a0607af11d7a3e5019bab4466ae73cdde08b3618dc8003a4c01ed669427eb00248c33825408b7817',	45,	1,	'Personal Access Token',	'[]',	0,	'2020-04-11 09:40:44',	'2020-04-11 09:40:44',	'2020-10-11 15:10:44'),
+('c55c8e7a9c0fe6f42c8ed1b723dfe543b43500b39eac419617aec1bf34ad8dca8e7b961fd4501905',	45,	1,	'Personal Access Token',	'[]',	0,	'2020-04-16 06:44:19',	'2020-04-16 06:44:19',	'2020-10-16 12:14:19'),
+('d0f164f972ac0f5aa1758cd9bffe7900dd3c1a07ad5d9e6cc8337d2a3168a954c86c32cbcdc2ccba',	43,	1,	'Access Token',	'[]',	0,	'2020-03-29 23:50:22',	'2020-03-29 23:50:22',	'2020-09-30 05:20:21');
+
+DROP TABLE IF EXISTS `oauth_auth_codes`;
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `client_id` bigint(20) unsigned NOT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_auth_codes_user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DROP TABLE IF EXISTS `oauth_clients`;
+CREATE TABLE `oauth_clients` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_clients_user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1,	NULL,	'Recipe Personal Access Client',	'SMsiBKWYIQUMwhgJc52epPOTMlERIawY68ERZ8fm',	'http://localhost',	1,	0,	0,	'2020-03-29 23:04:38',	'2020-03-29 23:04:38'),
+(2,	NULL,	'Recipe Password Grant Client',	'8kEKhKHCNwGf44nJ3z0P6xSoPvzMXgoUJUWH7iMN',	'http://localhost',	0,	1,	0,	'2020-03-29 23:04:38',	'2020-03-29 23:04:38');
+
+DROP TABLE IF EXISTS `oauth_personal_access_clients`;
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `client_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1,	1,	'2020-03-29 23:04:38',	'2020-03-29 23:04:38');
+
+DROP TABLE IF EXISTS `oauth_refresh_tokens`;
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DROP TABLE IF EXISTS `testimonial`;
+CREATE TABLE `testimonial` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_name` varchar(50) DEFAULT NULL,
+  `client_position` varchar(50) DEFAULT NULL,
+  `client_message` text DEFAULT NULL,
+  `client_image` varchar(256) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `testimonial` (`id`, `client_name`, `client_position`, `client_message`, `client_image`, `created_at`, `updated_at`) VALUES
+(1,	'John Ball',	'CEO, ABC TECH',	'<p>Thank you very much for all your and your team&rsquo;s assistance with organising the business meetings for the Belgian economic delegation, led by Her Royal Highness Princess Astrid of Belgium. Your expertise in handling the meeting arrangements and coordinating the business meetings were greatly appreciated. I really appreciate your help and I am sure that we will be contacting you for your assistance with future events.</p>',	'uploads/testimonial/1585810165.jpg',	'2020-02-21 17:52:26',	'2020-04-02 06:49:25'),
+(2,	'Diederich Caby',	'CFO, TEXINOMA',	'<p>You were able to identify the absolute best people in the hotel food service segment, the leading edge retail segment, and the frozen food distribution segment, and the meetings arranged gave us excellent exposure to this cross section of the food industry. The fact that we were able to host two highly successful presentations and tasting receptions, drawing key people to attend, added to the impact of the personal call program and helped to make the whole project even more successful than we might have anticipated.</p>',	'uploads/testimonial/1585810155.jpg',	'2020-02-21 18:05:59',	'2020-04-02 06:49:15'),
+(5,	'Donna Jones',	'Founder SmartLegal',	'<p>Working with WealthTree has been a pleasure from start to finish. Their professional advice on the business environment in India was very useful. They provided constant feedback and analysis which helped us focus our efforts, especially useful because we are located in North America. Their persistence and efforts in reaching potential partners was impressive. We look forward to working with Wealthtree again in the future.</p>',	'uploads/testimonial/1585810146.jpg',	'2020-02-21 18:09:55',	'2020-04-02 06:49:06'),
+(6,	'Bruce Mc Lellan',	'Manager &  CEO ARC Infra',	'<p>On the City of Surrey&rsquo;s business mission to India in 2011, WealthTree played a critical role in ensuring that our 34 senior executive-level delegates representing major companies in the Metro Vancouver region were able to meet and do business with their counterparts in India.&nbsp; This resulted in precedent setting success for a Canadian City-led business mission.&nbsp; Millions and millions in trade has resulted and continues to mount.&nbsp; Soma and her colleague Trina provided excellent service prior to, during and following our mission.&nbsp; I would highly recommend any visiting businesses delegation to work with WealthTree</p>',	'uploads/testimonial/1585810138.jpg',	'2020-02-21 18:11:51',	'2020-04-02 06:48:58'),
+(7,	'Jean-Guy Schattens',	'Engineer, Maria Soft',	'<p>&nbsp;</p>\r\n\r\n<p>I readily recognize the effort and hard work that went into the REPORTS and a willingness to always accommodate my sometimes shifting views as more information became available</p>',	'uploads/testimonial/1585810129.jpg',	'2020-03-03 11:56:59',	'2020-04-02 06:48:49'),
+(8,	'Fernando Ras',	'MC Ed',	'<p>Our experience working with you has been wonderful. We had a bad time with a consultant in Singapore and we expected India to be worse. We have been proved wrong</p>',	'uploads/testimonial/1585810121.jpg',	'2020-03-03 11:59:51',	'2020-04-02 06:48:41'),
+(9,	'Historical Places In India fsdfsdf',	'Historical Places In India',	'Historical Places In India',	'uploads/testimonial/1585807439.jpg',	'2020-04-02 06:01:22',	'2020-04-02 06:48:03');
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `profile_photo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gender` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `city` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `zip` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `role_id` int(11) NOT NULL DEFAULT 2,
+  `password_reset_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `verification_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `status` smallint(1) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `password_reset_token` (`password_reset_token`),
+  KEY `fk_user_role_id` (`role_id`),
+  CONSTRAINT `fk_user_role_id` FOREIGN KEY (`role_id`) REFERENCES `user_roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `profile_photo`, `phone`, `gender`, `dob`, `city`, `state`, `country`, `zip`, `role_id`, `password_reset_token`, `verification_token`, `last_login`, `status`, `created_at`, `updated_at`) VALUES
+(8,	'Gajendra Signh',	'Pawar',	'gajendra@bitcot.com',	'$2y$13$H5EjkLJzJKgishoBGd6px.xAooPqtLdJfDE6aNDAo.dI2ic2Ww7tu',	'uploads/users/6ef6b99b-f57a-404a-bbc2-64cb544313c8.jpg',	'4545454444',	NULL,	NULL,	'dadads',	'adadasd',	'dasdadds',	'124544',	1,	'ze_ykr-x0VLbDe8kspMLZHYcnPQ2nB78_1584513994',	'KSbygy1JmzuQuSuhOF62Zia1-757UOAW_1580473529',	'2020-03-17 18:33:51',	1,	'2020-01-31 12:25:29',	'2020-03-18 12:16:34'),
+(20,	'client',	'client',	'client@client.com',	'$2y$13$E1SQcSX.ZpYCyGZr/XLZ7uZ/ArY/Mzi4eGSCTO9F.7F2hYhoDqbsq',	'uploads/users/1585490113.jpg',	NULL,	'male',	NULL,	NULL,	NULL,	'india',	NULL,	3,	NULL,	'lhwQnciSP1XLLmVedklbbsiP-MRJCYHa_1581083067',	'2020-03-02 15:22:30',	1,	'2020-02-07 13:44:27',	'2020-03-29 13:55:13'),
+(22,	'dev',	'bitcot',	'dev@bitcot.com',	'$2y$13$IwjHicHs5saskwMDM4UIX.Jnqg1QjXDsyl8uYqF01HLZb4WKoAJKu',	'uploads/users/1585490084.jpg',	NULL,	'male',	NULL,	NULL,	NULL,	'',	NULL,	3,	'd5Rzsikxs94PNHucwFEpZyablBcF9E2H_1581142899',	'9nkm3HB0vQGLdkfj9lwxpVwvhEwkyRqm_1581139698',	'2020-03-19 19:31:11',	1,	'2020-02-08 05:28:18',	'2020-03-29 13:54:44'),
+(35,	'Mark',	'Calaway',	'vendor.test@bitcot.com',	'$2y$13$BRj4XD0sQsYQUTL4n.zl/.ABqa0V6e7YGpGwjtpiYg3BO9f9K3BmW',	'uploads/users/1585468415.jpg',	'1234567890',	'male',	NULL,	'Test',	'Test',	'india',	'12452',	2,	NULL,	NULL,	'2020-03-18 18:50:55',	1,	'2020-03-03 12:04:18',	'2020-03-29 08:03:25'),
+(36,	'Steve',	'Austin',	'client.test@bitcot.com',	'$2y$13$GUOFXbSDWwLrCTNBLFRxgOOdOx9WKgwSCe34ip0lHIUyNs5S4t/HO',	'uploads/users/1585467792.jpg',	'12345612348',	'male',	NULL,	'test',	'test',	'india',	'12450',	3,	NULL,	NULL,	'2020-03-19 19:32:18',	1,	'2020-03-03 12:05:40',	'2020-03-29 07:43:12'),
+(37,	'Dwayne',	'Johnson',	'admin.test@bitcot.com',	'$2y$13$6xGjzAayO8nqekOtg57T6OYL86/vObmVhFZ8H5bzNnC6J3894k/2.',	'uploads/users/3fc2c325-06ea-4a61-8f11-41c7d9a9bb0f.jpg',	'1234567890',	'male',	NULL,	'test',	'test',	'india',	'',	1,	'rnGyMIlXYewr_Pq61y7Orn7VLYmwb78K_1584530155',	NULL,	'2020-03-20 18:35:53',	1,	'2020-03-03 12:06:41',	'2020-03-20 18:35:53'),
+(39,	'bitcot',	'test',	'bitcot.test@gmail.com',	'$2y$13$Udtm2YPyR1KP0.wLSmkUpuHNX5SRL/Plsyfk.r4QWqRp.ncLDOkjq',	'uploads/users/1585467762.png',	NULL,	'male',	NULL,	NULL,	NULL,	NULL,	NULL,	3,	'BdSE-uZRq3UNDd7EgClknlIRobfCJory_1584598277',	'lMpKnvsGIsAwnFr9mpq0eUMQGRE3VCRy',	'2020-03-20 18:15:17',	1,	'2020-03-19 11:41:17',	'2020-03-29 07:42:58'),
+(40,	'newTest',	'Client',	'newtest@bitcot.com',	'$2y$10$6Ia6IM5sAL9BnyyOn9kOq.lXjF6.tn1Cd0CVA50achE5QqYN9sywy',	'uploads/users/1585467750.png',	'123456789',	'female',	'2000-10-10',	'15',	'light',	'india',	'MP',	3,	NULL,	'ZKlEuEHb60pGIgdjJnquEUBCh4dkip6z_1584626505',	NULL,	1,	'2020-03-19 19:31:45',	'2020-03-29 07:42:31'),
+(41,	'raj',	'sanghvi',	'raj@test.com',	'$2y$10$hq6F3G.eCtv/i1WqHi9/ZuGtSclYlfztoUZokve65kbLBp/tuZZKu',	'uploads/users/1585467741.jpg',	'123456904545',	'male',	NULL,	'CA',	'MP',	'india',	'45210',	3,	NULL,	NULL,	NULL,	1,	'2020-03-29 07:19:06',	'2020-03-29 08:03:19'),
+(43,	'gajendra',	'pawar',	'gajndra@test.com',	'$2y$10$dZY7QaT2swybcEUoU4KpweF8d7X4ltvMkfLDOBWBKbml4KESJk6X.',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	3,	NULL,	NULL,	NULL,	1,	'2020-03-30 05:20:21',	'2020-03-30 05:20:21'),
+(44,	'gajendra',	'pawar',	'gajndrah@test.com',	'$2y$10$/v5AO1F9r4Ef3ThV2FG.eegPr/iY4SFzHD80Ds6msKFJyujBUVLnS',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	3,	NULL,	NULL,	NULL,	1,	'2020-03-30 05:23:07',	'2020-03-30 05:23:07'),
+(45,	'Gajju',	'Baba',	'gajju@test.com',	'$2y$10$gd42btYKSu1T1RLg0nbAUeM0qZbOSMzvFtlo2.r/wETyiudPoV65K',	'uploads/users/1585646345.jpg',	'1234567890',	'male',	'1350-10-12',	'test',	'test',	'test',	'45210',	3,	NULL,	NULL,	NULL,	1,	'2020-03-30 06:02:45',	'2020-04-09 15:34:12');
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE `user_roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(50) NOT NULL,
+  `role_display_name` varchar(50) DEFAULT NULL,
+  `status` smallint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `user_roles` (`id`, `role_name`, `role_display_name`, `status`, `created_at`, `updated_at`) VALUES
+(1,	'admin',	'Super Admin',	1,	'2020-01-31 09:34:14',	'2020-01-31 09:34:14'),
+(2,	'vendor',	'Vendor',	1,	'2020-01-31 09:34:14',	'2020-01-31 09:34:14'),
+(3,	'client',	'Client',	1,	'2020-01-31 09:34:14',	'2020-01-31 09:34:14');
+
+-- 2020-04-21 07:50:03
