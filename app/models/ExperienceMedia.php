@@ -21,7 +21,7 @@ class ExperienceMedia extends Model
     public function getImageAttribute($value)
     {
         if($this->image_url!=''){
-            return url('/').'/'.$this->image_url;
+            return asset($this->image_url);
         }
         return null;
     }

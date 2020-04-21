@@ -116,10 +116,13 @@ class ExperiencesController extends Controller
                 $model->select(['id','name','slug']);
             }
         ])
-        ->where(['category_id' => $cat->id ])
-        ->select(['*'])
+        ->select([
+            'id','category_id','user_id','title','sub_title','slug','experiences_image_url',
+            'price','duration','duration_type','group_size','activity_level','featured'
+        ])
+        ->where(['category_id' => $cat->id ]) 
         ->get()
-        ->first();
+        ->all();
     }
 
 }

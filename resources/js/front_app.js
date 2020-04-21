@@ -1,6 +1,7 @@
 import Vue from 'vue';  
 import VueLazyload from 'vue-lazyload';
 import VueContentPlaceholders from 'vue-content-placeholders';
+import vueMoment from 'vue-moment';
 
 //Custom
 import router from './frontend/routes/router';
@@ -9,16 +10,17 @@ import App from './frontend/components/App.vue' ;
 
 require('./bootstrap');
 
-const BASEURL =  (window.location.origin)+'/';  
+const BASEURL =  (window.location.origin)+'/godoexp_laravel_vuejs/';   
 
 Vue.use(VueLazyload,{
     preLoad: 1,
-    error: BASEURL+'images/default.png',
-    loading: BASEURL+'images/lazy_default.gif',
+    error: BASEURL+'public/images/default.png',
+    loading: BASEURL+'public/images/lazy_default.gif',
     attempt: 2
 });
 
 Vue.use(VueContentPlaceholders)
+Vue.use(vueMoment);
 
 
 export default new Vue({

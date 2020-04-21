@@ -25,7 +25,7 @@ class Company extends Model
     public function getImageAttribute($value)
     {
         if($this->company_logo!=''){
-            return url('/').'/'.$this->company_logo;
+            return asset($this->company_logo);
         }
         return null;
     }

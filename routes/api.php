@@ -22,8 +22,9 @@ Route::group(['namespace' => 'client','prefix' => 'client'], function () {
     Route::get('experiences/home', 'ExperiencesController@index_home');
     Route::get('categories', 'CategoriesController@categories');
     Route::get('experiences', 'ExperiencesController@experiences');
-    Route::get('experiences/categories/{category}', 'ExperiencesController@getExperiencesByCateogy');
+    Route::get('experiences/category/{category}', 'ExperiencesController@getExperiencesByCateogy');
     Route::get('experience/detail/{slug}', 'ExperienceDetailController@getDetail');
+    Route::get('experience/saved_date/{id}', 'ExperienceDetailController@getSavedDate');
 });
 
 //All Routes For Admin

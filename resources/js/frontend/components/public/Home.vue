@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="meet__Host--content cst__Row" v-show="isShowingCat">
-                            <div v-for="n in 4" class="meet__Host--col cst__Col"> 
+                            <div v-for="n in 5" class="meet__Host--col cst__Col"> 
                                 <content-placeholders :rounded="true">
                                     <content-placeholders-img style="height:350px;" /> 
                                     <content-placeholders-text :lines="3" /> 

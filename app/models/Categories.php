@@ -22,7 +22,7 @@ class Categories extends Model
     public function getImageAttribute($value)
     {
         if($this->category_image_url!=''){
-            return url('/').'/'.$this->category_image_url;
+            return asset($this->category_image_url);
         }
         return null;
     }

@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 //Router Module  
 import Home from '../components/public/Home.vue';
 import Experiences from '../components/public/Experiences.vue';
+import ExperiencesByCategory from '../components/public/ExperiencesByCategory.vue';
 import ExperienceDetail from '../components/public/ExperienceDetail.vue';
 import Categories from '../components/public/Categories.vue';  
 
@@ -15,7 +16,9 @@ import Faq from '../components/public/extra/Faq.vue';
 import PrivacyPolicy from '../components/public/extra/PrivacyPolicy.vue';
 import TermsAndConditions from '../components/public/extra/TermsAndConditions.vue';
 
+const PREFIX = '/godoexp_laravel_vuejs/'; 
 const router = new VueRouter({
+    base : PREFIX,
     mode: 'history',
     linkExactActiveClass: 'active',
     routes : [  
@@ -40,14 +43,14 @@ const router = new VueRouter({
         {
             name : 'experiences_list_by_cat',
             path: '/category/:category_name',
-            component: Experiences,
+            component: ExperiencesByCategory,
             meta: { header_cls : '' }  
         },
         {
             name : 'experiences_detail',
             path: '/experience/:exp_slug',
             component: ExperienceDetail,
-            meta: { header_cls : '' }  
+            meta: { header_cls : 'header_bg' }  
         },
         {
             name : 'about_us',

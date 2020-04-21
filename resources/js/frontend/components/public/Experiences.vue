@@ -84,7 +84,7 @@
         </main>
     </div>
 </template>
-<<script>
+<script>
 export default {
     name : 'experiencesC',
     data : function() {

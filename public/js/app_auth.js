@@ -3492,6 +3492,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // this.$moment('2020-03').startOf('month').format('d')
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExperienceEventsSchedule",
@@ -88455,12 +88457,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
+var PREFIX = '/godoexp_laravel_vuejs/admin/';
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  base: PREFIX,
   mode: 'history',
   linkExactActiveClass: 'active',
   routes: [{
     name: 'adminLogin',
-    path: '/admin/login',
+    path: '/login',
     component: _components_public_Login_vue__WEBPACK_IMPORTED_MODULE_17__["default"],
     meta: {
       requiresVisitor: true,
@@ -88468,7 +88472,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'adminForgotPassword',
-    path: '/admin/forgot-password',
+    path: '/forgot-password',
     component: _components_public_ForgotPassword_vue__WEBPACK_IMPORTED_MODULE_18__["default"],
     meta: {
       requiresVisitor: true,
@@ -88476,7 +88480,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'dashboard',
-    path: '/admin/dashboard',
+    path: '/dashboard',
     component: _components_protected_Dashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     meta: {
       requiresAuth: true,
@@ -88484,7 +88488,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'adminProfile',
-    path: '/admin/profile',
+    path: '/profile',
     component: _components_protected_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_16__["default"],
     meta: {
       requiresAuth: true,
@@ -88492,7 +88496,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'changePassword',
-    path: '/admin/change-password',
+    path: '/change-password',
     component: _components_protected_profile_ChangePassword_vue__WEBPACK_IMPORTED_MODULE_15__["default"],
     meta: {
       requiresAuth: true,
@@ -88500,7 +88504,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'adminLogout',
-    path: '/admin/logout',
+    path: '/logout',
     component: _components_protected_Logout_vue__WEBPACK_IMPORTED_MODULE_19__["default"],
     meta: {
       requiresAuth: true,
@@ -88508,7 +88512,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'experiences_list',
-    path: '/admin/experiences',
+    path: '/experiences',
     component: _components_protected_experiences_ExperiencesList_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     meta: {
       requiresAuth: true,
@@ -88516,7 +88520,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'experiences_add',
-    path: '/admin/experiences/add',
+    path: '/experiences/add',
     component: _components_protected_experiences_ExperienceForm_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     meta: {
       requiresAuth: true,
@@ -88524,7 +88528,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'experiences_edit',
-    path: '/admin/experiences/edit/:id',
+    path: '/experiences/edit/:id',
     component: _components_protected_experiences_ExperienceForm_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     meta: {
       requiresAuth: true,
@@ -88532,7 +88536,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'experiences_schedule',
-    path: '/admin/experiences/schedule/:id',
+    path: '/experiences/schedule/:id',
     component: _components_protected_experiences_ExperienceEventCalendar_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
     meta: {
       requiresAuth: true,
@@ -88540,7 +88544,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'categories_list',
-    path: '/admin/categories',
+    path: '/categories',
     component: _components_protected_categories_CategoriesList_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     meta: {
       requiresAuth: true,
@@ -88548,7 +88552,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'categories_add',
-    path: '/admin/categories/add',
+    path: '/categories/add',
     component: _components_protected_categories_CategoriesForm_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     meta: {
       requiresAuth: true,
@@ -88556,7 +88560,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'categories_edit',
-    path: '/admin/categories/edit/:id',
+    path: '/categories/edit/:id',
     component: _components_protected_categories_CategoriesForm_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     meta: {
       requiresAuth: true,
@@ -88564,7 +88568,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'clients_list',
-    path: '/admin/clients',
+    path: '/clients',
     component: _components_protected_clients_ClientsList_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
     meta: {
       requiresAuth: true,
@@ -88572,7 +88576,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'clients_add',
-    path: '/admin/clients/add',
+    path: '/clients/add',
     component: _components_protected_clients_ClientsForm_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
     meta: {
       requiresAuth: true,
@@ -88580,7 +88584,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'clients_edit',
-    path: '/admin/clients/edit/:id',
+    path: '/clients/edit/:id',
     component: _components_protected_clients_ClientsForm_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
     meta: {
       requiresAuth: true,
@@ -88588,7 +88592,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'vendors_list',
-    path: '/admin/vendors',
+    path: '/vendors',
     component: _components_protected_vendors_VendorsList_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
     meta: {
       requiresAuth: true,
@@ -88596,7 +88600,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'vendors_add',
-    path: '/admin/vendors/add',
+    path: '/vendors/add',
     component: _components_protected_vendors_VendorsForm_vue__WEBPACK_IMPORTED_MODULE_11__["default"],
     meta: {
       requiresAuth: true,
@@ -88604,7 +88608,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'vendors_edit',
-    path: '/admin/vendors/edit/:id',
+    path: '/vendors/edit/:id',
     component: _components_protected_vendors_VendorsForm_vue__WEBPACK_IMPORTED_MODULE_11__["default"],
     meta: {
       requiresAuth: true,
@@ -88612,7 +88616,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'testimonials_list',
-    path: '/admin/testimonials',
+    path: '/testimonials',
     component: _components_protected_testimonial_TestimonialsList_vue__WEBPACK_IMPORTED_MODULE_13__["default"],
     meta: {
       requiresAuth: true,
@@ -88620,7 +88624,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'testimonial_add',
-    path: '/admin/testimonial/add',
+    path: '/testimonial/add',
     component: _components_protected_testimonial_TestimonialsForm_vue__WEBPACK_IMPORTED_MODULE_14__["default"],
     meta: {
       requiresAuth: true,
@@ -88628,7 +88632,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'testimonial_edit',
-    path: '/admin/testimonial/edit/:id',
+    path: '/testimonial/edit/:id',
     component: _components_protected_testimonial_TestimonialsForm_vue__WEBPACK_IMPORTED_MODULE_14__["default"],
     meta: {
       requiresAuth: true,
@@ -88636,7 +88640,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }
   }, {
     name: 'company_detail',
-    path: '/admin/company-detail',
+    path: '/company-detail',
     component: _components_protected_company_companyDetailForm_vue__WEBPACK_IMPORTED_MODULE_12__["default"],
     meta: {
       requiresAuth: true,
@@ -88662,7 +88666,7 @@ router.beforeResolve(function (to, from, next) {
   })) {
     if (!!!localStorage.getItem('token')) {
       alert('Your session has been expired please login..');
-      window.location.href = '/admin/login';
+      window.location.href = PREFIX + 'login';
     } else {
       next();
     }
@@ -88670,7 +88674,7 @@ router.beforeResolve(function (to, from, next) {
     return record.meta.requiresVisitor;
   })) {
     if (!!localStorage.getItem('token')) {
-      window.location.href = '/admin/home';
+      window.location.href = PREFIX + 'home';
     } else {
       next();
     }
@@ -89337,11 +89341,11 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.interceptors.response.use(function 
     if (typeof err.response.status !== 'undefined' && err.response.status == 401 && err.response.data.message == 'Unauthenticated.') {
       localStorage.removeItem('token');
       alert('Your session has been expired please login..');
-      window.location.href = '/admin/login';
+      window.location.href = '/godoexp_laravel_vuejs/admin/login';
     }
   }
 });
-var BASEURL = window.location.origin + '/api/admin/'; //All Mutations
+var BASEURL = window.location.origin + '/godoexp_laravel_vuejs/api/admin/'; //All Mutations
 
 
 
@@ -89543,7 +89547,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var BASEURL = window.location.origin + '/';
+var BASEURL = window.location.origin + '/godoexp_laravel_vuejs/';
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toastr__WEBPACK_IMPORTED_MODULE_1__["default"], {
   defaultTimeout: 3000,
   defaultProgressBar: false,

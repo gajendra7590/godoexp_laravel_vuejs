@@ -18,9 +18,9 @@ class Experiences extends Model
     ];
 
     public function getImageAttribute($value)
-    {
+    { 
         if($this->experiences_image_url!=''){
-            return url('/').'/'.$this->experiences_image_url;
+            return asset($this->experiences_image_url);;
         }
         return null;
     }

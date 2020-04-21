@@ -20,7 +20,7 @@ Vue.use(UUID);
 
 require('./bootstrap');
 
-const BASEURL =  (window.location.origin)+'/';
+const BASEURL =  (window.location.origin)+'/godoexp_laravel_vuejs/';
 
 
 Vue.use(vueMoment);

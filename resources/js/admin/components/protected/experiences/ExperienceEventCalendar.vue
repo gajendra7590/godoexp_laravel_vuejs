@@ -110,11 +110,13 @@
                                                         </div>
                                                         <div class="corona_ele-item" v-for="n in currentMonthDays" :key="n+245">
                                                             <div
-                                                             class="corona_ele-mod"
-                                                            :class="addClass(selectedYear+'-'+selectedMonth+'-'+n)"
-                                                            @click.prevent="saveDate(selectedYear,selectedMonth,n)"
-                                                            :data-value="n.toString().padStart(2, 0)"
-                                                            :title="n+' '+selectedMonth+' '+selectedYear"><span>{{ n }}</span></div>
+                                                                class="corona_ele-mod"
+                                                                :class="addClass(selectedYear+'-'+selectedMonth+'-'+n)"
+                                                                @click.prevent="saveDate(selectedYear,selectedMonth,n)"
+                                                                :data-value="n.toString().padStart(2, 0)"
+                                                                :title="n+' '+selectedMonth+' '+selectedYear">
+                                                                <span>{{ n }}</span>
+                                                            </div>
                                                         </div>
 
                                                     </div>

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-Vue.use(axios);
+Vue.use(axios); 
 
 axios.interceptors.response.use(function(response) {
     return response;
@@ -10,12 +10,14 @@ axios.interceptors.response.use(function(response) {
           if( (typeof(err.response.status)!== 'undefined') && (err.response.status == 401) && err.response.data.message == 'Unauthenticated.' ){
             localStorage.removeItem('token');
             alert('Your session has been expired please login..');
-            window.location.href = '/';
+            window.location.href = '/godoexp_laravel_vuejs/';
           }
       }
   });
 
-const BASEURL = (window.location.origin) + '/api/client/';
+
+const ASSET_BURL = (window.location.origin) + '/godoexp_laravel_vuejs/public/';
+const BASEURL = (window.location.origin) + '/godoexp_laravel_vuejs/api/client/';
 
 //All Mutations
 import * as commosMutations from './mutations/commonMutations'; 
@@ -36,6 +38,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         baseURL: BASEURL,
+        ASSET_BURL : ASSET_BURL,
         data: {
             list: [],
             list_total: 0,

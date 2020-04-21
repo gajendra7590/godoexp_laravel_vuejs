@@ -7,7 +7,7 @@ import store from './admin/store/index';
 import App from './admin/components/Auth.vue' ;
 require('./bootstrap');
 
-const BASEURL =  (window.location.origin)+'/';
+const BASEURL =  (window.location.origin)+'/godoexp_laravel_vuejs/';
 
 Vue.use(VueToastr,{
     defaultTimeout: 3000,

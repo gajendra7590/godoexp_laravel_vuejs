@@ -12,10 +12,12 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ URL::asset('frontend/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('frontend/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('frontend/css/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('frontend/css/owl.theme.default.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('frontend/css/lightbox.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('frontend/css/sweetalert.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('frontend/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('frontend/css/single_page.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('frontend/css/responsive-custom.css') }}"> 
  
 </head>
@@ -27,6 +29,7 @@
 <!-- ./wrapper --> 
 <script type="text/javascript" src="{{ URL::asset('js/front_app.js') }}"></script>  
 <script type="text/javascript" src="{{ URL::asset('frontend/js/jquery.min.js') }}"></script>  
+<script type="text/javascript" src="{{ URL::asset('frontend/js/bootstrap.min.js') }}"></script> 
 <script type="text/javascript" src="{{ URL::asset('frontend/js/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('frontend/js/lightbox.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('frontend/js/sweetalert.min.js') }}"></script>

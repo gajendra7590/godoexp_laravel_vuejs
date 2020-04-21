@@ -16,4 +16,9 @@ class ExperienceAvailability extends Model
     protected $fillable = [
         'experiences_id', 'year', 'month','date'
     ];
+
+     //User
+     public function user(){
+        return $this->hasOne('App\User','id', 'user_id');
+    }
 }

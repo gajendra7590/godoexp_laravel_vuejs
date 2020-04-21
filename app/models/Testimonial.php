@@ -21,7 +21,7 @@ class Testimonial extends Model
     public function getImageAttribute($value)
     {
         if($this->client_image!=''){
-            return url('/').'/'.$this->client_image;
+            return asset($this->client_image); 
         }
         return null;
     }

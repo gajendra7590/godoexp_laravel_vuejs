@@ -10,12 +10,12 @@ axios.interceptors.response.use(function(response) {
           if( (typeof(err.response.status)!== 'undefined') && (err.response.status == 401) && err.response.data.message == 'Unauthenticated.' ){
             localStorage.removeItem('token');
             alert('Your session has been expired please login..');
-            window.location.href = '/admin/login';
+            window.location.href = '/godoexp_laravel_vuejs/admin/login';
           }
       }
   });
 
-const BASEURL = (window.location.origin) + '/api/admin/';
+const BASEURL = (window.location.origin) + '/godoexp_laravel_vuejs/api/admin/';
 
 //All Mutations
 import * as commonMutations from './mutations/commonMutations';
